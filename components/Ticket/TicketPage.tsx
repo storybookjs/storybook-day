@@ -56,6 +56,11 @@ const CustomizationContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
+const Container = styled.div`
+  display: flex;
+  gap: 64px;
+`;
+
 const StyledRegistrationForm = styled(RegistrationForm)`
   max-width: 400px;
 `;
@@ -86,52 +91,62 @@ export const TicketPage = ({ username, name, ticketNumber, sharePage }: TicketPa
 
   return (
     <Wrapper ref={divRef}>
-      <div>
+      <Container>
         <div>
-          {sharePage ? (
+          <div>
+            {sharePage ? (
+              <>
+                <Title>{name ? <>{name}’s Ticket</> : <>{SITE_NAME}</>}</Title>
+                <Subtitle>
+                  {sharePage ? (
+                    <>
+                      Join {name ?? 'them'} on {DATE} for Storybook Day.
+                    </>
+                  ) : (
+                    <>Customize the ticket with your GitHub profile</>
+                  )}
+                </Subtitle>
+              </>
+            ) : (
+              <>
+                <Title>{username ? <>Your custom ticket</> : <>You’re in!</>}</Title>
+                <Subtitle>
+                  {username ? (
+                    <>Customize the ticket with your GitHub profile</>
+                  ) : (
+                    <>Share your ticket to invite others to join you.</>
+                  )}
+                </Subtitle>
+              </>
+            )}
+          </div>
+          <CustomizationContainer>
+            {!sharePage ? (
+              <CustomizationForm
+                defaultUsername={username}
+                setTicketGenerationState={setTicketGenerationState}
+              />
+            ) : (
+              <StyledRegistrationForm sharePage />
+            )}
+          </CustomizationContainer>
+          {!username && <FreeStickers />}
+          {!sharePage && username && (
             <>
-              <Title>{name ? <>{name}’s Ticket</> : <>{SITE_NAME}</>}</Title>
-              <Subtitle>
-                {sharePage ? (
-                  <>
-                    Join {name ?? 'them'} on {DATE} for Storybook Day.
-                  </>
-                ) : (
-                  <>Customize the ticket with your GitHub profile</>
-                )}
-              </Subtitle>
-            </>
-          ) : (
-            <>
-              <Title>{username ? <>Your custom ticket</> : <>You’re in!</>}</Title>
-              <Subtitle>
-                {username ? (
-                  <>Customize the ticket with your GitHub profile</>
-                ) : (
-                  <>Share your ticket to invite others to join you.</>
-                )}
-              </Subtitle>
+              <Divider />
+              <TicketActions username={username} />
             </>
           )}
         </div>
-        <CustomizationContainer>
-          {!sharePage ? (
-            <CustomizationForm
-              defaultUsername={username}
-              setTicketGenerationState={setTicketGenerationState}
-            />
-          ) : (
-            <StyledRegistrationForm sharePage />
-          )}
-        </CustomizationContainer>
-        {!username && <FreeStickers />}
-        {!sharePage && username && (
-          <>
-            <Divider />
-            <TicketActions username={username} />
-          </>
-        )}
-      </div>
+        <div ref={ticketRef}>
+          <TicketVisual
+            username={username}
+            name={name}
+            ticketNumber={ticketNumber}
+            ticketGenerationState={ticketGenerationState}
+          />
+        </div>
+      </Container>
     </Wrapper>
   );
 };

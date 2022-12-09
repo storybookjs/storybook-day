@@ -25,9 +25,11 @@ export const META_DESCRIPTION =
 export const SITE_DESCRIPTION =
   'An interactive online experience by the community, free for everyone.';
 export const DATE = 'March 1, 2023';
-export const SHORT_DATE = 'Mar 10:00am - 12:00pm PST';
+export const SHORT_DATE = 'Mar 1, 2023';
+export const LONG_DATE = 'Mar 1 10:00am - 12:00pm PST';
 export const SHORT_TIME = '10am - 12pm';
 export const TIMEZONE = 'Pacific Standard Time';
+export const SHORT_TIMEZONE = 'Pacific Time';
 export const FULL_DATE = 'March 1st 10am Pacific Time (GMT-8)';
 export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';

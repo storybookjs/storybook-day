@@ -1,18 +1,26 @@
-import React, { FC } from 'react';
-import { styled } from '@storybook/theming';
-import { Logos } from '@storybook/design-system';
+import React from 'react';
+import { css, styled } from '@storybook/theming';
+import { Icon, Logos } from '@storybook/design-system';
 import { styles } from '@storybook/components-marketing';
 
 const { color, marketing } = styles;
 
-const Label = styled.div`
+const Label = styled.div<{ monochrome?: boolean }>`
   ${marketing.textSmall};
-  color: ${color.dark};
+  color: ${props => (props.monochrome ? color.darkest : color.dark)};
 `;
 
-const ChromaticLogo = styled(Logos.Chromatic)`
+const ChromaticLogo = styled(Logos.Chromatic)<{ monochrome?: boolean }>`
   height: 20px;
   margin-left: 10px;
+
+  ${props =>
+    props.monochrome &&
+    css`
+      circle {
+        fill: ${color.darkest};
+      }
+    `}
 `;
 
 const Wrapper = styled.div`
@@ -20,9 +28,13 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const ByChromatic: FC = props => (
+interface ByChromaticProps {
+  monochrome?: boolean;
+}
+
+export const ByChromatic = ({ monochrome, ...props }: ByChromaticProps) => (
   <Wrapper {...props}>
-    <Label>Brought to you by</Label>
-    <ChromaticLogo />
+    <Label monochrome={monochrome}>Brought to you by</Label>
+    <ChromaticLogo monochrome={monochrome} />
   </Wrapper>
 );

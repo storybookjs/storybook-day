@@ -13,3 +13,4 @@ export default meta;
 type Story = StoryObj<typeof ByChromatic>;
 
 export const Primary: Story = {};
+export const Monochrome: Story = { args: { monochrome: true } };

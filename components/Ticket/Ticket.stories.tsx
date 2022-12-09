@@ -28,7 +28,7 @@ export const JustUsername: Story = {
 
 export const AllUserData: Story = {
   args: {
-    username: 'rashyskdjf kdjf ksdjf ksdjf kdsj fkjd',
+    username: 'rashy',
     name: 'Marcus Rashford',
     ticketNumber: 123456
   }
