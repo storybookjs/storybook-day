@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Cardinal } from '@storybook/design-system';
+import { Cardinal, Icon } from '@storybook/design-system';
 import { SHORT_TIME, SHORT_TIMEZONE, SHORT_DATE } from '@lib/constants';
 import { TicketGenerationState } from '@lib/constants';
 import TicketColoredMobile from './ticket-colored-mobile';
@@ -16,6 +16,7 @@ const { typography, color, spacing, text } = styles;
 const border = 'rgba(0, 0, 0, 0.2)';
 
 const SVG = styled.svg`
+  display: block;
   filter: drop-shadow(0px 52.2449px 39.1837px rgba(0, 0, 0, 0.05))
     drop-shadow(0px 130.612px 104.49px rgba(0, 0, 0, 0.05))
     drop-shadow(0px 13.0612px 26.1224px rgba(0, 0, 0, 0.1))
@@ -137,17 +138,36 @@ const Info = styled(Cardinal)`
   flex: none;
 `;
 
-const Version = styled.div`
-  display: inline-block;
-  background-size: cover;
-  background-image: url('text-gradient-backdrop.svg');
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: 83px;
-  font-weight: 600;
-  line-height: 100px;
-  letter-spacing: -0.08em;
+const Version = styled.img`
+  display: block;
+  max-height: 100px;
+  margin-right: 20px;
+  margin-left: -10px;
+`;
+const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+`;
+const Name = styled.div`
+  font-size: ${typography.size.m3}px;
+  font-weight: ${typography.weight.bold};
+  line-height: 20px;
+  color: ${color.darkest};
+  margin-bottom: 10px;
+`;
+const Username = styled.div`
+  font-size: ${typography.size.s3}px;
+  line-height: 18px;
+  color: ${color.dark};
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
 `;
 
 type TicketVisualProps = {
@@ -174,16 +194,22 @@ export const TicketVisual = ({
       <ProfileContainer>
         <Profile>
           <Top>
-            <StorybookDayLogo />
+            <StorybookDayLogo aria-label="Storybook Day ticket" />
             <TicketNumber>
               #{prefix}
               {ticketNumber}
             </TicketNumber>
           </Top>
           <Middle>
-            <div>
-              <Version>7.0</Version>
-            </div>
+            <UserInfo>
+              <Version src="7-0.svg" alt={name ?? '7.0'} />
+              <div>
+                <Name>Launch event</Name>
+                <Username>
+                  <Icon icon="github" /> {username ?? 'Your username'}
+                </Username>
+              </div>
+            </UserInfo>
             <InfoWrapper>
               <Info size="small" text={SHORT_TIMEZONE} count={SHORT_TIME} />
               <Info size="small" text="Online event" count={SHORT_DATE} />

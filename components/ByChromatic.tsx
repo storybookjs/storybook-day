@@ -23,9 +23,14 @@ const ChromaticLogo = styled(Logos.Chromatic)<{ monochrome?: boolean }>`
     `}
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ monochrome?: boolean }>`
   display: flex;
   align-items: center;
+  ${props =>
+    props.monochrome &&
+    css`
+      opacity: 0.9;
+    `}
 `;
 
 interface ByChromaticProps {
@@ -33,7 +38,7 @@ interface ByChromaticProps {
 }
 
 export const ByChromatic = ({ monochrome, ...props }: ByChromaticProps) => (
-  <Wrapper {...props}>
+  <Wrapper monochrome={monochrome} {...props}>
     <Label monochrome={monochrome}>Brought to you by</Label>
     <ChromaticLogo monochrome={monochrome} />
   </Wrapper>

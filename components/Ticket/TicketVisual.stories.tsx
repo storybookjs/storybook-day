@@ -15,8 +15,21 @@ type Story = StoryObj<typeof TicketVisual>;
 
 export const Default: Story = {
   args: {
-    name: 'Varun Vachhar',
-    username: 'winkerVSbecks',
     ticketNumber: 7521
+  }
+};
+
+export const WithUserInfo: Story = {
+  args: {
+    ...Default.args,
+    name: 'Varun Vachhar',
+    username: 'winkerVSbecks'
+  }
+};
+
+export const Loading: Story = {
+  args: {
+    ...WithUserInfo.args,
+    ticketGenerationState: 'loading'
   }
 };

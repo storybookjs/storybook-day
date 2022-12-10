@@ -6,15 +6,12 @@ import isMobileOrTablet from '@lib/is-mobile-or-tablet';
 import { scrollTo } from '@lib/smooth-scroll';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import TicketForm from './ticket-form';
-import TicketVisual from './ticket-visual';
-import { TicketActions } from './TicketActions';
-import { CustomizationForm } from './CustomizationForm';
-import TicketCopy from './ticket-copy';
 import { DATE, SITE_NAME } from '@lib/constants';
-import Form from '../remove/form';
 import { FreeStickers } from '@components/FreeStickers';
 import { RegistrationForm } from '@components/RegistrationForm';
+import { TicketVisual } from './TicketVisual';
+import { TicketActions } from './TicketActions';
+import { CustomizationForm } from './CustomizationForm';
 
 const { marketing, breakpoints, color, pageMargins } = styles;
 
@@ -59,6 +56,8 @@ const CustomizationContainer = styled.div`
 const Container = styled.div`
   display: flex;
   gap: 64px;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 const StyledRegistrationForm = styled(RegistrationForm)`
