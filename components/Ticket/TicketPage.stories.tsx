@@ -20,8 +20,8 @@ export const Default: Story = {
 
 export const Authenticated: Story = {
   args: {
-    username: 'rashy',
-    name: 'Marcus Rashford',
+    username: 'winkerVSbecks',
+    name: 'Varun Vachhar',
     ticketNumber: 123456
   }
 };
@@ -35,7 +35,7 @@ export const SharePage: Story = {
 
 export const ShareNoName: Story = {
   args: {
-    username: 'rashy',
+    username: 'winkerVSbecks',
     sharePage: true
   }
 };

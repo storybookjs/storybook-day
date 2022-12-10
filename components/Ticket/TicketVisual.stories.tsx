@@ -19,17 +19,23 @@ export const Default: Story = {
   }
 };
 
-export const WithUserInfo: Story = {
+export const PartialUserInfo: Story = {
   args: {
     ...Default.args,
-    name: 'Varun Vachhar',
     username: 'winkerVSbecks'
+  }
+};
+
+export const AllUserInfo: Story = {
+  args: {
+    ...PartialUserInfo.args,
+    name: 'Varun Vachhar'
   }
 };
 
 export const Loading: Story = {
   args: {
-    ...WithUserInfo.args,
+    ...AllUserInfo.args,
     ticketGenerationState: 'loading'
   }
 };

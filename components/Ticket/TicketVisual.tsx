@@ -1,18 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Cardinal, Icon } from '@storybook/design-system';
-import { SHORT_TIME, SHORT_TIMEZONE, SHORT_DATE } from '@lib/constants';
 import { TicketGenerationState } from '@lib/constants';
-import TicketColoredMobile from './ticket-colored-mobile';
-import TicketColored from './ticket-colored';
-// import styles from './ticket-visual.module.css';
-import TicketProfile from './ticket-profile';
-import TicketInfo from './ticket-info';
-import { StorybookDayLogo } from '@components/StorybookDayLogo';
+import { TicketProfile } from './TicketProfile';
+import { TicketInfo } from './TicketInfo';
 import { ByChromatic } from '@components/ByChromatic';
+import { TicketShape } from './TicketShape';
 
-const { typography, color, spacing, text } = styles;
+const { color, text } = styles;
 const border = 'rgba(0, 0, 0, 0.2)';
 
 const SVG = styled.svg`
@@ -23,7 +17,7 @@ const SVG = styled.svg`
     drop-shadow(0px 1.30612px 3.91837px rgba(0, 0, 0, 0.1));
 `;
 
-export default function TicketHorizontal() {
+function TicketHorizontal() {
   return (
     <SVG
       width="100%"
@@ -47,6 +41,13 @@ export default function TicketHorizontal() {
           <stop offset="0.734375" stop-color="#7A718B" />
           <stop offset="1" stop-color="#DD1FFC" />
         </linearGradient>
+
+        <clipPath id="svgPath">
+          <path
+            fill="#000"
+            d="M0 330V203.293c11.652-4.118 20-15.231 20-28.293s-8.348-24.175-20-28.293V20C0 8.954 8.954 0 20 0h454c11.046 0 20 8.954 20 20v126.373c-12.171 3.823-21 15.194-21 28.627 0 13.433 8.829 24.804 21 28.627V330c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20Z"
+          />
+        </clipPath>
       </defs>
       <path
         d="M0 330V203.293c11.652-4.118 20-15.231 20-28.293s-8.348-24.175-20-28.293V20C0 8.954 8.954 0 20 0h454c11.046 0 20 8.954 20 20v126.373c-12.171 3.823-21 15.194-21 28.627 0 13.433 8.829 24.804 21 28.627V330c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20Z"
@@ -62,13 +63,30 @@ export default function TicketHorizontal() {
   );
 }
 
+function TicketVertical() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="350"
+      height="495"
+      fill="none"
+      viewBox="0 0 350 495"
+    >
+      <path
+        fill="#fff"
+        d="M20 1h126.707c4.118 11.652 15.231 20 28.293 20s24.175-8.348 28.293-20H330c11.046 0 20 8.954 20 20v454c0 11.046-8.954 20-20 20H203.627c-3.823-12.171-15.194-21-28.627-21-13.433 0-24.804 8.829-28.627 21H20c-11.046 0-20-8.954-20-20V21C0 9.954 8.954 1 20 1z"
+      ></path>
+    </svg>
+  );
+}
+
 const Visual = styled.div`
   position: relative;
   transform: translateZ(0);
   width: 500px;
 `;
 
-const ProfileContainer = styled.div`
+const ContentContainer = styled.div`
   z-index: 1;
   position: absolute;
   top: 0;
@@ -79,7 +97,7 @@ const ProfileContainer = styled.div`
   /* padding: 5% 8% 5% 8%; */
 `;
 
-const Profile = styled.div`
+const Content = styled.div`
   border: 1px solid ${border};
   border-radius: 7px;
   height: 100%;
@@ -97,17 +115,6 @@ const Top = styled.div`
   svg {
     height: 24px;
   }
-`;
-
-const TicketNumber = styled.div`
-  border-radius: ${spacing.borderRadius.small}px;
-  padding: 4px 8px 4px 8px;
-  border: 1px solid ${color.secondary};
-  color: ${color.secondary};
-  font-family: ${typography.type.code};
-  font-weight: 400;
-  font-size: ${typography.size.s2}px;
-  line-height: 16px;
 `;
 
 const Bottom = styled.div`
@@ -129,44 +136,34 @@ const Middle = styled.div`
   padding-left: 40px;
 `;
 
-const InfoWrapper = styled.div`
-  display: flex;
-  gap: 40px;
+const GlareContainer = styled.div`
+  && {
+    border-radius: 7px;
+    overflow: hidden;
+    top: 20px !important;
+    left: 40px !important;
+    right: 40px !important;
+    bottom: 20px !important;
+    width: auto !important;
+    height: auto !important;
+  }
 `;
-const Info = styled(Cardinal)`
-  padding: 0;
-  flex: none;
-`;
-
-const Version = styled.img`
-  display: block;
-  max-height: 100px;
-  margin-right: 20px;
-  margin-left: -10px;
-`;
-const UserInfo = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const Name = styled.div`
-  font-size: ${typography.size.m3}px;
-  font-weight: ${typography.weight.bold};
-  line-height: 20px;
-  color: ${color.darkest};
-  margin-bottom: 10px;
-`;
-const Username = styled.div`
-  font-size: ${typography.size.s3}px;
-  line-height: 18px;
-  color: ${color.dark};
-  display: flex;
-  align-items: center;
-  gap: 4px;
-
-  svg {
-    display: block;
-    width: 16px;
-    height: 16px;
+const Glare = styled.div`
+  && {
+    background-image: linear-gradient(
+      290deg,
+      hsl(271deg 59% 42%) 0%,
+      hsl(209deg 100% 44%) 20%,
+      hsl(198deg 100% 45%) 29%,
+      hsl(184deg 100% 42%) 36%,
+      hsl(165deg 66% 54%) 43%,
+      hsl(108deg 54% 63%) 50%,
+      hsl(57deg 72% 47%) 57%,
+      hsl(36deg 100% 55%) 64%,
+      hsl(20deg 100% 63%) 71%,
+      hsl(358deg 100% 68%) 80%,
+      hsl(340deg 100% 64%) 100%
+    ) !important;
   }
 `;
 
@@ -179,73 +176,34 @@ type TicketVisualProps = {
 };
 
 export const TicketVisual = ({
-  size = 1,
   name,
   username,
   ticketNumber,
   ticketGenerationState = 'default'
 }: TicketVisualProps) => {
-  const numDigits = `${ticketNumber}`.length;
-  const prefix = `000000`.slice(numDigits);
-
   return (
-    <Visual style={{ ['--size' as string]: size }}>
-      <TicketHorizontal />
-      <ProfileContainer>
-        <Profile>
+    <Visual>
+      <TicketShape />
+      <ContentContainer>
+        <Content>
           <Top>
-            <StorybookDayLogo aria-label="Storybook Day ticket" />
-            <TicketNumber>
-              #{prefix}
-              {ticketNumber}
-            </TicketNumber>
+            <TicketInfo ticketNumber={ticketNumber} />
           </Top>
           <Middle>
-            <UserInfo>
-              <Version src="7-0.svg" alt={name ?? '7.0'} />
-              <div>
-                <Name>Launch event</Name>
-                <Username>
-                  <Icon icon="github" /> {username ?? 'Your username'}
-                </Username>
-              </div>
-            </UserInfo>
-            <InfoWrapper>
-              <Info size="small" text={SHORT_TIMEZONE} count={SHORT_TIME} />
-              <Info size="small" text="Online event" count={SHORT_DATE} />
-            </InfoWrapper>
+            <TicketProfile
+              name={name}
+              username={username}
+              loading={ticketGenerationState === 'loading'}
+            />
           </Middle>
           <Bottom>
             <ByChromatic monochrome /> storybook.js.org/day
           </Bottom>
-        </Profile>
-      </ProfileContainer>
-      {/* <div className={styles.visual} style={{ ['--size' as string]: size }}>
-        <div className={styles['horizontal-ticket']}>
-          {username ? <TicketColored /> : <TicketMono />}
-        </div>
-        <div className={styles['vertical-ticket']}>
-          {username ? <TicketColoredMobile /> : <TicketMonoMobile />}
-        </div>
-        <div className={styles.profile}>
-          <TicketProfile
-            name={name}
-            username={username}
-            size={size}
-            ticketGenerationState={ticketGenerationState}
-          />
-        </div>
-        <div className={styles.info}>
-          <TicketInfo logoTextSecondaryColor={ticketNumber ? 'var(--brand)' : undefined} />
-        </div>
-        {ticketNumber && (
-          <div className={styles['ticket-number-wrapper']}>
-            <div className={styles['ticket-number']}>
-              <TicketNumber number={ticketNumber} />
-            </div>
-          </div>
-        )}
-      </div> */}
+        </Content>
+      </ContentContainer>
+      <GlareContainer className="js-tilt-glare">
+        <Glare className="js-tilt-glare-inner" />
+      </GlareContainer>
     </Visual>
   );
 };

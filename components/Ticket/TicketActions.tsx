@@ -75,7 +75,7 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
       >
         <Icon icon="linkedin" /> Share on LinkedIn
       </Button>
-      <Button
+      {/* <Button
         appearance="inverseSecondary"
         size="medium"
         isLink
@@ -84,7 +84,7 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
         href={loading ? undefined : downloadUrl}
       >
         <Icon icon="download" /> Download
-      </Button>
+      </Button> */}
     </Wrapper>
   );
 };

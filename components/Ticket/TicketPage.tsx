@@ -55,9 +55,14 @@ const CustomizationContainer = styled.div`
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
   gap: 64px;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: ${breakpoints[2]}px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledRegistrationForm = styled(RegistrationForm)`
@@ -76,7 +81,9 @@ export const TicketPage = ({ username, name, ticketNumber, sharePage }: TicketPa
       Tilt.init(ticketRef.current, {
         glare: true,
         max: 5,
-        'max-glare': 0.16,
+        // 'max-glare': 0.16,
+        'max-glare': 0.08,
+        'glare-prerender': false,
         'full-page-listening': true
       });
     }

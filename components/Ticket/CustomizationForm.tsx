@@ -1,24 +1,22 @@
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Button, Icon, Link, FormEventHandler } from '@storybook/design-system';
-import { useState, useRef } from 'react';
+import { Button, Icon, Link } from '@storybook/design-system';
+import { useState, useRef, FormEvent } from 'react';
 import { scrollTo } from '@lib/smooth-scroll';
-import cn from 'classnames';
 import { SITE_ORIGIN, TicketGenerationState } from '@lib/constants';
 import isMobileOrTablet from '@lib/is-mobile-or-tablet';
 import useConfData from '@lib/hooks/use-conf-data';
-import formStyles from '../remove/form.module.css';
-import ticketFormStyles from './ticket-form.module.css';
 import { saveGithubToken } from '@lib/user-api';
 import { GitHubOAuthData } from '@lib/types';
 import { LinkWrapper } from '@components/LinkWrapper';
 import { Retry } from '@components/Retry';
 
-const { color, marketing, breakpoints, text } = styles;
+const { color, text } = styles;
 
 type FormState = 'default' | 'loading' | 'error';
 
 const Info = styled.div`
+  flex: none;
   ${text.regular};
   margin-left: 1rem;
   color: ${color.darkest};
@@ -58,7 +56,7 @@ export const CustomizationForm = ({
   const { userData, setUserData } = useConfData();
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = (e: FormEventHandler<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (formState !== 'default') {
@@ -99,8 +97,6 @@ export const CustomizationForm = ({
       }, 250);
 
       window.addEventListener('message', function onMessage(msgEvent) {
-        console.log(msgEvent);
-
         // When devtools is opened the message may be received multiple times
         if (SITE_ORIGIN !== msgEvent.origin || !msgEvent.data.type) {
           return;
