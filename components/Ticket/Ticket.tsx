@@ -24,9 +24,13 @@ type TicketProps = {
 
 const Wrapper = styled.div`
   ${pageMargins};
-  min-height: calc(100vh - 72px);
   display: flex;
   align-items: center;
+
+  /* @media (min-width: ${breakpoints[3]}px) { */
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  /* } */
 `;
 
 const Title = styled.h1`
@@ -54,16 +58,6 @@ const CustomizationContainer = styled.div`
 `;
 
 const Container = styled.div`
-  /* display: grid;
-  grid-template-columns: 100%;
-  gap: 32px;
-  width: 100%;
-
-  @media (min-width: ${breakpoints[3]}px) {
-    grid-template-columns: max-content 500px;
-    justify-content: space-between;
-  } */
-
   display: flex;
   flex-direction: column;
   align-items: center;

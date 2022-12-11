@@ -3,7 +3,7 @@ import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import FormError from '@lib/form-error';
 import { saveShippingInfo } from '@lib/user-api';
-import { useCaptcha } from '../captcha';
+import { useCaptcha } from '../Captcha';
 import { StickerForm, FormData } from './StickerForm';
 import { Alert } from './Alert';
 import { ByChromatic } from '@components/ByChromatic';
@@ -12,10 +12,6 @@ const { text, color, pageMargins } = styles;
 
 const Wrapper = styled.div`
   ${pageMargins};
-`;
-
-const GradientBackdrop = styled.div`
-  background: linear-gradient(180deg, var(--bg-blue) 0%, rgba(246, 249, 252, 0) 100%);
   padding-top: 4rem;
 `;
 
@@ -131,38 +127,36 @@ export const Stickers = ({ id }: { id: string }) => {
   );
 
   return (
-    <GradientBackdrop>
-      <Wrapper>
-        <Container>
-          <StickersImg
-            src="stickers.svg"
-            alt="Get Storybook, Chromatic and cursor pointer stickers"
+    <Wrapper>
+      <Container>
+        <StickersImg
+          src="/stickers.svg"
+          alt="Get Storybook, Chromatic and cursor pointer stickers"
+        />
+        {formState === 'error' && (
+          <Alert type="error" title="Submission failed" message={errorMsg} />
+        )}
+        {formState === 'success' ? (
+          <Alert
+            title="Your request was received!"
+            message="Your stickers will ship with the next monthly batch."
           />
-          {formState === 'error' && (
-            <Alert type="error" title="Submission failed" message={errorMsg} />
-          )}
-          {formState === 'success' ? (
-            <Alert
-              title="Your request was received!"
-              message="Your stickers will ship with the next monthly batch."
+        ) : (
+          <>
+            <Heading>Get free stickers shipped to you</Heading>
+            <StickerForm
+              value={formData}
+              onChange={onChange}
+              onSubmit={onSubmit}
+              isLoading={formState === 'loading'}
+              handleRegister={handleRegister}
+              captchaRef={captchaRef}
             />
-          ) : (
-            <>
-              <Heading>Get free stickers shipped to you</Heading>
-              <StickerForm
-                value={formData}
-                onChange={onChange}
-                onSubmit={onSubmit}
-                isLoading={formState === 'loading'}
-                handleRegister={handleRegister}
-                captchaRef={captchaRef}
-              />
-              <Shipping>We ship a batch of stickers every month.</Shipping>
-            </>
-          )}
-          <Attribution />
-        </Container>
-      </Wrapper>
-    </GradientBackdrop>
+            <Shipping>We ship a batch of stickers every month.</Shipping>
+          </>
+        )}
+        <Attribution />
+      </Container>
+    </Wrapper>
   );
 };

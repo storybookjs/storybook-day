@@ -1,4 +1,3 @@
-import React from 'react';
 import { styled } from '@storybook/theming';
 import { Logos, Button } from '@storybook/design-system';
 import { styles, NavItem } from '@storybook/components-marketing';

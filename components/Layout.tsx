@@ -15,6 +15,7 @@
  */
 
 import React from 'react';
+import { css, styled } from '@storybook/theming';
 import { useRouter } from 'next/router';
 import { SkipNavContent as RSkipNavContent } from '@reach/skip-nav';
 import { Footer } from './Footer';
@@ -22,26 +23,49 @@ import { Nav } from './Nav';
 
 type LayoutProps = {
   children: React.ReactNode;
-  className?: string;
-  hideNav?: boolean;
-  layoutStyles?: any;
   isLive?: boolean;
   showFooter?: boolean;
+  layoutStyle?: 'default' | 'full';
 };
+
+const PageContainer = styled.div<{ full?: boolean }>`
+  ${props =>
+    props.full &&
+    css`
+      display: flex;
+      flex-direction: column;
+      background-image: url('/gradient-backdrop.svg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    `}
+`;
+
+const Main = styled.main<{ full?: boolean }>`
+  ${props =>
+    props.full &&
+    css`
+      flex: 1 1 auto;
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `}
+`;
 
 // Workaround for TS 2590 error
 const SkipNavContent: any = RSkipNavContent;
 
-export default function Layout({ showFooter, children }: LayoutProps) {
+export function Layout({ showFooter, children, layoutStyle = 'default' }: LayoutProps) {
   const router = useRouter();
   const activeRoute = router.asPath;
 
   return (
-    <>
-      <Nav />
+    <PageContainer full={layoutStyle === 'full'}>
+      <Nav transparent={layoutStyle === 'full'} />
       <SkipNavContent />
-      <main>{children}</main>
+      <Main full={layoutStyle === 'full'}>{children}</Main>
       {showFooter && <Footer />}
-    </>
+    </PageContainer>
   );
 }

@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Page from '@components/page';
 import { META_DESCRIPTION } from '@lib/constants';
 import { Stickers } from '@components/Stickers';
-import Layout from '@components/Layout';
+import { Layout } from '@components/Layout';
 
 export default function Conf() {
   const { query } = useRouter();

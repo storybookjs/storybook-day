@@ -6,7 +6,7 @@ import useConfData from '@lib/hooks/use-conf-data';
 import FormError from '@lib/form-error';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 import { register } from '@lib/user-api';
-import { useCaptcha } from '../captcha';
+import { useCaptcha } from '../Captcha';
 import { FormUI } from './FormUI';
 import { Retry } from '@components/Retry';
 

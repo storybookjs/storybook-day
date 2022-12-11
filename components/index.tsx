@@ -17,8 +17,7 @@
 import { useState } from 'react';
 import { PageState, ConfDataContext, UserData } from '@lib/hooks/use-conf-data';
 import { Ticket } from './Ticket';
-import Layout from './Layout';
-import ConfContainer from './conf-container';
+import { Layout } from './Layout';
 import { HomePage } from './Home';
 
 type Props = {
@@ -36,6 +35,7 @@ export default function Conf({
 }: Props) {
   const [userData, setUserData] = useState<UserData>(defaultUserData);
   const [pageState, setPageState] = useState<PageState>(defaultPageState);
+  const notRegistered = pageState === 'registration' && !sharePage;
 
   return (
     <ConfDataContext.Provider
@@ -45,19 +45,17 @@ export default function Conf({
         setPageState
       }}
     >
-      <Layout showFooter={showFooter}>
-        <ConfContainer>
-          {pageState === 'registration' && !sharePage ? (
-            <HomePage />
-          ) : (
-            <Ticket
-              username={userData.username}
-              name={userData.name}
-              ticketNumber={userData.ticketNumber}
-              sharePage={sharePage}
-            />
-          )}
-        </ConfContainer>
+      <Layout showFooter={showFooter} layoutStyle={notRegistered ? 'default' : 'full'}>
+        {notRegistered ? (
+          <HomePage />
+        ) : (
+          <Ticket
+            username={userData.username}
+            name={userData.name}
+            ticketNumber={userData.ticketNumber}
+            sharePage={sharePage}
+          />
+        )}
       </Layout>
     </ConfDataContext.Provider>
   );
