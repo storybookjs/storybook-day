@@ -14,7 +14,7 @@ type Story = StoryObj<typeof TicketPage>;
 
 export const Default: Story = {
   args: {
-    ticketNumber: 123456
+    ticketNumber: 1
   }
 };
 
@@ -22,7 +22,7 @@ export const Authenticated: Story = {
   args: {
     username: 'winkerVSbecks',
     name: 'Varun Vachhar',
-    ticketNumber: 123456
+    ticketNumber: 1
   }
 };
 

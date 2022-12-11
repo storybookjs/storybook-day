@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 
 const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 `;
 
@@ -63,7 +64,7 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
         target="_blank"
         href={tweetUrl}
       >
-        <Icon icon="twitter" /> Tweet ticket
+        <Icon icon="twitter" /> Tweet
       </Button>
       <Button
         appearance="inverseSecondary"
@@ -73,7 +74,7 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
         target="_blank"
         href={linkedInUrl}
       >
-        <Icon icon="linkedin" /> Share on LinkedIn
+        <Icon icon="linkedin" /> Share
       </Button>
       {/* <Button
         appearance="inverseSecondary"

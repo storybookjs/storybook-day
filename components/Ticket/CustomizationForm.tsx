@@ -18,7 +18,6 @@ type FormState = 'default' | 'loading' | 'error';
 const Info = styled.div`
   flex: none;
   ${text.regular};
-  margin-left: 1rem;
   color: ${color.darkest};
   opacity: 0.5;
 `;
@@ -26,15 +25,18 @@ const Info = styled.div`
 const Form = styled.form`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
 `;
 
 const AuthenticatedButton = styled(Button)`
-  margin-right: 1rem;
-
   &&:disabled {
     opacity: 1;
     cursor: default !important;
   }
+`;
+const CustomizeButton = styled(Button)`
+  flex: none;
 `;
 
 interface CustomizationFormProps {
@@ -177,7 +179,7 @@ export const CustomizationForm = ({
         </>
       ) : (
         <>
-          <Button
+          <CustomizeButton
             appearance="secondary"
             size="medium"
             type="submit"
@@ -194,21 +196,10 @@ export const CustomizationForm = ({
           >
             <Icon icon="github" />
             Customize your ticket
-          </Button>
+          </CustomizeButton>
           <Info>Only public info is used</Info>
         </>
       )}
-      {/* <div className={ticketFormStyles.generateWithGithub}>
-        <span className={ticketFormStyles.githubIcon}>
-          <GithubIcon color="#fff" size={24} />
-        </span>
-        {formState === 'loading' ? <LoadingDots size={4} /> : username || 'Generate with GitHub'}
-      </div>
-      {username ? (
-        <span className={ticketFormStyles.checkIcon}>
-          <CheckIcon color="#fff" size={24} />
-        </span>
-      ) : null} */}
     </Form>
   );
 };

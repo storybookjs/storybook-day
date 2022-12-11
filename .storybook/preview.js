@@ -36,7 +36,7 @@ export const parameters = {
       smallMobile: {
         name: 'Mobile (Small)',
         styles: {
-          width: '320px',
+          width: '375px',
           height: '100%'
         }
       },

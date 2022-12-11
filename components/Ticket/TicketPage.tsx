@@ -54,19 +54,36 @@ const CustomizationContainer = styled.div`
 `;
 
 const Container = styled.div`
+  /* display: grid;
+  grid-template-columns: 100%;
+  gap: 32px;
+  width: 100%;
+
+  @media (min-width: ${breakpoints[3]}px) {
+    grid-template-columns: max-content 500px;
+    justify-content: space-between;
+  } */
+
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 64px;
   justify-content: space-between;
   width: 100%;
 
-  @media (max-width: ${breakpoints[2]}px) {
-    flex-direction: column;
+  @media (min-width: ${breakpoints[3]}px) {
+    flex-direction: row;
+    gap: 32px;
   }
 `;
 
 const StyledRegistrationForm = styled(RegistrationForm)`
   max-width: 400px;
+`;
+
+const TicketInfoContainer = styled.div`
+  flex: 1 1 auto;
+  min-width: 0;
 `;
 
 export const TicketPage = ({ username, name, ticketNumber, sharePage }: TicketPageProps) => {
@@ -81,7 +98,6 @@ export const TicketPage = ({ username, name, ticketNumber, sharePage }: TicketPa
       Tilt.init(ticketRef.current, {
         glare: true,
         max: 5,
-        // 'max-glare': 0.16,
         'max-glare': 0.08,
         'glare-prerender': false,
         'full-page-listening': true
@@ -98,7 +114,7 @@ export const TicketPage = ({ username, name, ticketNumber, sharePage }: TicketPa
   return (
     <Wrapper ref={divRef}>
       <Container>
-        <div>
+        <TicketInfoContainer>
           <div>
             {sharePage ? (
               <>
@@ -143,7 +159,7 @@ export const TicketPage = ({ username, name, ticketNumber, sharePage }: TicketPa
               <TicketActions username={username} />
             </>
           )}
-        </div>
+        </TicketInfoContainer>
         <div ref={ticketRef}>
           <TicketVisual
             username={username}

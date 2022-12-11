@@ -2,7 +2,7 @@ import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { StorybookDayLogo } from '@components/StorybookDayLogo';
 
-const { typography, color, spacing } = styles;
+const { typography, color, spacing, breakpoints } = styles;
 
 const TicketNumber = styled.div`
   border-radius: ${spacing.borderRadius.small}px;
@@ -13,23 +13,20 @@ const TicketNumber = styled.div`
   font-weight: 400;
   font-size: ${typography.size.s2}px;
   line-height: 16px;
+  display: none;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    display: block;
+  }
 `;
 
 type TicketInfoProps = {
-  ticketNumber?: number;
+  ticketNumber?: string;
 };
 
-export const TicketInfo = ({ ticketNumber }: TicketInfoProps) => {
-  const numDigits = `${ticketNumber}`.length;
-  const prefix = `000000`.slice(numDigits);
-
-  return (
-    <>
-      <StorybookDayLogo aria-label="Storybook Day ticket" />
-      <TicketNumber>
-        #{prefix}
-        {ticketNumber}
-      </TicketNumber>
-    </>
-  );
-};
+export const TicketInfo = ({ ticketNumber }: TicketInfoProps) => (
+  <>
+    <StorybookDayLogo aria-label="Storybook Day ticket" />
+    <TicketNumber>{ticketNumber}</TicketNumber>
+  </>
+);
