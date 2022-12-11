@@ -10,7 +10,9 @@ const Label = styled.div<{ monochrome?: boolean }>`
   color: ${props => (props.monochrome ? color.darkest : color.dark)};
 `;
 
-const ChromaticLogo = styled(Logos.Chromatic)<{ monochrome?: boolean }>`
+const ChromaticLogo = styled(Logos.Chromatic, {
+  shouldForwardProp: prop => prop !== 'monochrome'
+})<{ monochrome?: boolean }>`
   height: 20px;
   margin-left: 10px;
 

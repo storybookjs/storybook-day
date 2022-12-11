@@ -48,11 +48,11 @@ const TicketHorizontal: FC = props => (
         y2="29"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0.0156834" stop-color="#FC521F" />
-        <stop offset="0.265625" stop-color="#66FC1F" />
-        <stop offset="0.479167" stop-color="#1FC0C0" />
-        <stop offset="0.734375" stop-color="#7A718B" />
-        <stop offset="1" stop-color="#DD1FFC" />
+        <stop offset="0.0156834" stopColor="#FC521F" />
+        <stop offset="0.265625" stopColor="#66FC1F" />
+        <stop offset="0.479167" stopColor="#1FC0C0" />
+        <stop offset="0.734375" stopColor="#7A718B" />
+        <stop offset="1" stopColor="#DD1FFC" />
       </linearGradient>
 
       <clipPath id="svgPath">

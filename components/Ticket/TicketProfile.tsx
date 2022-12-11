@@ -54,7 +54,9 @@ const UserInfo = styled.div`
   }
 `;
 
-const Name = styled.div<{ loading?: boolean }>`
+const Name = styled('div', {
+  shouldForwardProp: prop => prop !== 'loading'
+})<{ loading?: boolean }>`
   font-size: ${typography.size.m3}px;
   font-weight: ${typography.weight.bold};
   line-height: 1;
@@ -63,7 +65,9 @@ const Name = styled.div<{ loading?: boolean }>`
 
   ${props => props.loading && loadingStyles}
 `;
-const Username = styled.div<{ loading?: boolean }>`
+const Username = styled('div', {
+  shouldForwardProp: prop => prop !== 'loading'
+})<{ loading?: boolean }>`
   font-size: ${typography.size.s2}px;
   line-height: 18px;
   color: ${color.dark};

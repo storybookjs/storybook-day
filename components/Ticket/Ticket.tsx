@@ -72,7 +72,9 @@ const Container = styled.div`
 `;
 
 const StyledRegistrationForm = styled(RegistrationForm)`
-  max-width: 400px;
+  @media (min-width: ${breakpoints[3]}px) {
+    max-width: 400px;
+  }
 `;
 
 const TicketInfoContainer = styled.div`
