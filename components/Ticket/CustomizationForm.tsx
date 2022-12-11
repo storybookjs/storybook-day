@@ -119,6 +119,8 @@ export const CustomizationForm = ({
 
         let usernameFromResponse: string;
         let name: string;
+        console.log(data);
+
         if (data.type === 'token') {
           const res = await saveGithubToken({ id: userData.id, token: data.token });
 
@@ -173,9 +175,11 @@ export const CustomizationForm = ({
             <Icon icon="verified" />
             {username}
           </AuthenticatedButton>
-          <Link href="/stickers" LinkWrapper={LinkWrapper} withArrow>
-            Get free stickers shipped to you
-          </Link>
+          {username && (
+            <Link href={`/stickers?username=${username}`} LinkWrapper={LinkWrapper} withArrow>
+              Get free stickers shipped to you
+            </Link>
+          )}
         </>
       ) : (
         <>

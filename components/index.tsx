@@ -27,7 +27,7 @@ type Props = {
   showFooter?: boolean;
 };
 
-export default function Conf({
+export function ConfContent({
   defaultUserData,
   sharePage,
   defaultPageState = 'registration',
@@ -36,6 +36,7 @@ export default function Conf({
   const [userData, setUserData] = useState<UserData>(defaultUserData);
   const [pageState, setPageState] = useState<PageState>(defaultPageState);
   const notRegistered = pageState === 'registration' && !sharePage;
+  console.log({ showFooter });
 
   return (
     <ConfDataContext.Provider
@@ -45,7 +46,10 @@ export default function Conf({
         setPageState
       }}
     >
-      <Layout showFooter={showFooter} layoutStyle={notRegistered ? 'default' : 'full'}>
+      <Layout
+        showFooter={showFooter ? showFooter : notRegistered ? true : false}
+        layoutStyle={notRegistered ? 'default' : 'full'}
+      >
         {notRegistered ? (
           <HomePage />
         ) : (

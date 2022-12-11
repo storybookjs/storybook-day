@@ -29,7 +29,7 @@ export default async function saveGithubToken(req: NextApiRequest, res: NextApiR
 
   const body = req.body;
 
-  if (!body.id) {
+  if (!body.username) {
     return res.status(400).json({
       error: {
         code: 'not_registered',
@@ -56,7 +56,7 @@ export default async function saveGithubToken(req: NextApiRequest, res: NextApiR
 
   try {
     const response = await updateUserWithShippingInfo(
-      body.id,
+      body.username,
       body.name,
       body.address,
       body.address2,
@@ -67,7 +67,11 @@ export default async function saveGithubToken(req: NextApiRequest, res: NextApiR
     );
 
     res.json({ data: response });
-  } catch (error) {
-    res.status(500).json({ error });
+  } catch (error: any) {
+    res.status(500).json({
+      error: {
+        message: error.message
+      }
+    });
   }
 }

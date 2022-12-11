@@ -50,7 +50,7 @@ export function emailToId(email: string) {
 }
 
 export async function saveShippingInfo(
-  id: string,
+  username: string,
   {
     name,
     address,
@@ -75,7 +75,7 @@ export async function saveShippingInfo(
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      id,
+      username,
       name,
       address,
       address2,

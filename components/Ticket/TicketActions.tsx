@@ -44,15 +44,8 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
 
   return (
     <Wrapper>
-      <Clipboard
-        toCopy={copyUrl}
-        copyOptions={{
-          onCopy: () => {
-            router.push(`/tickets/${username}`);
-          }
-        }}
-      >
-        <Button appearance="inverseSecondary" size="medium">
+      <Clipboard toCopy={copyUrl}>
+        <Button appearance="inverseSecondary" size="medium" ButtonWrapper="div">
           <Icon icon="copy" /> Copy URL
         </Button>
       </Clipboard>

@@ -13,8 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import cn from 'classnames';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -30,10 +28,9 @@ type Meta = {
 type Props = {
   meta: Meta;
   children: React.ReactNode;
-  fullViewport?: boolean;
 };
 
-export default function Page({ meta, children, fullViewport = false }: Props) {
+export default function Page({ meta, children }: Props) {
   const router = useRouter();
   const image = meta.image || '/twitter-card.png';
   const title = meta.title || SITE_NAME;
@@ -41,7 +38,7 @@ export default function Page({ meta, children, fullViewport = false }: Props) {
   const description = meta.description || SITE_NAME;
 
   return (
-    <div className={cn('page-container', { full: fullViewport })}>
+    <div>
       <Head>
         <title>{title}</title>
         <meta property="og:title" content={title} />

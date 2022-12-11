@@ -6,12 +6,12 @@ import { Layout } from '@components/Layout';
 
 export default function Conf() {
   const { query } = useRouter();
-  const id = query.id?.toString();
+  const username = query.username?.toString();
 
   return (
     <Page meta={{ title: 'Storybook Day | Stickers', description: META_DESCRIPTION }}>
-      <Layout showFooter={false}>
-        <Stickers id={id} />
+      <Layout showFooter={false} layoutStyle="full" hideNavCTA>
+        <Stickers username={username} />
       </Layout>
     </Page>
   );

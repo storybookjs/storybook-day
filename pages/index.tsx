@@ -17,7 +17,7 @@
 import { useRouter } from 'next/router';
 
 import Page from '@components/page';
-import ConfContent from '@components/index';
+import { ConfContent } from '@components/index';
 import { META_DESCRIPTION } from '@lib/constants';
 
 export default function Conf() {
@@ -35,9 +35,8 @@ export default function Conf() {
   };
 
   return (
-    <Page meta={meta} fullViewport>
+    <Page meta={meta}>
       <ConfContent
-        showFooter
         defaultUserData={defaultUserData}
         defaultPageState={query.ticketNumber ? 'ticket' : 'registration'}
       />

@@ -21,7 +21,7 @@ import { SkipNavContent as RSkipNavContent } from '@reach/skip-nav';
 import { getUserByUsername } from '@lib/db-api';
 
 import Page from '@components/page';
-import ConfContent from '@components/index';
+import { ConfContent } from '@components/index';
 import { SITE_URL, SITE_NAME, META_DESCRIPTION, SAMPLE_TICKET_NUMBER } from '@lib/constants';
 
 type Props = {

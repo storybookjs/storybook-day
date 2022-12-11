@@ -15,22 +15,13 @@ import { CustomizationForm } from './CustomizationForm';
 
 const { marketing, breakpoints, color, pageMargins } = styles;
 
-type TicketProps = {
-  username: UserData['username'];
-  ticketNumber: UserData['ticketNumber'];
-  name: UserData['name'];
-  sharePage?: boolean;
-};
-
 const Wrapper = styled.div`
   ${pageMargins};
   display: flex;
   align-items: center;
 
-  /* @media (min-width: ${breakpoints[3]}px) { */
   padding-top: 4rem;
   padding-bottom: 4rem;
-  /* } */
 `;
 
 const Title = styled.h1`
@@ -81,6 +72,13 @@ const TicketInfoContainer = styled.div`
   flex: 1 1 auto;
   min-width: 0;
 `;
+
+interface TicketProps {
+  username: UserData['username'];
+  ticketNumber: UserData['ticketNumber'];
+  name: UserData['name'];
+  sharePage?: boolean;
+}
 
 export const Ticket = ({ username, name, ticketNumber, sharePage }: TicketProps) => {
   const ticketRef = useRef<HTMLDivElement>(null);
