@@ -1,2 +1,2 @@
-export * from './TicketPage';
+export * from './Ticket';
 export * from './TicketVisual';

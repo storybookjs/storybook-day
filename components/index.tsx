@@ -16,7 +16,7 @@
 
 import { useState } from 'react';
 import { PageState, ConfDataContext, UserData } from '@lib/hooks/use-conf-data';
-import Ticket from './Ticket/ticket';
+import { Ticket } from './Ticket';
 import Layout from './Layout';
 import ConfContainer from './conf-container';
 import { HomePage } from './Home';

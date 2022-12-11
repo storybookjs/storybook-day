@@ -15,7 +15,7 @@ import { CustomizationForm } from './CustomizationForm';
 
 const { marketing, breakpoints, color, pageMargins } = styles;
 
-type TicketPageProps = {
+type TicketProps = {
   username: UserData['username'];
   ticketNumber: UserData['ticketNumber'];
   name: UserData['name'];
@@ -86,7 +86,7 @@ const TicketInfoContainer = styled.div`
   min-width: 0;
 `;
 
-export const TicketPage = ({ username, name, ticketNumber, sharePage }: TicketPageProps) => {
+export const Ticket = ({ username, name, ticketNumber, sharePage }: TicketProps) => {
   const ticketRef = useRef<HTMLDivElement>(null);
   const [ticketGenerationState, setTicketGenerationState] = useState<TicketGenerationState>(
     'default'

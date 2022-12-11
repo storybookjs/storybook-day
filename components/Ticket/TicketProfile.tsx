@@ -86,10 +86,12 @@ const Username = styled.div<{ loading?: boolean }>`
   }
 `;
 const UserImage = styled(Avatar)`
-  width: 64px;
-  height: 64px;
-  border: 3px solid ${color.secondary};
-  margin-right: 20px;
+  && {
+    width: 64px;
+    height: 64px;
+    border: 3px solid ${color.secondary};
+    margin-right: 20px;
+  }
 `;
 const TicketNumber = styled.div<{ loading?: boolean }>`
   font-size: ${typography.size.s2}px;

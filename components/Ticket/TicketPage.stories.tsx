@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { TicketPage } from './TicketPage';
+import { Ticket } from './Ticket';
 
-const meta: Meta<typeof TicketPage> = {
-  title: 'Pages/TicketPage/TicketPage',
-  component: TicketPage,
+const meta: Meta<typeof Ticket> = {
+  title: 'Pages/Ticket/Ticket',
+  component: Ticket,
   parameters: {
     backgrounds: { default: 'gradient' }
   }
 };
 
 export default meta;
-type Story = StoryObj<typeof TicketPage>;
+type Story = StoryObj<typeof Ticket>;
 
 export const Default: Story = {
   args: {
