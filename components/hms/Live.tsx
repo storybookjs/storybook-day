@@ -4,7 +4,6 @@ import Header from './Header';
 import List from './Conference';
 import toast, { Toaster } from 'react-hot-toast';
 import { useHMSNotifications } from '@100mslive/react-sdk';
-import DemoModal from './DemoModal';
 
 /**
  * Live Video/Audio component
@@ -16,7 +15,6 @@ const Live = () => {
       <Header />
       <List />
       <Footer />
-      {process.env.NEXT_PUBLIC_LIVE_DEMO === 'true' ? <DemoModal /> : null}
     </div>
   );
 };

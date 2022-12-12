@@ -35,7 +35,7 @@ export default function StagePage({ stage, allStages }: Props) {
     description: META_DESCRIPTION
   };
   return (
-    <Page meta={meta} fullViewport>
+    <Page meta={meta}>
       <Layout isLive={stage.isLive}>
         <StageContainer stage={stage} allStages={allStages} />
       </Layout>
