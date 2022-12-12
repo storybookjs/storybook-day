@@ -55,7 +55,7 @@ const CSF3Image = styled.img`
   }
 `;
 CSF3Image.defaultProps = {
-  src: '/csf-example.png'
+  src: withPrefix('/csf-example.png')
 };
 
 export const FeaturesSection = () => (
@@ -103,14 +103,14 @@ export const FeaturesSection = () => (
         description="Lorem ipsum dolor sit amet consectatur vestibulum aret sit click, hover, and type inside your story file. Powered by Jest and Testing."
         image={withPrefix('/vite.png')}
         background="#FEDED2"
-        icon="/vite-icon.png"
+        icon={withPrefix('/vite-icon.png')}
       />
       <Feature
         title="Official Figma integration"
         description="Lorem ipsum dolor sit amet consectatur vestibulum aret sit click, hover, and type inside your story file. Powered by Jest and Testing."
         image={withPrefix('/figma.png')}
         background="#EEEEEE"
-        icon="/figma-icon.png"
+        icon={withPrefix('/figma-icon.png')}
       />
     </FeaturesGrid>
   </Section>

@@ -3,6 +3,7 @@ import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import FormError from '@lib/form-error';
 import { saveShippingInfo } from '@lib/user-api';
+import { withPrefix } from '@lib/with-prefix';
 import { useCaptcha } from '../Captcha';
 import { StickerForm, FormData } from './StickerForm';
 import { Alert } from './Alert';
@@ -139,7 +140,7 @@ export const Stickers = ({ username }: { username: string }) => {
     <Wrapper>
       <Container>
         <StickersImg
-          src="/stickers.svg"
+          src={withPrefix('/stickers.svg')}
           alt="Get Storybook, Chromatic and cursor pointer stickers"
         />
         {formState === 'error' && (
