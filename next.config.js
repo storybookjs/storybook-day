@@ -15,6 +15,7 @@
  */
 
 module.exports = {
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH,
   images: {
     domains: [
       'www.datocms-assets.com',
