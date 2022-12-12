@@ -135,26 +135,28 @@ const Site = styled.span`
   }
 `;
 
-type TicketVisualProps = {
+interface TicketVisualProps {
   size?: number;
   name?: string;
   ticketNumber?: number;
   username?: string;
   ticketGenerationState?: TicketGenerationState;
-};
+  style?: React.CSSProperties;
+}
 
 export const TicketVisual = ({
   name,
   username,
   ticketNumber,
-  ticketGenerationState = 'default'
+  ticketGenerationState = 'default',
+  ...props
 }: TicketVisualProps) => {
   const numDigits = `${ticketNumber}`.length;
   const prefix = `000000`.slice(numDigits);
   const formattedTickerNumber = `#${prefix}${ticketNumber}`;
 
   return (
-    <Visual>
+    <Visual {...props}>
       <TicketShape />
       <ContentContainer>
         <Content>

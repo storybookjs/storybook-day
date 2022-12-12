@@ -14,8 +14,17 @@
  * limitations under the License.
  */
 
-import { TicketImage } from '@components/Ticket/TicketImage';
+.background {
+  width: 2000px;
+  height: 1000px;
+  background: center / cover no-repeat url('/gradient-backdrop.svg');
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-export default function TicketOnlyPage() {
-  return <TicketImage />;
+.page {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
