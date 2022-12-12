@@ -17,7 +17,7 @@
 .background {
   width: 2000px;
   height: 1000px;
-  background: center / cover no-repeat url('/gradient-backdrop.svg');
+  background: center / cover no-repeat url('/day/gradient-backdrop.svg');
   color: #fff;
   overflow: hidden;
   display: flex;

@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 import crypto from 'crypto';
+import { withPrefix } from '@lib/with-prefix';
 
 export async function register(email: string, token?: string) {
-  return await fetch('/api/register', {
+  return await fetch(withPrefix('/api/register'), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -26,7 +27,7 @@ export async function register(email: string, token?: string) {
 }
 
 export async function saveGithubToken({ id, token }: { id?: string; token: string }) {
-  return await fetch('/api/save-github-token', {
+  return await fetch(withPrefix('/api/save-github-token'), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -69,7 +70,7 @@ export async function saveShippingInfo(
     country: string;
   }
 ) {
-  return await fetch('/api/save-shipping-info', {
+  return await fetch(withPrefix('/api/save-shipping-info'), {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

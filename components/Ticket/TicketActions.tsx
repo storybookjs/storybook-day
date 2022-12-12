@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { styled } from '@storybook/theming';
 import { Button, Icon, Clipboard } from '@storybook/design-system';
 import { SITE_URL, TWEET_TEXT } from '@lib/constants';
+import { withPrefix } from '@lib/with-prefix';
 import { useRouter } from 'next/router';
 
 const Wrapper = styled.div`
@@ -23,7 +24,7 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
   const text = encodeURIComponent(TWEET_TEXT);
   const tweetUrl = `https://twitter.com/intent/tweet?url=${permalink}&via=storybookjs&text=${text}`;
   const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${permalink}`;
-  const downloadUrl = `/api/ticket-images/${username}`;
+  const downloadUrl = withPrefix(`/api/ticket-images/${username}`);
   const copyUrl = `${SITE_URL}/tickets/${username}`;
 
   useEffect(() => {

@@ -18,6 +18,7 @@ import React from 'react';
 import { css, styled } from '@storybook/theming';
 import { useRouter } from 'next/router';
 import { SkipNavContent as RSkipNavContent } from '@reach/skip-nav';
+import { withPrefix } from '@lib/with-prefix';
 import { Footer } from './Footer';
 import { Nav } from './Nav';
 
@@ -27,7 +28,7 @@ const PageContainer = styled.div<{ full?: boolean }>`
     css`
       display: flex;
       flex-direction: column;
-      background-image: url('/gradient-backdrop.svg');
+      background-image: url(${withPrefix('/gradient-backdrop.svg')});
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;

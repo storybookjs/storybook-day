@@ -15,10 +15,11 @@
  */
 
 import useSWR, { ConfigInterface } from 'swr';
+import { withPrefix } from '@lib/with-prefix';
 
 export default function useLoginStatus(opts?: ConfigInterface) {
   const { data, error, mutate } = useSWR(
-    `/api/auth`,
+    withPrefix(`/api/auth`),
     async url => {
       const res = await fetch(url);
       if (!res.ok) {

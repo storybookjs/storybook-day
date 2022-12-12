@@ -19,6 +19,7 @@ import Error from 'next/error';
 import Head from 'next/head';
 import { SkipNavContent as RSkipNavContent } from '@reach/skip-nav';
 import { getUserByUsername } from '@lib/db-api';
+import { withPrefix } from '@lib/with-prefix';
 
 import Page from '@components/page';
 import { ConfContent } from '@components/index';
@@ -43,13 +44,13 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
     ? {
         title: `${name}’s ${SITE_NAME} Ticket`,
         description: META_DESCRIPTION,
-        image: `/api/ticket-images/${username}`,
+        image: withPrefix(`/api/ticket-images/${username}`),
         url: `${SITE_URL}/tickets/${username}`
       }
     : {
         title: `${SITE_NAME}`,
         description: META_DESCRIPTION,
-        image: `/api/ticket-images/${usernameFromParams}`,
+        image: withPrefix(`/api/ticket-images/${usernameFromParams}`),
         url: `${SITE_URL}/tickets/${usernameFromParams}`
       };
 
