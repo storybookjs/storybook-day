@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-export const SITE_URL = 'https://bright-choux-c953ce.netlify.app';
+export const SITE_URL = 'https://storybook-day-2023.netlify.app/day';
 export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_URL).origin;
 export const TWITTER_USER_NAME = 'storybookjs';
 export const BRAND_NAME = 'Storybook';
@@ -25,20 +25,21 @@ export const META_DESCRIPTION =
 export const SITE_DESCRIPTION =
   'An interactive online experience by the community, free for everyone.';
 export const DATE = 'March 1, 2023';
-export const SHORT_DATE = 'Mar 10:00am - 12:00pm PST';
+export const SHORT_DATE = 'Mar 1, 2023';
+export const LONG_DATE = 'Mar 1 10:00am - 12:00pm PST';
 export const SHORT_TIME = '10am - 12pm';
 export const TIMEZONE = 'Pacific Standard Time';
+export const SHORT_TIMEZONE = 'Pacific Time';
 export const FULL_DATE = 'March 1st 10am Pacific Time (GMT-8)';
 export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';
 
 // Remove process.env.NEXT_PUBLIC_... below and replace them with
 // strings containing your own privacy policy URL and copyright holder name
-export const LEGAL_URL = process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL;
-export const COPYRIGHT_HOLDER = process.env.NEXT_PUBLIC_COPYRIGHT_HOLDER;
+export const LEGAL_URL = 'https://www.chromatic.com/docs/privacy-policy';
 
 export const CODE_OF_CONDUCT =
-  'https://www.notion.so/vercel/Code-of-Conduct-Example-7ddd8d0e9c354bb597a0faed87310a78';
+  'https://github.com/storybookjs/storybook/blob/next/CODE_OF_CONDUCT.md';
 export const REPO = 'https://github.com/storybookjs/storybook-day';
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [

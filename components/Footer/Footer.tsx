@@ -35,13 +35,17 @@ const FooterRegistrationForm = styled(RegistrationForm)`
   }
 `;
 
-export const Footer = () => {
+export const Footer = ({ showRegistrationForm = true }: { showRegistrationForm?: boolean }) => {
   return (
     <FooterWrapper>
       <LayoutWrapper>
         <Register>
-          <Title>Get your ticket</Title>
-          <FooterRegistrationForm disableAnimation />
+          {showRegistrationForm && (
+            <>
+              <Title>Get your ticket</Title>
+              <FooterRegistrationForm disableAnimation />
+            </>
+          )}
           <Attribution />
         </Register>
 

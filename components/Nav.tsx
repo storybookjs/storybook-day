@@ -1,4 +1,3 @@
-import React from 'react';
 import { styled } from '@storybook/theming';
 import { Logos, Button } from '@storybook/design-system';
 import { styles, NavItem } from '@storybook/components-marketing';
@@ -70,9 +69,10 @@ const SkipNavLink: any = RSkipNavLink;
 
 interface NavProps {
   transparent?: boolean;
+  hideCTA?: boolean;
 }
 
-export const Nav = ({ transparent }: NavProps) => {
+export const Nav = ({ transparent, hideCTA }: NavProps) => {
   return (
     <>
       <SkipNavLink />
@@ -93,9 +93,11 @@ export const Nav = ({ transparent }: NavProps) => {
               Twitter
             </NavItem>
           </NavLinks>
-          <Button size="small" appearance="secondary" isLink href="#register">
-            Get your free ticket
-          </Button>
+          {!hideCTA && (
+            <Button size="small" appearance="secondary" isLink href="#register">
+              Get your free ticket
+            </Button>
+          )}
         </NavContainer>
       </Wrapper>
     </>

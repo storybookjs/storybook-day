@@ -15,33 +15,66 @@
  */
 
 import React from 'react';
+import { css, styled } from '@storybook/theming';
 import { useRouter } from 'next/router';
 import { SkipNavContent as RSkipNavContent } from '@reach/skip-nav';
+import { withPrefix } from '@lib/with-prefix';
 import { Footer } from './Footer';
 import { Nav } from './Nav';
 
-type LayoutProps = {
-  children: React.ReactNode;
-  className?: string;
-  hideNav?: boolean;
-  layoutStyles?: any;
-  isLive?: boolean;
-  showFooter?: boolean;
-};
+const PageContainer = styled.div<{ full?: boolean }>`
+  ${props =>
+    props.full &&
+    css`
+      display: flex;
+      flex-direction: column;
+      background-image: url(${withPrefix('/gradient-backdrop.svg')});
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    `}
+`;
+
+const Main = styled.main<{ full?: boolean }>`
+  ${props =>
+    props.full &&
+    css`
+      flex: 1 1 auto;
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    `}
+`;
 
 // Workaround for TS 2590 error
 const SkipNavContent: any = RSkipNavContent;
 
-export default function Layout({ showFooter, children }: LayoutProps) {
+type LayoutProps = {
+  children: React.ReactNode;
+  isLive?: boolean;
+  showFooter?: boolean;
+  hideFooterRegistration?: boolean;
+  layoutStyle?: 'default' | 'full';
+  hideNavCTA?: boolean;
+};
+
+export function Layout({
+  showFooter,
+  children,
+  layoutStyle = 'default',
+  hideNavCTA,
+  hideFooterRegistration
+}: LayoutProps) {
   const router = useRouter();
   const activeRoute = router.asPath;
 
   return (
-    <>
-      <Nav />
+    <PageContainer full={layoutStyle === 'full'}>
+      <Nav transparent={layoutStyle === 'full'} hideCTA={hideNavCTA} />
       <SkipNavContent />
-      <main>{children}</main>
-      {showFooter && <Footer />}
-    </>
+      <Main full={layoutStyle === 'full'}>{children}</Main>
+      {showFooter && <Footer showRegistrationForm={!hideFooterRegistration} />}
+    </PageContainer>
   );
 }

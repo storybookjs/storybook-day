@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import isChromatic from 'chromatic/isChromatic';
 import { HomePage } from './index';
 
 const meta: Meta<typeof HomePage> = {
@@ -11,4 +12,9 @@ const meta: Meta<typeof HomePage> = {
 export default meta;
 type Story = StoryObj<typeof HomePage>;
 
-export const Default: Story = { name: 'HomePage' };
+export const Default: Story = {
+  name: 'HomePage',
+  args: {
+    disable3D: isChromatic()
+  }
+};

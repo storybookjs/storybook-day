@@ -18,8 +18,7 @@ import { GetStaticProps } from 'next';
 
 import Page from '@components/page';
 import SpeakersGrid from '@components/speakers-grid';
-import Layout from '@components/Layout';
-import Header from '@components/remove/header';
+import { Layout } from '@components/Layout';
 
 import { getAllSpeakers } from '@lib/cms-api';
 import { Speaker } from '@lib/types';
@@ -37,7 +36,6 @@ export default function Speakers({ speakers }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Speakers" description={meta.description} />
         <SpeakersGrid speakers={speakers} />
       </Layout>
     </Page>

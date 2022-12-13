@@ -24,7 +24,15 @@ export const parameters = {
     default: 'light',
     values: [
       { name: 'light', value: '#fff' },
-      { name: 'dark', value: '#171C23' }
+      { name: 'dark', value: '#171C23' },
+      {
+        name: 'gradient',
+        value: "center / cover no-repeat url('gradient-backdrop.svg')"
+      },
+      {
+        name: 'blueGradient',
+        value: 'linear-gradient(180deg, white 0%, #d9e6f2 100%);'
+      }
     ]
   },
   viewport: {
@@ -32,7 +40,7 @@ export const parameters = {
       smallMobile: {
         name: 'Mobile (Small)',
         styles: {
-          width: '320px',
+          width: '375px',
           height: '100%'
         }
       },

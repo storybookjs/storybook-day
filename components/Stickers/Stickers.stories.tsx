@@ -32,7 +32,7 @@ async function fillForm(canvas: any) {
 
 export const Default: Story = {
   args: {
-    id: 'sj2j3h4-2k3j23lk4-2k3j4kj23kj'
+    username: 'rashy'
   }
 };
 

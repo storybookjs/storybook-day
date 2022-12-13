@@ -86,8 +86,7 @@ export async function updateUserWithGitHubUser(id: string, token: string): Promi
 }
 
 export async function updateUserWithShippingInfo(
-  id: string,
-  name: string,
+  username: string,
   address: string,
   address2: string,
   cityTown: string,
@@ -95,17 +94,20 @@ export async function updateUserWithShippingInfo(
   postalCode: string,
   country: string
 ): Promise<string> {
-  const { data } = await supabase!.from('github_users').select('userData').eq('id', id).single();
-  const { login: username } = data?.userData;
+  const { data } = await supabase!
+    .from<ConfUser>('users')
+    .select('username')
+    .eq('username', username)
+    .single();
+  const login = data;
 
-  if (!username) {
+  if (!login) {
     throw new Error('The registration does not exist. Please register for the event first.');
   }
 
   const { error } = await supabase!
-    .from<ConfUser>('github_users')
+    .from<ConfUser>('users')
     .update({
-      name,
       address,
       address2,
       cityTown,
@@ -113,7 +115,7 @@ export async function updateUserWithShippingInfo(
       postalCode,
       country
     })
-    .eq('id', id)
+    .eq('username', username)
     .single();
   if (error) console.log(error.message);
 

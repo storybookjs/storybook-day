@@ -18,7 +18,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 
 import Page from '@components/page';
 import StageContainer from '@components/stage-container';
-import Layout from '@components/Layout';
+import { Layout } from '@components/Layout';
 
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
@@ -35,7 +35,7 @@ export default function StagePage({ stage, allStages }: Props) {
     description: META_DESCRIPTION
   };
   return (
-    <Page meta={meta} fullViewport>
+    <Page meta={meta}>
       <Layout isLive={stage.isLive}>
         <StageContainer stage={stage} allStages={allStages} />
       </Layout>

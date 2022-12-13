@@ -1,152 +1,81 @@
 import * as THREE from 'three';
 import pack from 'pack-spheres';
-import { styled } from '@storybook/theming';
-import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import { Center, CameraShake, Float } from '@react-three/drei';
+import { Float, Bounds } from '@react-three/drei';
 import * as Random from 'canvas-sketch-util/random';
 import { motion } from 'framer-motion-3d';
-import { TetrisBlock, tetrisBlockTypes } from './TetrisBlock';
-import { Logo3D } from './Logo3D';
-import { useEffect, useState } from 'react';
+import { transform } from 'framer-motion';
+import { Block, blockTypes } from './Block';
+import { VersionText } from './VersionText';
+import { Stage } from './Stage';
 
-const colors = ['#FC521F', '#CA90FF', '#1EA7FD', '#FFAE00', '#37D5D3', '#FC521F', '#66BF3C'];
-
-const size = 25;
-const bounds = 1.5;
-const blocks = pack({
-  sample: () => [...Random.insideCircle(), 0],
-  outside: (position: [number, number, number], radius: number) =>
-    new THREE.Vector3().fromArray([position[0], position[1], 0]).length() + radius >= bounds,
-  minRadius: () => 0.05 * bounds, // Math.max(0.05, 0.05 + Math.min(1.0, Math.abs(Random.gaussian(0, 0.1)))),
-  maxCount: 100,
-  packAttempts: 4000,
-  bounds,
-  maxRadius: bounds * 0.125 * 0.75
-}).map((sphere: any, index: number) => ({
-  ...sphere,
-  id: index,
-  position: [
-    sphere.position[0],
-    sphere.position[1],
-    Random.sign() * (0.25 * bounds + (Random.range(0, 1 * bounds) as number))
-  ].map((v: number) => v * size),
-  radius: sphere.radius * size,
-  color: Random.pick(colors),
-  type: Random.pick(tetrisBlockTypes),
-  rotation: new THREE.Quaternion(...Random.quaternion()),
-  delay: Random.range(1, 2),
-  offset: {
-    x: Random.range(0, Math.PI * 2),
-    y: Random.range(0, Math.PI * 2),
-    z: Random.range(0, Math.PI * 2)
-  }
-}));
-
-function Rig() {
-  const [vec] = useState(() => new THREE.Vector3());
-  const { camera, mouse } = useThree();
-  useFrame(() => camera.position.lerp(vec.set(mouse.x * 2, 1, 60), 0.05));
-  return (
-    <CameraShake
-      maxYaw={0.01}
-      maxPitch={0.01}
-      maxRoll={0.01}
-      yawFrequency={0.5}
-      pitchFrequency={0.5}
-      rollFrequency={0.4}
-    />
-  );
+interface Sphere {
+  position: number[];
+  radius: number;
 }
+const colors = ['#FC521F', '#CA90FF', '#1EA7FD', '#FFAE00', '#37D5D3', '#FC521F', '#66BF3C'];
+const size = 5;
+const scale = [size * 5, size, size];
 
-const Container = styled.div`
-  /* account for nav height */
-  height: calc(100vh - 72px);
-  position: relative;
-  background: var(--bg-blue);
+// Generate a blocks using sphere packing algorithm
+const blocks = pack({
+  maxCount: 80,
+  minRadius: 0.125,
+  maxRadius: 0.25
+}).map((sphere: Sphere, index: number) => {
+  const inFront = sphere.position[2] >= 0;
 
-  @supports (height: 100svh) {
-    height: calc(100svh - 72px);
-  }
-`;
+  return {
+    ...sphere,
+    id: index,
+    position: [
+      sphere.position[0],
+      sphere.position[1],
+      // shift the blocks to avoid overlapping with 7.0
+      inFront ? sphere.position[2] + 0.5 : sphere.position[2] - 0.5
+    ].map((v: number, idx) => v * scale[idx]), // scale position to world space
+    size: sphere.radius * size, // scale radius to world space
+    color: Random.pick(colors),
+    type: Random.pick(blockTypes),
+    rotation: new THREE.Quaternion(...Random.quaternion()),
+    spin: Random.range(0, 1)
+  };
+});
 
-const Scrim = styled.div`
-  background: linear-gradient(180deg, rgba(246, 249, 252, 0) 0%, var(--bg-blue) 100%);
-  height: 10vh;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-`;
+// Calculate the range of x values to map to animation delay
+const xs = blocks.map((b: any) => b.position[0]);
+const xRange = [Math.min(...xs), Math.max(...xs)];
 
 export const PuzzlePieces = () => {
-  const [variant, setVariant] = useState<'initial' | 'expand'>('initial');
-
-  useEffect(() => {
-    const timeout = setTimeout(() => setVariant('expand'), 4000);
-    return () => clearTimeout(timeout);
-  });
-
   return (
-    <Container>
-      <Canvas camera={{ position: [0, 0, 50], fov: 50 }} performance={{ min: 0.1 }}>
-        <ambientLight intensity={0.5} />
-        <directionalLight intensity={0.3} position={[5, 25, 20]} />
-        <Center>
-          <Logo3D variant={variant} />
-        </Center>
-        <motion.group
-          animate={variant === 'expand' ? { rotateY: [0, Math.PI * 2] } : {}}
-          transition={{
-            duration: 16,
-            ease: 'linear',
-            repeat: Infinity
-          }}
-        >
-          {blocks.map((block: any) => (
-            <motion.group
-              key={block.id}
-              animate={variant}
-              variants={{
-                expand: {
-                  x: block.position[0],
-                  y: block.position[1],
-                  z: block.position[2]
-                }
-              }}
-              position={[0, 0, -50]}
-              quaternion={block.rotation}
-            >
-              <Center
-                onCentered={({ container, width, height }) => {
-                  const size = Math.max(width, height);
-                  container.scale.setScalar((block.radius * 1.5) / size);
-                }}
-              >
+    <Stage>
+      <Bounds observe clip damping={6} margin={1}>
+        <group>
+          <VersionText />
+          <group>
+            {blocks.map((block: any) => (
+              <Float key={block.id}>
                 <motion.group
-                  animate={
-                    variant === 'expand'
-                      ? {
-                          rotateX: [0, Math.PI * 2],
-                          rotateY: [0, Math.PI * 2],
-                          rotateZ: [0, Math.PI * 2]
-                        }
-                      : {}
-                  }
+                  position={block.position}
+                  quaternion={block.rotation}
+                  initial={{ scale: 0, rotateX: 0, rotateY: 0, rotateZ: 0 }}
+                  animate={{
+                    scale: block.size,
+                    rotateX: block.spin * 3,
+                    rotateY: block.spin * 3,
+                    rotateZ: block.spin * 3
+                  }}
                   transition={{
-                    duration: 24 * block.delay,
-                    ease: 'linear',
-                    repeat: Infinity
+                    duration: 1,
+                    delay: 0.5 + transform(block.position[0], xRange, [0.5, 1])
                   }}
                 >
-                  <TetrisBlock type={block.type} color={block.color} />
+                  <Block type={block.type} color={block.color} />
                 </motion.group>
-              </Center>
-            </motion.group>
-          ))}
-        </motion.group>
-        <Rig />
-      </Canvas>
-      <Scrim />
-    </Container>
+              </Float>
+            ))}
+          </group>
+        </group>
+      </Bounds>
+    </Stage>
   );
 };

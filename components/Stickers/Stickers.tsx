@@ -3,20 +3,21 @@ import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import FormError from '@lib/form-error';
 import { saveShippingInfo } from '@lib/user-api';
-import { useCaptcha } from '../captcha';
+import { withPrefix } from '@lib/with-prefix';
+import { useCaptcha } from '../Captcha';
 import { StickerForm, FormData } from './StickerForm';
 import { Alert } from './Alert';
 import { ByChromatic } from '@components/ByChromatic';
 
-const { text, color, pageMargins } = styles;
+const { text, color, pageMargins, breakpoints } = styles;
 
 const Wrapper = styled.div`
   ${pageMargins};
-`;
+  padding-bottom: 4rem;
 
-const GradientBackdrop = styled.div`
-  background: linear-gradient(180deg, var(--bg-blue) 0%, rgba(246, 249, 252, 0) 100%);
-  padding-top: 4rem;
+  @media (min-width: ${breakpoints[2]}px) {
+    padding-bottom: 0;
+  }
 `;
 
 const Container = styled.div`
@@ -45,11 +46,16 @@ const Attribution = styled(ByChromatic)`
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 1.5rem;
+  display: none;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    display: flex;
+  }
 `;
 
 type FormState = 'default' | 'loading' | 'error' | 'success';
 
-export const Stickers = ({ id }: { id: string }) => {
+export const Stickers = ({ username }: { username: string }) => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     address: '',
@@ -69,7 +75,7 @@ export const Stickers = ({ id }: { id: string }) => {
   } = useCaptcha();
 
   const handleRegister = useCallback(() => {
-    saveShippingInfo(id, formData)
+    saveShippingInfo(username, formData)
       .then(res => {
         if (!res.ok) {
           throw new FormError(res);
@@ -96,7 +102,7 @@ export const Stickers = ({ id }: { id: string }) => {
         setErrorMsg(message);
         setFormState('error');
       });
-  }, [formData, id]);
+  }, [formData, username]);
 
   const onSubmit = useCallback(
     (e: React.FormEvent) => {
@@ -131,38 +137,36 @@ export const Stickers = ({ id }: { id: string }) => {
   );
 
   return (
-    <GradientBackdrop>
-      <Wrapper>
-        <Container>
-          <StickersImg
-            src="stickers.svg"
-            alt="Get Storybook, Chromatic and cursor pointer stickers"
+    <Wrapper>
+      <Container>
+        <StickersImg
+          src={withPrefix('/stickers.svg')}
+          alt="Get Storybook, Chromatic and cursor pointer stickers"
+        />
+        {formState === 'error' && (
+          <Alert type="error" title="Submission failed" message={errorMsg} />
+        )}
+        {formState === 'success' ? (
+          <Alert
+            title="Your request was received!"
+            message="Your stickers will ship with the next monthly batch."
           />
-          {formState === 'error' && (
-            <Alert type="error" title="Submission failed" message={errorMsg} />
-          )}
-          {formState === 'success' ? (
-            <Alert
-              title="Your request was received!"
-              message="Your stickers will ship with the next monthly batch."
+        ) : (
+          <>
+            <Heading>Get free stickers shipped to you</Heading>
+            <StickerForm
+              value={formData}
+              onChange={onChange}
+              onSubmit={onSubmit}
+              isLoading={formState === 'loading'}
+              handleRegister={handleRegister}
+              captchaRef={captchaRef}
             />
-          ) : (
-            <>
-              <Heading>Get free stickers shipped to you</Heading>
-              <StickerForm
-                value={formData}
-                onChange={onChange}
-                onSubmit={onSubmit}
-                isLoading={formState === 'loading'}
-                handleRegister={handleRegister}
-                captchaRef={captchaRef}
-              />
-              <Shipping>We ship a batch of stickers every month.</Shipping>
-            </>
-          )}
-          <Attribution />
-        </Container>
-      </Wrapper>
-    </GradientBackdrop>
+            <Shipping>We ship a batch of stickers every month.</Shipping>
+          </>
+        )}
+        <Attribution />
+      </Container>
+    </Wrapper>
   );
 };

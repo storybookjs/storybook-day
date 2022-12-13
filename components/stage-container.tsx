@@ -18,6 +18,7 @@ import useSWR from 'swr';
 import cn from 'classnames';
 import { Stage } from '@lib/types';
 import useLoginStatus from '@lib/hooks/use-login-status';
+import { withPrefix } from '@lib/with-prefix';
 import styles from './stage-container.module.css';
 import styleUtils from './utils.module.css';
 import ConfEntry from './conf-entry';
@@ -32,7 +33,7 @@ type Props = {
 };
 
 export default function StageContainer({ stage, allStages }: Props) {
-  const response = useSWR('/api/stages', {
+  const response = useSWR(withPrefix('/api/stages'), {
     initialData: allStages,
     refreshInterval: 5000
   });

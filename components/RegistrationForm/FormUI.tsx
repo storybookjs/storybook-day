@@ -4,7 +4,7 @@ import { useId } from '@floating-ui/react-dom-interactions';
 import { Button, Icon } from '@storybook/design-system';
 import { styles } from '@storybook/components-marketing';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import Captcha from '@components/captcha';
+import Captcha from '@components/Captcha';
 import { LoadingSpinner } from '@components/LoadingSpinner';
 
 const { spacing, color, typography, breakpoints } = styles;

@@ -19,9 +19,10 @@ import Error from 'next/error';
 import Head from 'next/head';
 import { SkipNavContent as RSkipNavContent } from '@reach/skip-nav';
 import { getUserByUsername } from '@lib/db-api';
+import { withPrefix } from '@lib/with-prefix';
 
 import Page from '@components/page';
-import ConfContent from '@components/index';
+import { ConfContent } from '@components/index';
 import { SITE_URL, SITE_NAME, META_DESCRIPTION, SAMPLE_TICKET_NUMBER } from '@lib/constants';
 
 type Props = {
@@ -43,13 +44,13 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
     ? {
         title: `${name}’s ${SITE_NAME} Ticket`,
         description: META_DESCRIPTION,
-        image: `/api/ticket-images/${username}`,
+        image: withPrefix(`/api/ticket-images/${username}`),
         url: `${SITE_URL}/tickets/${username}`
       }
     : {
-        title: 'Ticket Demo - Virtual Event Starter Kit',
+        title: `${SITE_NAME}`,
         description: META_DESCRIPTION,
-        image: `/api/ticket-images/${usernameFromParams}`,
+        image: withPrefix(`/api/ticket-images/${usernameFromParams}`),
         url: `${SITE_URL}/tickets/${usernameFromParams}`
       };
 

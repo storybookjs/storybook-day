@@ -18,8 +18,7 @@ import { GetStaticProps } from 'next';
 
 import Page from '@components/page';
 import Schedule from '@components/schedule';
-import Layout from '@components/Layout';
-import Header from '@components/remove/header';
+import { Layout } from '@components/Layout';
 
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
@@ -38,7 +37,6 @@ export default function SchedulePage({ allStages }: Props) {
   return (
     <Page meta={meta}>
       <Layout>
-        <Header hero="Schedule" description={meta.description} />
         <Schedule allStages={allStages} />
       </Layout>
     </Page>

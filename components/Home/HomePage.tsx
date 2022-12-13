@@ -7,12 +7,12 @@ const GradientBackdrop = styled.div`
   background: linear-gradient(180deg, var(--bg-blue) 0%, rgba(246, 249, 252, 0) 100%);
 `;
 
-export const HomePage = () => (
+export const HomePage = ({ disable3D = false }: { disable3D?: boolean }) => (
   <>
-    <PuzzlePieces />
     <GradientBackdrop>
       <Hero />
     </GradientBackdrop>
+    {!disable3D && <PuzzlePieces />}
     <FeaturesSection />
   </>
 );

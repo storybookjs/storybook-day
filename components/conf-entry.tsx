@@ -21,7 +21,7 @@ import styles from './conf-entry.module.css';
 import LoadingDots from './loading-dots';
 import { register } from '@lib/user-api';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
-import Captcha, { useCaptcha } from './captcha';
+import Captcha, { useCaptcha } from './Captcha';
 
 type FormState = 'default' | 'loading' | 'error';
 

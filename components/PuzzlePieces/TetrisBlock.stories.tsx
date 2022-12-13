@@ -14,37 +14,15 @@ const meta: Meta<typeof TetrisBlock> = {
     storyFn => {
       return <StoryStage cameraPosition={new THREE.Vector3(-30, 30, 30)}>{storyFn()}</StoryStage>;
     }
-  ],
-  argTypes: {
-    thickness: { control: { type: 'range', min: 0, max: 20 } },
-    roughness: { control: { type: 'range', min: 0, max: 1, step: 0.1 } },
-    clearcoat: { control: { type: 'range', min: 0, max: 1, step: 0.1 } },
-    clearcoatRoughness: {
-      control: { type: 'range', min: 0, max: 1, step: 0.1 }
-    },
-    transmission: { control: { type: 'range', min: 0.9, max: 1, step: 0.01 } },
-    ior: { control: { type: 'range', min: 1, max: 2.3, step: 0.05 } },
-    attenuationColor: { control: 'color' },
-    attenuationDistance: {
-      control: { type: 'range', min: 0, max: 1, step: 0.01 }
-    }
-  },
-  args: {
-    thickness: 5,
-    roughness: 1,
-    clearcoat: 1,
-    clearcoatRoughness: 0,
-    transmission: 1,
-    ior: 1.25,
-    attenuationColor: '#fff',
-    attenuationDistance: 1
-  }
+  ]
 };
 export default meta;
 type Story = StoryObj<typeof TetrisBlock>;
 
 const ShapeScene = ({ type }: { type: TetrisBlockType }) => (
-  <TetrisBlock type={type} color="#1EA7FD" />
+  <group scale={5}>
+    <TetrisBlock type={type} color="#1EA7FD" />
+  </group>
 );
 
 export const I: Story = { render: () => <ShapeScene type="I" /> };

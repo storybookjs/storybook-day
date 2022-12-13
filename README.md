@@ -49,6 +49,23 @@ This project uses Storybook 7 which requires Node 16+. However, the API server r
 yarn config set ignore-engines true
 ```
 
+### **Prefix**
+
+This website is served from the `/day` path. The prefix is set using the `NEXT_PUBLIC_BASE_PATH` environment variable. All static assets and API endpoints must include that prefix. You can automate that using the `withPrefix` utility function.
+
+```tsx
+import { withPrefix } from '@lib/with-prefix';
+
+export default function StageContainer({ stage, allStages }: Props) {
+  const response = useSWR(withPrefix('/api/stages'), {
+    initialData: allStages,
+    refreshInterval: 5000
+  });
+
+  // ...
+}
+```
+
 ### **CMS**
 
 This project uses Storyblok to manage all content. You can find the content models in the [Storyblok space](https://app.storyblok.com/#/me/spaces/186678/dashboard?fe_version=v2).
