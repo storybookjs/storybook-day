@@ -15,7 +15,7 @@ const OTHER_TYPES = {
 export type OtherBlockType = keyof typeof OTHER_TYPES;
 
 export const blockTypes = [
-  ...tetrisBlockTypes,
+  // ...tetrisBlockTypes,
   'sphere',
   'cylinder',
   'torus',
@@ -36,7 +36,7 @@ export const Block = ({ type, color }: BlockProps) => {
 
     return (
       <group>
-        <Component args={OTHER_TYPES[type as OtherBlockType].args as any}>
+        <Component args={OTHER_TYPES[type as OtherBlockType].args as any} castShadow>
           <meshStandardMaterial color={color} />
         </Component>
       </group>

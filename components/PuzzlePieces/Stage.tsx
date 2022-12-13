@@ -1,11 +1,12 @@
-import { FC, Suspense, useState } from 'react';
+import { FC, Suspense, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import { PerspectiveCamera } from '@react-three/drei';
-import { EffectComposer, SSAO, SMAA } from '@react-three/postprocessing';
-import { EdgeDetectionMode } from 'postprocessing';
+import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { EffectComposer, SSAO, SMAA, DepthOfField } from '@react-three/postprocessing';
+import { EdgeDetectionMode, BlendFunction } from 'postprocessing';
+import { useControls } from 'leva';
 
 const { breakpoints } = styles;
 
@@ -20,9 +21,9 @@ function Rig() {
 
 const Container = styled.div`
   margin-top: -1rem;
-  margin-bottom: -1rem;
   position: relative;
   background: transparent;
+  z-index: -1;
 
   height: calc(40vh);
 
@@ -43,34 +44,25 @@ export const Stage: FC = ({ children }) => {
   return (
     <Container>
       <Canvas
-        onCreated={state => state.gl.setClearColor('white', 0)}
+        shadows
         dpr={typeof window === 'undefined' ? [1, 2] : window.devicePixelRatio}
+        gl={{
+          powerPreference: 'high-performance',
+          antialias: false,
+          stencil: false,
+          depth: false,
+          alpha: false
+        }}
+        camera={{ position: [0, 0, 24], near: 0.1, far: 48, fov: 45 }}
       >
-        <PerspectiveCamera makeDefault position={[0, 0, 24]} aspect={16 / 9} />
+        <color attach="background" args={['#E3F3FF']} />
         {/* lights */}
         <ambientLight intensity={0.5} />
         <directionalLight castShadow position={[2.5, 12, 12]} intensity={1} />
         <pointLight position={[20, 20, 20]} intensity={1} />
         <pointLight position={[-20, -20, -20]} intensity={1} />
-        <Suspense fallback={null}>
-          {children}
-          {/* Post processing effects */}
-          <EffectComposer multisampling={0}>
-            <SSAO
-              // blendFunction={BlendFunction.SUBTRACT}
-              samples={25}
-              intensity={40}
-              distanceThreshold={1}
-              luminanceInfluence={0.9}
-              radius={20}
-              scale={0.5}
-              bias={0.5}
-            />
-            <SMAA edgeDetectionMode={EdgeDetectionMode.DEPTH} />
-          </EffectComposer>
-          {/* Gently move camera based on mouse */}
-          <Rig />
-        </Suspense>
+        {/* Scene contents */}
+        {children}
       </Canvas>
     </Container>
   );

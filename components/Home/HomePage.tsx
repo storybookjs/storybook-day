@@ -5,6 +5,7 @@ import { FeaturesSection } from './FeaturesSection';
 
 const GradientBackdrop = styled.div`
   background: linear-gradient(180deg, var(--bg-blue) 0%, rgba(246, 249, 252, 0) 100%);
+  background: #e3f3ff;
 `;
 
 export const HomePage = ({ disable3D = false }: { disable3D?: boolean }) => (
