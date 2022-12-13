@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Page from '@components/page';
 import { META_DESCRIPTION } from '@lib/constants';
 import { Stickers } from '@components/Stickers';
@@ -9,10 +10,15 @@ export default function Conf() {
   const username = query.username?.toString();
 
   return (
-    <Page meta={{ title: 'Storybook Day | Stickers', description: META_DESCRIPTION }}>
-      <Layout showFooter={false} layoutStyle="full" hideNavCTA>
-        <Stickers username={username} />
-      </Layout>
-    </Page>
+    <>
+      <Head>
+        <meta name="robots" content="noindex" />
+      </Head>
+      <Page meta={{ title: 'Storybook Day | Stickers', description: META_DESCRIPTION }}>
+        <Layout showFooter={false} layoutStyle="full" hideNavCTA>
+          <Stickers username={username} />
+        </Layout>
+      </Page>
+    </>
   );
 }
