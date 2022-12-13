@@ -33,7 +33,7 @@ type Props = {
 
 export default function Page({ meta, children }: Props) {
   const router = useRouter();
-  const image = meta.image || withPrefix('/og-sb-day.png');
+  const image = meta.image || '/og-sb-day.png';
   const title = meta.title || SITE_NAME;
   const url = meta.url || `${SITE_URL}${router.asPath}`;
   const description = meta.description || SITE_NAME;
