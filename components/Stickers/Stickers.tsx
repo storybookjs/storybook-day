@@ -70,7 +70,7 @@ export const Stickers = ({ username }: { username: string }) => {
   const {
     ref: captchaRef,
     execute: executeCaptcha,
-    reset: resetCaptcha,
+    // reset: resetCaptcha,
     isEnabled: isCaptchaEnabled
   } = useCaptcha();
 

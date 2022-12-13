@@ -34,7 +34,6 @@ export const RegistrationForm = ({
 }: RegistrationFormProps) => {
   const [email, setEmail] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
-  const [errorTryAgain, setErrorTryAgain] = useState(false);
   const [formState, setFormState] = useState<FormState>('default');
   const { setPageState, setUserData } = useConfData();
   const router = useRouter();
@@ -121,7 +120,6 @@ export const RegistrationForm = ({
       e.preventDefault();
 
       setFormState('default');
-      setErrorTryAgain(true);
       resetCaptcha();
     },
     [resetCaptcha]

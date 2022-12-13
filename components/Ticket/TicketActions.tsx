@@ -3,7 +3,6 @@ import { styled } from '@storybook/theming';
 import { Button, Icon, Clipboard } from '@storybook/design-system';
 import { SITE_URL, TWEET_TEXT } from '@lib/constants';
 import { withPrefix } from '@lib/with-prefix';
-import { useRouter } from 'next/router';
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,7 +18,6 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
   const [imgReady, setImgReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const downloadLink = useRef<HTMLAnchorElement>();
-  const router = useRouter();
   const permalink = encodeURIComponent(`${SITE_URL}/tickets/${username}`);
   const text = encodeURIComponent(TWEET_TEXT);
   const tweetUrl = `https://twitter.com/intent/tweet?url=${permalink}&via=storybookjs&text=${text}`;
@@ -70,16 +68,25 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
       >
         <Icon icon="linkedin" /> Share
       </Button>
-      {/* <Button
+      <Button
         appearance="inverseSecondary"
         size="medium"
         isLink
         rel="noopener noreferrer"
         target="_blank"
         href={loading ? undefined : downloadUrl}
+        onClick={e => {
+          if (imgReady) return;
+
+          e.preventDefault();
+          downloadLink.current = e.currentTarget as HTMLAnchorElement;
+          // Wait for the image download to finish
+          setLoading(true);
+        }}
+        download="ticket.png"
       >
         <Icon icon="download" /> Download
-      </Button> */}
+      </Button>
     </Wrapper>
   );
 };

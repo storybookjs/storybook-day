@@ -1,6 +1,6 @@
 import React from 'react';
 import { css, styled } from '@storybook/theming';
-import { Icon, Logos } from '@storybook/design-system';
+import { Logos } from '@storybook/design-system';
 import { styles } from '@storybook/components-marketing';
 
 const { color, marketing } = styles;

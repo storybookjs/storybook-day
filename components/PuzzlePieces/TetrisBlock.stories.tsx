@@ -40,7 +40,7 @@ export const CentredInSphere: Story = {
       </mesh>
       <Center
         position={[25, 0, 0]}
-        onCentered={({ container, width, height }) => {
+        onCentered={({ container }) => {
           container.scale.setScalar(0.5);
         }}
       >
