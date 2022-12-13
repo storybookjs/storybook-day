@@ -12,4 +12,8 @@ const meta: Meta<typeof PuzzlePieces> = {
 export default meta;
 type Story = StoryObj<typeof PuzzlePieces>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  parameters: {
+    chromatic: { disableSnapshot: true }
+  }
+};
