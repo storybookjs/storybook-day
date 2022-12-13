@@ -1,26 +1,17 @@
-import { FC, Suspense, useState } from 'react';
-import * as THREE from 'three';
+import { FC, useState } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Canvas, useThree, useFrame } from '@react-three/fiber';
-import { PerspectiveCamera } from '@react-three/drei';
-import { EffectComposer, SSAO, SMAA } from '@react-three/postprocessing';
-import { EdgeDetectionMode } from 'postprocessing';
+import { Canvas } from '@react-three/fiber';
+import { PerformanceMonitor } from '@react-three/drei';
 
-const { breakpoints } = styles;
-
-function Rig() {
-  const { camera, mouse } = useThree();
-  const [vec] = useState(() => new THREE.Vector3());
-
-  return useFrame(() =>
-    camera.position.lerp(vec.set(mouse.x * 1, mouse.y * 1, camera.position.z), 0.04)
-  );
-}
+const { breakpoints, pageMargins } = styles;
 
 const Container = styled.div`
-  margin-top: -1rem;
-  margin-bottom: -1rem;
+  ${pageMargins};
+
+  && {
+    margin-top: -4rem;
+  }
   position: relative;
   background: transparent;
 
@@ -40,37 +31,32 @@ const Container = styled.div`
 `;
 
 export const Stage: FC = ({ children }) => {
+  const [dpr, setDpr] = useState(typeof window === 'undefined' ? 1 : window.devicePixelRatio);
+
   return (
     <Container>
       <Canvas
-        onCreated={state => state.gl.setClearColor('white', 0)}
-        dpr={typeof window === 'undefined' ? [1, 2] : window.devicePixelRatio}
+        shadows
+        performance={{ min: 0.1 }}
+        dpr={dpr}
+        gl={{
+          powerPreference: 'high-performance',
+          antialias: false,
+          stencil: false,
+          depth: false,
+          alpha: false
+        }}
+        camera={{ position: [0, 0, 30], near: 0.1, far: 60, fov: 45 }}
       >
-        <PerspectiveCamera makeDefault position={[0, 0, 24]} aspect={16 / 9} />
+        <PerformanceMonitor flipflops={3} onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} />
+        <color attach="background" args={['#E3F3FF']} />
         {/* lights */}
         <ambientLight intensity={0.5} />
         <directionalLight castShadow position={[2.5, 12, 12]} intensity={1} />
         <pointLight position={[20, 20, 20]} intensity={1} />
         <pointLight position={[-20, -20, -20]} intensity={1} />
-        <Suspense fallback={null}>
-          {children}
-          {/* Post processing effects */}
-          <EffectComposer multisampling={0}>
-            <SSAO
-              // blendFunction={BlendFunction.SUBTRACT}
-              samples={25}
-              intensity={40}
-              distanceThreshold={1}
-              luminanceInfluence={0.9}
-              radius={20}
-              scale={0.5}
-              bias={0.5}
-            />
-            <SMAA edgeDetectionMode={EdgeDetectionMode.DEPTH} />
-          </EffectComposer>
-          {/* Gently move camera based on mouse */}
-          <Rig />
-        </Suspense>
+        {/* Scene contents */}
+        {children}
       </Canvas>
     </Container>
   );

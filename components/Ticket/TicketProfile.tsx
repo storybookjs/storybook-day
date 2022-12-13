@@ -134,7 +134,7 @@ export const TicketProfile = ({ name, username, loading, ticketNumber }: TicketP
           isLoading={loading}
         />
       ) : (
-        <Version src={withPrefix('7-0.svg')} alt={'7.0'} />
+        <Version src={withPrefix('/7-0.svg')} alt={'7.0'} />
       )}
       <div>
         <Name loading={loading}>{name || username || 'Launch event'}</Name>
