@@ -15,7 +15,7 @@ const OTHER_TYPES = {
 export type OtherBlockType = keyof typeof OTHER_TYPES;
 
 export const blockTypes = [
-  // ...tetrisBlockTypes,
+  ...tetrisBlockTypes,
   'sphere',
   'cylinder',
   'torus',
