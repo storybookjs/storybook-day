@@ -17,7 +17,7 @@ const isDeployPreview = process.env.CONTEXT === 'deploy-preview';
 
 export const SITE_URL = isDeployPreview
   ? `${process.env.DEPLOY_PRIME_URL}/day`
-  : 'https://storybook-day-2023.netlify.app/day';
+  : 'https://storybook.js.org/day';
 export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_URL).origin;
 export const TWITTER_USER_NAME = 'storybookjs';
 export const BRAND_NAME = 'Storybook';
