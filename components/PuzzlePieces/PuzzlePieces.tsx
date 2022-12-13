@@ -14,11 +14,11 @@ interface Sphere {
 }
 const colors = ['#FC521F', '#CA90FF', '#1EA7FD', '#FFAE00', '#37D5D3', '#FC521F', '#66BF3C'];
 const size = 5;
-const scale = [size * 2.5, size, size];
+const scale = [size * 5, size, size];
 
 // Generate a blocks using sphere packing algorithm
 const blocks = pack({
-  maxCount: 40,
+  maxCount: 80,
   minRadius: 0.125,
   maxRadius: 0.25
 }).map((sphere: Sphere, index: number) => {

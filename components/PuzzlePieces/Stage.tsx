@@ -7,7 +7,7 @@ import { PerspectiveCamera } from '@react-three/drei';
 import { EffectComposer, SSAO, SMAA } from '@react-three/postprocessing';
 import { EdgeDetectionMode } from 'postprocessing';
 
-const { breakpoints, pageMargins } = styles;
+const { breakpoints } = styles;
 
 function Rig() {
   const { camera, mouse } = useThree();
@@ -42,13 +42,16 @@ const Container = styled.div`
 export const Stage: FC = ({ children }) => {
   return (
     <Container>
-      <Canvas onCreated={state => state.gl.setClearColor('white', 0)} dpr={window.devicePixelRatio}>
+      <Canvas
+        onCreated={state => state.gl.setClearColor('white', 0)}
+        dpr={typeof window === 'undefined' ? [1, 2] : window.devicePixelRatio}
+      >
         <PerspectiveCamera makeDefault position={[0, 0, 24]} aspect={16 / 9} />
         {/* lights */}
         <ambientLight intensity={0.5} />
-        <directionalLight castShadow position={[2.5, 12, 12]} intensity={0.5} />
-        <pointLight position={[20, 20, 20]} intensity={0.5} />
-        <pointLight position={[-20, -20, -20]} intensity={0.5} />
+        <directionalLight castShadow position={[2.5, 12, 12]} intensity={1} />
+        <pointLight position={[20, 20, 20]} intensity={1} />
+        <pointLight position={[-20, -20, -20]} intensity={1} />
         <Suspense fallback={null}>
           {children}
           {/* Post processing effects */}

@@ -54,11 +54,18 @@ type LayoutProps = {
   children: React.ReactNode;
   isLive?: boolean;
   showFooter?: boolean;
+  hideFooterRegistration?: boolean;
   layoutStyle?: 'default' | 'full';
   hideNavCTA?: boolean;
 };
 
-export function Layout({ showFooter, children, layoutStyle = 'default', hideNavCTA }: LayoutProps) {
+export function Layout({
+  showFooter,
+  children,
+  layoutStyle = 'default',
+  hideNavCTA,
+  hideFooterRegistration
+}: LayoutProps) {
   const router = useRouter();
   const activeRoute = router.asPath;
 
@@ -67,7 +74,7 @@ export function Layout({ showFooter, children, layoutStyle = 'default', hideNavC
       <Nav transparent={layoutStyle === 'full'} hideCTA={hideNavCTA} />
       <SkipNavContent />
       <Main full={layoutStyle === 'full'}>{children}</Main>
-      {showFooter && <Footer />}
+      {showFooter && <Footer showRegistrationForm={!hideFooterRegistration} />}
     </PageContainer>
   );
 }
