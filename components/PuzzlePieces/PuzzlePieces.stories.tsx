@@ -4,7 +4,8 @@ import { PuzzlePieces } from './PuzzlePieces';
 const meta: Meta<typeof PuzzlePieces> = {
   title: 'PuzzlePieces/PuzzlePieces',
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    backgrounds: { default: 'blueGradient' }
   },
   component: PuzzlePieces
 };

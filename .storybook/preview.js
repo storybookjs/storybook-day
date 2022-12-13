@@ -28,6 +28,10 @@ export const parameters = {
       {
         name: 'gradient',
         value: "center / cover no-repeat url('gradient-backdrop.svg')"
+      },
+      {
+        name: 'blueGradient',
+        value: 'linear-gradient(180deg, white 0%, #d9e6f2 100%);'
       }
     ]
   },

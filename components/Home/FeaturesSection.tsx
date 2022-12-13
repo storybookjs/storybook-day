@@ -8,7 +8,6 @@ const { marketing, breakpoints, pageMargins } = styles;
 
 const Section = styled.section`
   ${pageMargins};
-  padding-top: 4rem;
 `;
 
 const Title = styled.h2`
