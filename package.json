@@ -4,7 +4,7 @@
   "private": true,
   "repository": "storybookjs/storybook-day",
   "author": "Storybook Team",
-  "homepage": "https://demo.vercel.events",
+  "homepage": "https://storybook.js.org/day",
   "license": "Apache-2.0",
   "scripts": {
     "dev": "next",
