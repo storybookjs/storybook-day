@@ -9,8 +9,10 @@ const GradientBackdrop = styled.div`
 
 export const HomePage = ({ disable3D = false }: { disable3D?: boolean }) => (
   <>
-    <GradientBackdrop>{!disable3D && <Hero />}</GradientBackdrop>
-    <PuzzlePieces />
+    <GradientBackdrop>
+      <Hero />
+    </GradientBackdrop>
+    {!disable3D && <PuzzlePieces />}
     <FeaturesSection />
   </>
 );
