@@ -180,6 +180,14 @@ const Bottom = () => (
   </div>
 );
 
+const styles = {
+  info: {
+    fontWeight: '700',
+    fontSize: '14px',
+    lineHeight: '16px'
+  }
+};
+
 const Middle = ({
   name,
   username,
