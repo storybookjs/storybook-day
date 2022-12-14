@@ -13,7 +13,7 @@ export const Default: Story = {
   name: 'VideoCard',
   args: {
     bgColor: '#191B24',
-    src: '/day/features/videos/nextjs-framework-lg.mp4'
+    src: '/day/features/videos/nextjs-framework-sm.mp4'
   }
 };
 
@@ -21,6 +21,6 @@ export const Another: Story = {
   name: 'VideoCard',
   args: {
     bgColor: '#E4F3FF',
-    src: '/day/features/videos/perf-lg.mp4'
+    src: '/day/features/videos/perf-sm.mp4'
   }
 };

@@ -2,12 +2,11 @@ import * as THREE from 'three';
 import pack from 'pack-spheres';
 import { Float, ContactShadows } from '@react-three/drei';
 import * as Random from 'canvas-sketch-util/random';
-import { EffectComposer, SSAO, DepthOfField, SMAA, Bloom } from '@react-three/postprocessing';
+import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
 import { Block, blockTypes } from './Block';
 import { VersionText } from './VersionText';
 import { Stage } from './Stage';
 import { Suspense } from 'react';
-import { EdgeDetectionMode } from 'postprocessing';
 
 interface Sphere {
   position: number[];
@@ -63,7 +62,7 @@ export const BlocksScene = () => {
             ))}
           </>
           <ContactShadows
-            frames={1}
+            // frames={1} // if we want static shadows
             rotation={[Math.PI / 2, 0, 0]}
             position={[0, -8, 0]}
             opacity={0.75}
@@ -75,15 +74,6 @@ export const BlocksScene = () => {
           />
           <EffectComposer multisampling={0}>
             <DepthOfField focusDistance={0.5} bokehScale={7} focalLength={0.2} />
-            {/* <SSAO
-              samples={25}
-              intensity={40}
-              luminanceInfluence={0.5}
-              radius={10}
-              scale={0.5}
-              bias={0.5}
-            />
-            <SMAA edgeDetectionMode={EdgeDetectionMode.DEPTH} /> */}
           </EffectComposer>
         </group>
       </Suspense>

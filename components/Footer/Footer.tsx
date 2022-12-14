@@ -1,5 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
+import { Button } from '@storybook/design-system';
 import { styles } from '@storybook/components-marketing';
 import { ByChromatic } from '@components/ByChromatic';
 import { RegistrationForm } from '@components/RegistrationForm';
@@ -42,8 +43,10 @@ export const Footer = ({ showRegistrationForm = true }: { showRegistrationForm?:
         <Register>
           {showRegistrationForm && (
             <>
-              <Title>Get your ticket</Title>
-              <FooterRegistrationForm disableAnimation />
+              <Title>Register</Title>
+              <Button appearance="secondary" isLink ButtonWrapper={LinkWrapper} href="#register">
+                Get your free ticket
+              </Button>
             </>
           )}
           <Attribution />

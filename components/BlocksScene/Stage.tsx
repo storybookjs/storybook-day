@@ -34,7 +34,7 @@ export const Stage: FC = ({ children }) => {
   const [dpr, setDpr] = useState(typeof window === 'undefined' ? 1 : window.devicePixelRatio);
 
   return (
-    <Container>
+    <Container aria-label="Storybook 7.0" role="img">
       <Canvas
         shadows
         dpr={dpr}
@@ -42,8 +42,7 @@ export const Stage: FC = ({ children }) => {
           powerPreference: 'high-performance',
           antialias: false,
           stencil: false,
-          depth: false,
-          alpha: false
+          depth: false
         }}
         camera={{ position: [0, 0, 30], near: 0.1, far: 60, fov: 45 }}
       >

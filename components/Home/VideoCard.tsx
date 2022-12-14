@@ -26,20 +26,14 @@ const Video = styled.video`
 interface VideoCardProps {
   src: string;
   bgColor: string;
+  poster?: string;
 }
 
-export const VideoCard = ({ bgColor, src, ...props }: VideoCardProps) => {
+export const VideoCard = ({ bgColor, src, poster, ...props }: VideoCardProps) => {
   return (
     <MediaWrapper bgColor={bgColor} {...props}>
       <BackdropVideo src={src} playsInline />
-      <Video
-        src={src}
-        autoPlay
-        loop
-        playsInline
-        muted
-        // poster={activeFeature.poster}
-      />
+      <Video src={src} autoPlay loop playsInline muted poster={poster} />
     </MediaWrapper>
   );
 };

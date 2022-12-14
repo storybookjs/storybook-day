@@ -28,7 +28,7 @@ export const Video: Story = {
     title: 'Performance overhaul',
     description:
       'Lorem ipsum dolor sit amet consectatur vestibulum aret sit click, hover, and type inside your story file. Powered by Jest and Testing.',
-    media: <VideoCard bgColor="#E3F3FF" src="/day/features/videos/perf-lg.mp4" />,
+    media: <VideoCard bgColor="#E3F3FF" src="/day/features/videos/perf-sm.mp4" />,
     bgColor: '#E3F3FF'
   }
 };

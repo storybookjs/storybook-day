@@ -94,7 +94,13 @@ export const Nav = ({ transparent, hideCTA }: NavProps) => {
             </NavItem>
           </NavLinks>
           {!hideCTA && (
-            <Button size="small" appearance="secondary" isLink href="#register">
+            <Button
+              size="small"
+              appearance="secondary"
+              isLink
+              ButtonWrapper={LinkWrapper}
+              href="/#register"
+            >
               Get your free ticket
             </Button>
           )}

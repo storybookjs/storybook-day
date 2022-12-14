@@ -77,13 +77,25 @@ export const FeaturesSection = () => (
       <Feature
         title="Performance overhaul"
         description="7.0 optimizes and pre-bundles Storybook to reduce install weight. That speeds up build times and eliminates dependency conflicts."
-        media={<VideoCard src={withPrefix('/features/videos/perf-lg.mp4')} bgColor="#E3F3FF" />}
+        media={
+          <VideoCard
+            src={withPrefix('/features/videos/perf-sm.mp4')}
+            poster={withPrefix('/features/videos/perf.png')}
+            bgColor="#E3F3FF"
+          />
+        }
         bgColor="#E3F3FF"
       />
       <Feature
         title="Docs revamp"
         description="Kickstart your project’s UI documentation with MDX 2 support, new architecture, streamlined UX, and a readymade doc blocks."
-        media={<VideoCard src={withPrefix('/features/videos/docs-lg.mp4')} bgColor="#C3EDAF" />}
+        media={
+          <VideoCard
+            src={withPrefix('/features/videos/docs-sm.mp4')}
+            poster={withPrefix('/features/videos/docs.png')}
+            bgColor="#C3EDAF"
+          />
+        }
         bgColor="#C3EDAF"
       />
       <Feature
@@ -91,7 +103,8 @@ export const FeaturesSection = () => (
         description="Simulate user behavior like click, hover, and type inside your story file. Powered by Jest and Testing Library"
         media={
           <VideoCard
-            src={withPrefix('/features/videos/interaction-testing-lg.mp4')}
+            src={withPrefix('/features/videos/interaction-testing-sm.mp4')}
+            poster={withPrefix('/features/videos/interaction-testing.png')}
             bgColor="#FDDE9C"
           />
         }
@@ -102,7 +115,8 @@ export const FeaturesSection = () => (
         description="Keeps your stories up to date automatically with test runner, a Jest powered CLI tool that runs testing and reports coverage."
         media={
           <VideoCard
-            src={withPrefix('/features/videos/test-coverage-square-lg.mp4')}
+            src={withPrefix('/features/videos/test-coverage-sm.mp4')}
+            poster={withPrefix('/features/videos/test-coverage.png')}
             bgColor="#EDD9FF"
           />
         }
@@ -112,7 +126,11 @@ export const FeaturesSection = () => (
         title="Framework API for integrations"
         description="Frameworks are packages that automatically configure Storybook to work with popular application setups like NextJS and Sveltekit."
         media={
-          <VideoCard src={withPrefix('/features/videos/framework-api-lg.mp4')} bgColor="#FEDED2" />
+          <VideoCard
+            src={withPrefix('/features/videos/framework-api-sm.mp4')}
+            poster={withPrefix('/features/videos/framework-api.png')}
+            bgColor="#FEDED2"
+          />
         }
         bgColor="#FEDED2"
       />
@@ -125,7 +143,13 @@ export const FeaturesSection = () => (
       <Feature
         title="First-class Vite support"
         description="Vite is a next-gen build tool that gives Storybook 7.0 fast startup and instant reloads."
-        media={<VideoCard src={withPrefix('/features/videos/vite-lg.mp4')} bgColor="#FEDED2" />}
+        media={
+          <VideoCard
+            src={withPrefix('/features/videos/vite-sm.mp4')}
+            poster={withPrefix('/features/videos/vite.png')}
+            bgColor="#FEDED2"
+          />
+        }
         bgColor="#FEDED2"
         icon={withPrefix('/features/vite-icon.svg')}
       />
@@ -139,7 +163,13 @@ export const FeaturesSection = () => (
       <Feature
         title="Official Figma integration"
         description="Speed up UI implementation by connecting with design. Embed designs in Storybook and embed stories in Figma."
-        media={<VideoCard src={withPrefix('/features/videos/figma-lg.mp4')} bgColor="#EEEEEE" />}
+        media={
+          <VideoCard
+            src={withPrefix('/features/videos/figma-sm.mp4')}
+            poster={withPrefix('/features/videos/figma.png')}
+            bgColor="#EEEEEE"
+          />
+        }
         bgColor="#EEEEEE"
         icon={withPrefix('/features/figma-icon.svg')}
       />
@@ -148,7 +178,8 @@ export const FeaturesSection = () => (
         description="Zero-config integration for Next 12 & 13 helps you develop, test, and document UI components in isolation."
         media={
           <VideoCard
-            src={withPrefix('/features/videos/nextjs-framework-lg.mp4')}
+            src={withPrefix('/features/videos/nextjs-framework-sm.mp4')}
+            poster={withPrefix('/features/videos/nextjs-framework.png')}
             bgColor="#232A35"
           />
         }

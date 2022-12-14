@@ -27,7 +27,7 @@ export const parameters = {
       { name: 'dark', value: '#171C23' },
       {
         name: 'gradient',
-        value: "center / cover no-repeat url('gradient-backdrop.svg')"
+        value: "center / cover no-repeat url('/day/gradient-backdrop.svg')"
       },
       {
         name: 'blueGradient',
