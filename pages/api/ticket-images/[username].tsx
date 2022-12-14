@@ -33,8 +33,8 @@ export default function ticketImages(req: NextApiRequest, res: NextApiResponse) 
       <TicketOGImage ticketNumber={7521} username="winkerVSbecks" name="Varun Vachhar" />
     ),
     {
-      width: 1200,
-      height: 627
+      width: 1200 * 2,
+      height: 627 * 2
     }
   );
   // let url: string;

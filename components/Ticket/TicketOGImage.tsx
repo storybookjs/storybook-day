@@ -1,6 +1,8 @@
 import { styles } from '@storybook/components-marketing';
 import { StorybookDayLogo } from '@components/StorybookDayLogo';
 import { Logos } from '@storybook/design-system';
+import { TicketProfile } from './TicketProfile';
+import { SHORT_DATE, SHORT_TIME, SHORT_TIMEZONE } from '@lib/constants';
 
 // const { color, spacing, typography, text } = styles;
 const border = 'rgba(0, 0, 0, 0.2)';
@@ -116,6 +118,107 @@ interface TicketOGImageProps {
   style?: React.CSSProperties;
 }
 
+const Top = ({ tickerNumber }: { tickerNumber: string }) => (
+  <div
+    style={{
+      display: 'flex',
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '17px 20px 15px',
+      borderBottom: `1px solid ${border}`
+    }}
+  >
+    <StorybookDayLogo style={{ height: 24 }} />
+    <div
+      style={{
+        borderRadius: `${spacing.borderRadius.small}px`,
+        padding: `4px 8px 4px 8px`,
+        border: `1px solid ${color.secondary}`,
+        color: `${color.secondary}`,
+        fontFamily: `${typography.type.code}`,
+        fontWeight: `400`,
+        fontSize: `${typography.size.s2}px`,
+        lineHeight: `16px`
+      }}
+    >
+      {tickerNumber}
+    </div>
+  </div>
+);
+
+const Bottom = () => (
+  <div
+    style={{
+      width: '100%',
+      fontSize: 14,
+      fontWeight: 400,
+      lineHeight: '20px',
+      color: `${color.darkest}`,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '17px 20px 15px',
+      borderTop: `1px solid ${border}`,
+      textAlign: 'center'
+    }}
+  >
+    <div style={{ display: 'flex', alignItems: 'center', opacity: 0.9 }}>
+      <div
+        style={{
+          color: color.darkest,
+          fontSize: typography.size.s2, // 14
+          fontWeight: typography.weight.regular,
+          lineHeight: '20px'
+        }}
+      >
+        Brought to you by
+      </div>
+      <ChromaticLogo />
+    </div>
+    <span>storybook.js.org/day</span>
+  </div>
+);
+
+const Middle = ({
+  name,
+  username,
+  ticketNumber
+}: {
+  name: string;
+  username: string;
+  ticketNumber: string;
+}) => (
+  <div
+    style={{
+      flex: '1',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      gap: 15,
+      paddingLeft: 40
+    }}
+  >
+    <div
+      style={{
+        display: 'flex',
+        gap: '40px',
+        justifyContent: 'flex-start'
+      }}
+    >
+      <div>
+        <div>{SHORT_TIME}</div>
+        <div>{SHORT_TIMEZONE}</div>
+      </div>
+      <div>
+        <div>{SHORT_DATE}</div>
+        <div>Online event</div>
+      </div>
+    </div>
+    <TicketProfile name={name} username={username} ticketNumber={ticketNumber} />
+  </div>
+);
+
 export const TicketOGImage = ({ name, username, ticketNumber, ...props }: TicketOGImageProps) => {
   const numDigits = `${ticketNumber}`.length;
   const prefix = `000000`.slice(numDigits);
@@ -130,8 +233,9 @@ export const TicketOGImage = ({ name, username, ticketNumber, ...props }: Ticket
         width: '100%',
         height: '100%',
         backgroundImage: `url(${'http://localhost:3000/day/gradient-backdrop.svg'})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundSize: '100% 100%',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
     >
       <div
@@ -140,7 +244,7 @@ export const TicketOGImage = ({ name, username, ticketNumber, ...props }: Ticket
           position: 'relative',
           width: 494,
           height: 350,
-          transform: 'scale(1.5)'
+          transform: 'scale(3)'
         }}
       >
         <TicketShape />
@@ -167,76 +271,11 @@ export const TicketOGImage = ({ name, username, ticketNumber, ...props }: Ticket
             }}
           >
             {/* Top */}
-            <div
-              style={{
-                display: 'flex',
-                width: '100%',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '17px 20px 15px',
-                borderBottom: `1px solid ${border}`
-              }}
-            >
-              <StorybookDayLogo style={{ height: 24 }} />
-              <div
-                style={{
-                  borderRadius: `${spacing.borderRadius.small}px`,
-                  padding: `4px 8px 4px 8px`,
-                  border: `1px solid ${color.secondary}`,
-                  color: `${color.secondary}`,
-                  fontFamily: `${typography.type.code}`,
-                  fontWeight: `400`,
-                  fontSize: `${typography.size.s2}px`,
-                  lineHeight: `16px`
-                }}
-              >
-                {formattedTickerNumber}
-              </div>
-            </div>
+            <Top tickerNumber={formattedTickerNumber} />
             {/* Middle */}
-            <div
-              style={{
-                flex: '1',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                gap: 15,
-                paddingLeft: 40
-              }}
-            >
-              {/* <TicketProfile name={name} username={username} ticketNumber={formattedTickerNumber} /> */}
-            </div>
+            <Middle name={name} username={username} ticketNumber={formattedTickerNumber} />
             {/* Bottom */}
-            <div
-              style={{
-                width: '100%',
-                fontSize: 14,
-                fontWeight: 400,
-                lineHeight: '20px',
-                color: `${color.darkest}`,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '17px 20px 15px',
-                borderTop: `1px solid ${border}`,
-                textAlign: 'center'
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', opacity: 0.9 }}>
-                <div
-                  style={{
-                    color: color.darkest,
-                    fontSize: typography.size.s2, // 14
-                    fontWeight: typography.weight.regular,
-                    lineHeight: '20px'
-                  }}
-                >
-                  Brought to you by
-                </div>
-                <ChromaticLogo />
-              </div>
-              <span>storybook.js.org/day</span>
-            </div>
+            <Bottom />
           </div>
         </div>
       </div>
