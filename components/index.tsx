@@ -82,7 +82,6 @@ export function ConfContent({
   const [userData, setUserData] = useState<UserData>(defaultUserData);
   const [pageState, setPageState] = useState<PageState>(defaultPageState);
   const notRegistered = pageState === 'registration' && !sharePage;
-  console.log({ sharePage });
 
   return (
     <ConfDataContext.Provider

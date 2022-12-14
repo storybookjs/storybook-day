@@ -20,6 +20,7 @@ import { SITE_URL, SAMPLE_TICKET_NUMBER } from '@lib/constants';
 import { getUserByUsername } from '@lib/db-api';
 import { ImageResponse } from '@vercel/og';
 import { withPrefix } from '@lib/with-prefix';
+import { TicketOGImage } from '@components/Ticket/TicketOGImage';
 
 export const config = {
   runtime: 'experimental-edge'
@@ -27,11 +28,13 @@ export const config = {
 
 export default function ticketImages(req: NextApiRequest, res: NextApiResponse) {
   return new ImageResponse(
-    <img src="http://localhost:3000/day/ticket.svg" width="704" height="600" />,
+    (
+      // <div style={{ width: 1000, height: 500, background: 'red' }} />,
+      <TicketOGImage ticketNumber={7521} username="winkerVSbecks" name="Varun Vachhar" />
+    ),
     {
-      width: 2000,
-      height: 1000,
-      debug: true
+      width: 1200,
+      height: 627
     }
   );
   // let url: string;
