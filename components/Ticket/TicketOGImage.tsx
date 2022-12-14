@@ -1,13 +1,12 @@
-import { styles } from '@storybook/components-marketing';
 import { StorybookDayLogo } from '@components/StorybookDayLogo';
-import { Logos } from '@storybook/design-system';
 import { TicketProfile } from './TicketProfile';
 import { SHORT_DATE, SHORT_TIME, SHORT_TIMEZONE } from '@lib/constants';
+import { Scale } from '@storybook/design-system/dist/images/colored-icons';
 
-// const { color, spacing, typography, text } = styles;
 const border = 'rgba(0, 0, 0, 0.2)';
 export const color = {
   secondary: '#1EA7FD',
+  dark: '#666666',
   darkest: '#333333'
 };
 
@@ -110,14 +109,6 @@ const ChromaticLogo = () => (
   </svg>
 );
 
-interface TicketOGImageProps {
-  size?: number;
-  name?: string;
-  ticketNumber?: number;
-  username?: string;
-  style?: React.CSSProperties;
-}
-
 const Top = ({ tickerNumber }: { tickerNumber: string }) => (
   <div
     style={{
@@ -151,10 +142,10 @@ const Bottom = () => (
   <div
     style={{
       width: '100%',
-      fontSize: 14,
+      fontSize: 12,
       fontWeight: 400,
       lineHeight: '20px',
-      color: `${color.darkest}`,
+      color: color.darkest,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -163,17 +154,15 @@ const Bottom = () => (
       textAlign: 'center'
     }}
   >
-    <div style={{ display: 'flex', alignItems: 'center', opacity: 0.9 }}>
-      <div
+    <div style={{ display: 'flex', alignItems: 'center', opacity: 0.9, transform: 'scale(0.9)' }}>
+      <span
         style={{
           color: color.darkest,
-          fontSize: typography.size.s2, // 14
-          fontWeight: typography.weight.regular,
-          lineHeight: '20px'
+          lineHeight: 1
         }}
       >
         Brought to you by
-      </div>
+      </span>
       <ChromaticLogo />
     </div>
     <span>storybook.js.org/day</span>
@@ -181,53 +170,117 @@ const Bottom = () => (
 );
 
 const styles = {
-  info: {
+  infoTop: {
     fontWeight: '700',
     fontSize: '14px',
-    lineHeight: '16px'
+    lineHeight: '16px',
+    color: color.darkest
+  },
+  infoBottom: {
+    color: color.dark,
+    fontSize: '12px',
+    lineHeight: '14px'
+  },
+  name: {
+    display: 'flex',
+    fontSize: 28,
+    fontWeight: '700',
+    lineHeight: 1,
+    color: color.darkest,
+    marginBottom: 10
+  },
+  username: {
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: 16,
+    lineHeight: '18px',
+    color: color.dark
   }
 };
 
-const Middle = ({
-  name,
-  username,
-  ticketNumber
-}: {
-  name: string;
-  username: string;
-  ticketNumber: string;
-}) => (
+const Middle = ({ name, username }: { name?: string; username: string }) => (
   <div
     style={{
       flex: '1',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      gap: 15,
       paddingLeft: 40
     }}
   >
+    <div style={{ display: 'flex', width: '100%', marginBottom: 15, alignItems: 'center' }}>
+      <img
+        src={`https://github.com/${username}.png`}
+        style={{
+          width: '64px',
+          height: '64px',
+          border: '3px solid rgb(30, 167, 253)',
+          marginRight: '20px',
+          borderRadius: '50%',
+          overflow: 'hidden'
+        }}
+      />
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={styles.name}>{name || username || 'Launch event'}</div>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center'
+          }}
+        >
+          <div style={styles.username}>
+            <svg
+              viewBox="0 0 14 14"
+              width="16px"
+              height="16px"
+              style={{
+                marginRight: 4
+              }}
+            >
+              <path
+                fill="#666"
+                d="M7 0a7 7 0 0 0-2.21 13.64c.35.06.48-.15.48-.33L5.26 12c-1.76.32-2.21-.43-2.35-.83-.08-.2-.43-.82-.72-.99-.25-.13-.6-.45-.01-.46.55 0 .94.5 1.07.72.63 1.06 1.64.76 2.04.58.07-.46.25-.77.45-.94-1.56-.18-3.19-.78-3.19-3.46 0-.76.28-1.39.72-1.88-.07-.17-.31-.9.07-1.85 0 0 .59-.19 1.93.71a6.5 6.5 0 0 1 3.5 0c1.34-.9 1.92-.71 1.92-.71.39.96.14 1.68.07 1.85.45.5.72 1.11.72 1.88 0 2.69-1.64 3.28-3.2 3.46.26.22.48.64.48 1.3l-.01 1.92c0 .18.13.4.48.33A7.01 7.01 0 0 0 7 0Z"
+              ></path>
+            </svg>
+            <span>{username || 'Your username'}</span>
+          </div>
+          {/* {ticketNumber && (
+            <TicketNumber>
+              <Icon icon="bookmark" />
+              <span>{ticketNumber}</span>
+            </TicketNumber>
+          )} */}
+        </div>
+      </div>
+    </div>
+    {/* Info */}
     <div
       style={{
         display: 'flex',
-        gap: '40px',
         justifyContent: 'flex-start'
       }}
     >
-      <div>
-        <div>{SHORT_TIME}</div>
-        <div>{SHORT_TIMEZONE}</div>
+      <div style={{ display: 'flex', flexDirection: 'column', marginRight: 40 }}>
+        <div style={styles.infoTop}>{SHORT_TIME}</div>
+        <div style={styles.infoBottom}>{SHORT_TIMEZONE}</div>
       </div>
-      <div>
-        <div>{SHORT_DATE}</div>
-        <div>Online event</div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={styles.infoTop}>{SHORT_DATE}</div>
+        <div style={styles.infoBottom}>Online event</div>
       </div>
     </div>
-    <TicketProfile name={name} username={username} ticketNumber={ticketNumber} />
   </div>
 );
 
-export const TicketOGImage = ({ name, username, ticketNumber, ...props }: TicketOGImageProps) => {
+interface TicketOGImageProps {
+  size?: number;
+  name?: string;
+  ticketNumber?: number;
+  username: string;
+  style?: React.CSSProperties;
+}
+
+export const TicketOGImage = ({ name, username, ticketNumber }: TicketOGImageProps) => {
   const numDigits = `${ticketNumber}`.length;
   const prefix = `000000`.slice(numDigits);
   const formattedTickerNumber = `#${prefix}${ticketNumber}`;
@@ -250,12 +303,24 @@ export const TicketOGImage = ({ name, username, ticketNumber, ...props }: Ticket
         style={{
           display: 'flex',
           position: 'relative',
-          width: 494,
-          height: 350,
+          width: 500,
+          height: 354.25,
           transform: 'scale(3)'
         }}
       >
         <TicketShape />
+        <div
+          style={{
+            display: 'flex',
+            flex: '1',
+            zIndex: '1',
+            position: 'absolute',
+            top: 0,
+            width: '100%',
+            height: '100%',
+            padding: '20px 40px'
+          }}
+        ></div>
         <div
           style={{
             display: 'flex',

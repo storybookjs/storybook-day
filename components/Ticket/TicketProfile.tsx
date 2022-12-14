@@ -109,6 +109,10 @@ const TicketNumber = styled.div<{ loading?: boolean }>`
   span {
     ${props => props.loading && loadingStyles}
   }
+
+  @media (min-width: ${breakpoints[1]}px) {
+    display: none;
+  }
 `;
 
 const Lower = styled.div`
