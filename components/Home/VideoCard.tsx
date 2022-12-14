@@ -1,47 +1,13 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { styles } from '@storybook/components-marketing';
 
-const { spacing, color, breakpoints, typography, pageMargins, pageMargin } = styles;
-
-const FeatureMedia = styled.div<{ bgColor: string }>`
-  border-radius: ${spacing.borderRadius.default}px;
+const MediaWrapper = styled.div<{ bgColor: string }>`
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${props => props.bgColor};
-
-  video {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  a {
-    background-color: rgba(0 0 0 / 50%);
-    position: absolute;
-    top: 20px;
-    right: 20px;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: rgba(0 0 0 / 50%);
-    }
-
-    svg {
-      margin: 0;
-    }
-  }
-`;
-
-const FeatureMediaLarge = styled(FeatureMedia)`
-  height: 100%;
-  overflow: hidden;
-
-  margin-left: 0;
-  margin-right: 0;
-  border-radius: ${spacing.borderRadius.default}px;
 `;
 
 const BackdropVideo = styled.video`
@@ -57,14 +23,14 @@ const Video = styled.video`
   position: relative;
 `;
 
-interface IllustratedFeatureListProps {
+interface VideoCardProps {
   src: string;
   bgColor: string;
 }
 
-export const VideoCard = ({ bgColor, src, ...props }: IllustratedFeatureListProps) => {
+export const VideoCard = ({ bgColor, src, ...props }: VideoCardProps) => {
   return (
-    <FeatureMediaLarge bgColor={bgColor} {...props}>
+    <MediaWrapper bgColor={bgColor} {...props}>
       <BackdropVideo src={src} playsInline />
       <Video
         src={src}
@@ -74,6 +40,6 @@ export const VideoCard = ({ bgColor, src, ...props }: IllustratedFeatureListProp
         muted
         // poster={activeFeature.poster}
       />
-    </FeatureMediaLarge>
+    </MediaWrapper>
   );
 };

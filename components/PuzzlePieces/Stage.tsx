@@ -10,7 +10,7 @@ const Container = styled.div`
   ${pageMargins};
 
   && {
-    margin-top: -4rem;
+    margin-top: -2rem;
   }
   position: relative;
   background: transparent;

@@ -1,5 +1,5 @@
 import { styled } from '@storybook/theming';
-import { AspectRatio, styles } from '@storybook/components-marketing';
+import { styles } from '@storybook/components-marketing';
 
 const { marketing, color, breakpoints } = styles;
 
@@ -25,22 +25,35 @@ const Description = styled.div`
   }
 `;
 
-const Figure = styled(AspectRatio)<{ background: string }>`
+const Figure = styled.div<{ bgColor: string }>`
   border-radius: 20px;
-  background: ${({ background }) => background};
+  background: ${({ bgColor }) => bgColor};
   margin-bottom: 1rem;
   max-height: 520px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 
   @media (min-width: ${breakpoints[0]}px) {
     margin-bottom: 2rem;
   }
 
+  & > div,
   img {
+    max-height: 520px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  img,
+  video {
     display: block;
-    width: 100%;
-    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
   }
 `;
 
@@ -64,16 +77,14 @@ const Lower = styled.div`
 interface FeatureProps {
   title: string;
   description: string;
-  image: string;
-  background: string;
+  media: React.ReactNode;
+  bgColor: string;
   icon?: string;
 }
 
-export const Feature = ({ title, description, image, background, icon }: FeatureProps) => (
+export const Feature = ({ title, description, media, bgColor, icon }: FeatureProps) => (
   <div>
-    <Figure ratio="1 / 1" background={background}>
-      <img src={image} alt="" />
-    </Figure>
+    <Figure bgColor={bgColor}>{media}</Figure>
     <Lower>
       {icon && <Icon src={icon} alt="" />}
       <TextWrapper>

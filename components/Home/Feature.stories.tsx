@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Feature } from './Feature';
+import { VideoCard } from './VideoCard';
 
 const meta: Meta<typeof Feature> = {
   title: 'Pages/Home/Feature',
   component: Feature,
   parameters: {
     layout: 'centered'
-  },
-  decorators: [StoryFn => <div style={{ maxWidth: 520 }}>{StoryFn()}</div>]
+  }
+  // decorators: [StoryFn => <div style={{ maxWidth: 520 }}>{StoryFn()}</div>]
 };
 export default meta;
 type Story = StoryObj<typeof Feature>;
@@ -17,18 +18,28 @@ export const Default: Story = {
     title: 'Performance overhaul',
     description:
       'Lorem ipsum dolor sit amet consectatur vestibulum aret sit click, hover, and type inside your story file. Powered by Jest and Testing.',
-    image: '/perf.png',
-    background: '#E3F3FF'
+    media: <img src="/day/features/stability.svg" />,
+    bgColor: '#FEDED2'
+  }
+};
+
+export const Video: Story = {
+  args: {
+    title: 'Performance overhaul',
+    description:
+      'Lorem ipsum dolor sit amet consectatur vestibulum aret sit click, hover, and type inside your story file. Powered by Jest and Testing.',
+    media: <VideoCard bgColor="#E3F3FF" src="/day/features/videos/perf-lg.mp4" />,
+    bgColor: '#E3F3FF'
   }
 };
 
 export const WithIcon: Story = {
   args: {
-    title: 'Official Figma integration',
+    title: 'TypeScript just works',
     description:
-      'Simulate user behavior like click, hover, and type inside your story file. Powered by Jest and Testing Library',
-    image: '/figma.png',
-    background: '#EEEEEE',
-    icon: '/figma-icon.png'
+      'TypeScript works with Storybook. 7.0 expands type safety with new types and features powered by Typescript 4.9.',
+    media: <img src="/day/features/typescript.svg" />,
+    bgColor: '#E3F3FF',
+    icon: '/day/features/typescript-icon.svg'
   }
 };
