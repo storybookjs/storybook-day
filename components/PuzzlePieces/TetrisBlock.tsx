@@ -2,11 +2,10 @@ import { forwardRef, useMemo } from 'react';
 import * as THREE from 'three';
 import { Extrude } from '@react-three/drei';
 
-// export const SIDE = 10;
 export const SIDE = 0.75;
 export const EXTRUDE_SETTINGS = {
   steps: 2,
-  depth: SIDE,
+  depth: SIDE * 0.75,
   bevelEnabled: false
 };
 

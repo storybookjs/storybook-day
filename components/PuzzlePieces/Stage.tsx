@@ -37,7 +37,6 @@ export const Stage: FC = ({ children }) => {
     <Container>
       <Canvas
         shadows
-        performance={{ min: 0.1 }}
         dpr={dpr}
         gl={{
           powerPreference: 'high-performance',
@@ -48,7 +47,7 @@ export const Stage: FC = ({ children }) => {
         }}
         camera={{ position: [0, 0, 30], near: 0.1, far: 60, fov: 45 }}
       >
-        <PerformanceMonitor flipflops={3} onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} />
+        {/* <PerformanceMonitor flipflops={3} onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} /> */}
         <color attach="background" args={['#E3F3FF']} />
         {/* lights */}
         <ambientLight intensity={0.5} />

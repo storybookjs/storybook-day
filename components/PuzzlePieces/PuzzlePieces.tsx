@@ -2,11 +2,12 @@ import * as THREE from 'three';
 import pack from 'pack-spheres';
 import { Float, ContactShadows, Stats, Merged } from '@react-three/drei';
 import * as Random from 'canvas-sketch-util/random';
-import { EffectComposer, SSAO, DepthOfField } from '@react-three/postprocessing';
+import { EffectComposer, SSAO, DepthOfField, SMAA, Bloom } from '@react-three/postprocessing';
 import { Block, blockTypes } from './Block';
 import { VersionText } from './VersionText';
 import { Stage } from './Stage';
 import { Suspense } from 'react';
+import { EdgeDetectionMode } from 'postprocessing';
 
 interface Sphere {
   position: number[];
@@ -31,7 +32,7 @@ const blocks = pack({
       sphere.position[0],
       sphere.position[1],
       // shift the blocks to avoid overlapping with 7.0
-      inFront ? sphere.position[2] + 0.5 : sphere.position[2] - 0.5
+      inFront ? sphere.position[2] + 0.6 : sphere.position[2] - 0.6
     ].map((v: number, idx) => v * scale[idx]), // scale position to world space
     size: sphere.radius * size, // scale radius to world space
     color: Random.pick(colors),
@@ -83,6 +84,7 @@ export const PuzzlePieces = () => {
               scale={0.5}
               bias={0.5}
             />
+            <SMAA edgeDetectionMode={EdgeDetectionMode.DEPTH} />
           </EffectComposer>
         </group>
       </Suspense>
