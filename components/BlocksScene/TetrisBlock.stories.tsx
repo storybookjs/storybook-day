@@ -5,7 +5,7 @@ import { StoryStage } from '../../.storybook/StoryStage';
 import { TetrisBlock, TetrisBlockType } from './TetrisBlock';
 
 const meta: Meta<typeof TetrisBlock> = {
-  title: 'PuzzlePieces/TetrisBlock',
+  title: 'BlocksScene/TetrisBlock',
   parameters: {
     layout: 'fullscreen'
   },

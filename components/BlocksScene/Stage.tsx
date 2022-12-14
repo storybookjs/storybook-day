@@ -7,8 +7,6 @@ import { PerformanceMonitor } from '@react-three/drei';
 const { breakpoints, pageMargins } = styles;
 
 const Container = styled.div`
-  /* ${pageMargins}; */
-
   && {
     margin-top: -2rem;
   }

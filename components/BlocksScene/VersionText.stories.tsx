@@ -4,7 +4,7 @@ import { StoryStage } from '../../.storybook/StoryStage';
 import { VersionText } from './VersionText';
 
 const meta: Meta<typeof VersionText> = {
-  title: 'PuzzlePieces/VersionText',
+  title: 'BlocksScene/VersionText',
   parameters: {
     layout: 'fullscreen'
   },
