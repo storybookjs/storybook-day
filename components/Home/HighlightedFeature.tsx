@@ -57,6 +57,7 @@ const TextWrapper = styled.div`
   @media (min-width: ${breakpoints[2]}px) {
     flex: 1 1 40%;
     max-width: 360px;
+    padding-right: 40px;
     margin: 0;
   }
 `;

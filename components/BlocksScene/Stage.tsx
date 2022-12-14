@@ -9,9 +9,6 @@ const { breakpoints, pageMargins } = styles;
 const Container = styled.div`
   /* ${pageMargins}; */
 
-  && {
-    margin-top: -2rem;
-  }
   position: relative;
   background: transparent;
 

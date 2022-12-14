@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof VideoCard>;
 
 export const Default: Story = {
-  name: 'VideoCard',
+  name: 'Default',
   args: {
     bgColor: '#191B24',
     src: '/day/features/videos/nextjs-framework-sm.mp4'
@@ -18,7 +18,7 @@ export const Default: Story = {
 };
 
 export const Another: Story = {
-  name: 'VideoCard',
+  name: 'Alt',
   args: {
     bgColor: '#E4F3FF',
     src: '/day/features/videos/perf-sm.mp4'

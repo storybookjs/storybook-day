@@ -10,13 +10,21 @@ const { marketing, breakpoints, pageMargins } = styles;
 
 const Container = styled.div`
   ${pageMargins};
-  padding-top: 7rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+
+  > * {
+    flex: 1;
+  }
 
   @media (min-width: ${breakpoints[2]}px) {
-    grid-template-columns: 1fr minmax(auto, 480px);
+    flex-direction: row;
+    gap: 80px;
+    padding-top: 6rem;
   }
 `;
 
@@ -46,27 +54,25 @@ const Title = styled.h1`
   flex: 1;
   min-width: 0;
 
-  @media (min-width: ${breakpoints[0]}px) {
-    ${marketing.hero1};
-  }
-
   @media (min-width: ${breakpoints[2]}px) {
+    ${marketing.hero1};
     margin-bottom: 1rem;
   }
 `;
 
 const Copy = styled.div`
-  ${marketing.textSmall};
-  line-height: 24px;
+  ${marketing.textLarge};
   margin-bottom: 1.5rem;
 
-  @media (min-width: ${breakpoints[0]}px) {
-    ${marketing.textLarge};
+  @media (min-width: ${breakpoints[2]}px) {
+    margin-top: 0.5rem;
   }
 `;
 
 const Register = styled(RegistrationForm)`
-  margin-bottom: 1.25rem;
+  @media (min-width: ${breakpoints[2]}px) {
+    margin-bottom: 1.25rem;
+  }
 `;
 
 const InfoWrapper = styled.div`
@@ -88,7 +94,7 @@ const MetaWrapper = styled.div`
 
   @media (min-width: 770px) {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   @media (min-width: ${breakpoints[2]}px) {
@@ -127,6 +133,14 @@ const ByChromaticDesktop = styled(ByChromatic)`
     display: flex;
   }
 `;
+
+const FreeStickersDesktop = styled(FreeStickers)`
+  display: none;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    display: inline;
+  }
+`;
 const ByChromaticMobile = styled(ByChromatic)`
   display: flex;
 
@@ -157,7 +171,7 @@ export const Hero = () => (
         community.
       </Copy>
       <Register />
-      <FreeStickers />
+      <FreeStickersDesktop />
     </div>
     <ByChromaticMobile />
   </Container>

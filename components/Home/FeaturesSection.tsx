@@ -81,10 +81,10 @@ export const FeaturesSection = () => (
           <VideoCard
             src={withPrefix('/features/videos/perf-sm.mp4')}
             poster={withPrefix('/features/videos/perf.png')}
-            bgColor="#E3F3FF"
+            bgColor="#E3F1FE"
           />
         }
-        bgColor="#E3F3FF"
+        bgColor="#E3F1FE"
       />
       <Feature
         title="Docs revamp"
@@ -93,10 +93,10 @@ export const FeaturesSection = () => (
           <VideoCard
             src={withPrefix('/features/videos/docs-sm.mp4')}
             poster={withPrefix('/features/videos/docs.png')}
-            bgColor="#C3EDAF"
+            bgColor="#BCECA7"
           />
         }
-        bgColor="#C3EDAF"
+        bgColor="#BCECA7"
       />
       <Feature
         title="Interaction testing"
@@ -105,10 +105,10 @@ export const FeaturesSection = () => (
           <VideoCard
             src={withPrefix('/features/videos/interaction-testing-sm.mp4')}
             poster={withPrefix('/features/videos/interaction-testing.png')}
-            bgColor="#FDDE9C"
+            bgColor="#F7DA9A"
           />
         }
-        bgColor="#FDDE9C"
+        bgColor="#F7DA9A"
       />
       <Feature
         title="Test runner"
@@ -117,7 +117,7 @@ export const FeaturesSection = () => (
           <VideoCard
             src={withPrefix('/features/videos/test-coverage-sm.mp4')}
             poster={withPrefix('/features/videos/test-coverage.png')}
-            bgColor="#EDD9FF"
+            bgColor="#E7D5FC"
           />
         }
         bgColor="#EDD9FF"
@@ -147,7 +147,7 @@ export const FeaturesSection = () => (
           <VideoCard
             src={withPrefix('/features/videos/vite-sm.mp4')}
             poster={withPrefix('/features/videos/vite.png')}
-            bgColor="#FEDED2"
+            bgColor="#FDDE9C"
           />
         }
         bgColor="#FEDED2"
@@ -167,10 +167,10 @@ export const FeaturesSection = () => (
           <VideoCard
             src={withPrefix('/features/videos/figma-sm.mp4')}
             poster={withPrefix('/features/videos/figma.png')}
-            bgColor="#EEEEEE"
+            bgColor="#EFEEEF"
           />
         }
-        bgColor="#EEEEEE"
+        bgColor="#EFEEEF"
         icon={withPrefix('/features/figma-icon.svg')}
       />
       <Feature
