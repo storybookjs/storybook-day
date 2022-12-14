@@ -69,6 +69,8 @@ function CTA({
       </Button>
     );
   }
+
+  return null;
 }
 
 export function ConfContent({
@@ -96,7 +98,7 @@ export function ConfContent({
         navCTA={
           <CTA
             username={userData.username}
-            registered={userData.ticketNumber}
+            registered={!!userData.ticketNumber}
             sharePage={sharePage}
           />
         }
