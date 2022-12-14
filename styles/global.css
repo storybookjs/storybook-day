@@ -25,3 +25,10 @@
   height: auto;
   clip: auto;
 }
+
+input {
+  font-size: 16px !important;
+}
+input::placeholder {
+  font-size: 14px !important;
+}

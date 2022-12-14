@@ -13,7 +13,11 @@ const { text, color, pageMargins, breakpoints } = styles;
 
 const Wrapper = styled.div`
   ${pageMargins};
-  padding-bottom: 4rem;
+  padding-top: 4rem;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media (min-width: ${breakpoints[2]}px) {
     padding-bottom: 0;
@@ -41,12 +45,10 @@ const Shipping = styled.div`
 `;
 
 const Attribution = styled(ByChromatic)`
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 1.5rem;
-  display: none;
+  margin-top: 4rem;
+  /* margin-bottom: 4rem; */
+  margin-bottom: 2rem;
+  justify-content: center;
 
   @media (min-width: ${breakpoints[2]}px) {
     display: flex;
@@ -165,8 +167,8 @@ export const Stickers = ({ username }: { username: string }) => {
             <Shipping>We ship a batch of stickers every month.</Shipping>
           </>
         )}
-        <Attribution />
       </Container>
+      <Attribution />
     </Wrapper>
   );
 };

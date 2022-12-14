@@ -3,6 +3,7 @@ import { rest } from 'msw';
 import { userEvent, within, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { RegistrationForm } from './RegistrationForm';
+import { withPrefix } from '@lib/with-prefix';
 
 const meta: Meta<typeof RegistrationForm> = {
   title: 'Components/RegistrationForm',
@@ -21,7 +22,7 @@ export const Success: Story = {
   parameters: {
     msw: {
       handlers: [
-        rest.post('/api/register', (req, res, ctx) => {
+        rest.post(withPrefix('/api/register'), (req, res, ctx) => {
           return res(
             ctx.json({
               id: '746b488c059239a5de404bc598b6864d2a301e2d',
@@ -53,7 +54,7 @@ export const Error: Story = {
   parameters: {
     msw: {
       handlers: [
-        rest.post('/api/register', (req, res, ctx) => {
+        rest.post(withPrefix('/api/register'), (req, res, ctx) => {
           return res(
             ctx.status(400),
             ctx.json({
