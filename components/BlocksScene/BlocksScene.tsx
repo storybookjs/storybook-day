@@ -14,7 +14,7 @@ interface Sphere {
 }
 const colors = ['#FC521F', '#CA90FF', '#1EA7FD', '#FFAE00', '#37D5D3', '#FC521F', '#66BF3C'];
 const size = 5.5;
-const scale = [size * 4, size, size];
+const scale = [size * 6, size, size];
 
 // Generate a blocks using sphere packing algorithm
 const blocks = pack({
@@ -33,7 +33,7 @@ const blocks = pack({
       // shift the blocks to avoid overlapping with 7.0
       inFront ? sphere.position[2] + 0.6 : sphere.position[2] - 0.6
     ].map((v: number, idx) => v * scale[idx]), // scale position to world space
-    size: sphere.radius * size, // scale radius to world space
+    size: sphere.radius * size * 1.5, // scale radius to world space
     color: Random.pick(colors),
     type: Random.pick(blockTypes),
     rotation: new THREE.Quaternion(...Random.quaternion())
@@ -52,6 +52,7 @@ export const BlocksScene = () => {
                 key={block.id}
                 position={block.position}
                 quaternion={block.rotation}
+                scale={block.size}
                 speed={1}
                 rotationIntensity={2}
                 floatIntensity={2}

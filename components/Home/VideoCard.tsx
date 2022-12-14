@@ -27,6 +27,7 @@ interface VideoCardProps {
   src: string;
   bgColor: string;
   poster?: string;
+  style?: React.CSSProperties;
 }
 
 export const VideoCard = ({ bgColor, src, poster, ...props }: VideoCardProps) => {

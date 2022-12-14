@@ -1,9 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
 import { Button } from '@storybook/design-system';
-import { styles } from '@storybook/components-marketing';
 import { ByChromatic } from '@components/ByChromatic';
-import { RegistrationForm } from '@components/RegistrationForm';
 import { LinkWrapper } from '@components/LinkWrapper';
 import {
   TWITTER_URL,
@@ -24,16 +22,8 @@ import {
   FooterText
 } from './Footer.styles';
 
-const { breakpoints } = styles;
-
 const Attribution = styled(ByChromatic)`
   margin-top: 24px;
-`;
-
-const FooterRegistrationForm = styled(RegistrationForm)`
-  @media (min-width: ${breakpoints[1]}px) {
-    max-width: 360px;
-  }
 `;
 
 export const Footer = ({ showRegistrationForm = true }: { showRegistrationForm?: boolean }) => {

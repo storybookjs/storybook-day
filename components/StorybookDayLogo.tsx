@@ -1,6 +1,4 @@
-import { FC } from 'react';
-
-export const StorybookDayLogo: FC = props => (
+export const StorybookDayLogo = (props: any) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="156"

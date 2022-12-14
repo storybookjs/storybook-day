@@ -63,7 +63,7 @@ export const FeaturesSection = () => (
     <Title>Find out what’s new</Title>
     <FeaturesGrid>
       <HighlightedFeature
-        background={`url(${withPrefix('/gradient-backdrop.svg')})`}
+        background={`center / cover no-repeat url(${withPrefix('/gradient-backdrop.svg')})`}
         title="Design refresh"
         description="7.0 streamlines Storybook’s developer experience to speed you up: edge-to-edge layout, redrawn icons, refined forms, faster start & build performance."
         image={<StorybookUiImage />}
@@ -157,7 +157,7 @@ export const FeaturesSection = () => (
         title="TypeScript just works"
         description="TypeScript works with Storybook. 7.0 expands type safety with new types and features powered by Typescript 4.9."
         media={<img src={withPrefix('/features/typescript.svg')} />}
-        bgColor="#FEDED2"
+        bgColor="#E3F3FF"
         icon={withPrefix('/features/typescript-icon.svg')}
       />
       <Feature
@@ -181,6 +181,7 @@ export const FeaturesSection = () => (
             src={withPrefix('/features/videos/nextjs-framework-sm.mp4')}
             poster={withPrefix('/features/videos/nextjs-framework.png')}
             bgColor="#232A35"
+            style={{ transform: 'scale(1.25)' }}
           />
         }
         bgColor="#232A35"
