@@ -114,13 +114,7 @@ export const Ticket = ({ username, name, ticketNumber, sharePage }: TicketProps)
               <>
                 <Title>{name ? <>{name}’s Ticket</> : <>{SITE_NAME}</>}</Title>
                 <Subtitle>
-                  {sharePage ? (
-                    <>
-                      Join {name ?? 'them'} on {DATE} for Storybook Day.
-                    </>
-                  ) : (
-                    <>Customize the ticket with your GitHub profile</>
-                  )}
+                  Join {name ?? 'them'} on {DATE} for Storybook Day.
                 </Subtitle>
               </>
             ) : (
@@ -128,9 +122,9 @@ export const Ticket = ({ username, name, ticketNumber, sharePage }: TicketProps)
                 <Title>{username ? <>Your custom ticket</> : <>You’re in!</>}</Title>
                 <Subtitle>
                   {username ? (
-                    <>Customize the ticket with your GitHub profile</>
-                  ) : (
                     <>Share your ticket to invite others to join you.</>
+                  ) : (
+                    <>Customize the ticket with your GitHub profile</>
                   )}
                 </Subtitle>
               </>

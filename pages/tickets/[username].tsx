@@ -44,13 +44,13 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
     ? {
         title: `${name}’s ${SITE_NAME} Ticket`,
         description: META_DESCRIPTION,
-        image: withPrefix(`/api/ticket-images/${username}`),
+        image: `/api/ticket-images/${username}`,
         url: `${SITE_URL}/tickets/${username}`
       }
     : {
         title: `${SITE_NAME}`,
         description: META_DESCRIPTION,
-        image: withPrefix(`/api/ticket-images/${usernameFromParams}`),
+        image: `/api/ticket-images/${usernameFromParams}`,
         url: `${SITE_URL}/tickets/${usernameFromParams}`
       };
 

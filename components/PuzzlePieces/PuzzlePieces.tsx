@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import pack from 'pack-spheres';
-import { Float, ContactShadows, Stats, Merged } from '@react-three/drei';
+import { Float, ContactShadows } from '@react-three/drei';
 import * as Random from 'canvas-sketch-util/random';
 import { EffectComposer, SSAO, DepthOfField, SMAA, Bloom } from '@react-three/postprocessing';
 import { Block, blockTypes } from './Block';
@@ -44,7 +44,6 @@ const blocks = pack({
 export const PuzzlePieces = () => {
   return (
     <Stage>
-      <Stats />
       <Suspense fallback={null}>
         <group position={[0, 0.5, 0]}>
           <VersionText />

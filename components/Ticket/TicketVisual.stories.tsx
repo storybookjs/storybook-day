@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TicketVisual } from './TicketVisual';
 
 const meta: Meta<typeof TicketVisual> = {
-  title: 'Pages/TicketPage/TicketVisual',
+  title: 'Pages/Ticket/TicketVisual',
   component: TicketVisual,
   parameters: {
     layout: 'centered',

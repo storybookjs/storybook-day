@@ -34,7 +34,11 @@ export const SHORT_TIME = '10am - 12pm';
 export const TIMEZONE = 'Pacific Standard Time';
 export const SHORT_TIMEZONE = 'Pacific Time';
 export const FULL_DATE = 'March 1st 10am Pacific Time (GMT-8)';
-export const TWEET_TEXT = META_DESCRIPTION;
+export const TWEET_TEXT = `I'm excited to attend Storybook Day on ${DATE}.
+Can't wait to see what's in store for Storybook 7.0.
+
+Let's celebrate all things Storybook together!
+Register here 👉`;
 export const COOKIE = 'user-id';
 
 // Remove process.env.NEXT_PUBLIC_... below and replace them with
