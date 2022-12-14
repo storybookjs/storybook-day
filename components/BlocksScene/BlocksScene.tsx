@@ -41,7 +41,7 @@ const blocks = pack({
   };
 });
 
-export const PuzzlePieces = () => {
+export const BlocksScene = () => {
   return (
     <Stage>
       <Suspense fallback={null}>
@@ -75,7 +75,7 @@ export const PuzzlePieces = () => {
           />
           <EffectComposer multisampling={0}>
             <DepthOfField focusDistance={0.5} bokehScale={7} focalLength={0.2} />
-            <SSAO
+            {/* <SSAO
               samples={25}
               intensity={40}
               luminanceInfluence={0.5}
@@ -83,7 +83,7 @@ export const PuzzlePieces = () => {
               scale={0.5}
               bias={0.5}
             />
-            <SMAA edgeDetectionMode={EdgeDetectionMode.DEPTH} />
+            <SMAA edgeDetectionMode={EdgeDetectionMode.DEPTH} /> */}
           </EffectComposer>
         </group>
       </Suspense>

@@ -1,5 +1,5 @@
 import { styled } from '@storybook/theming';
-import { PuzzlePieces } from '@components/PuzzlePieces';
+import { BlocksScene } from '@components/BlocksScene';
 import { Hero } from './Hero';
 import { FeaturesSection } from './FeaturesSection';
 
@@ -15,7 +15,7 @@ export const HomePage = ({ disable3D = false }: { disable3D?: boolean }) => (
   <>
     <SolidBackdrop>
       <Hero />
-      {!disable3D && <PuzzlePieces />}
+      {!disable3D && <BlocksScene />}
     </SolidBackdrop>
     <GradientBackdrop>
       <FeaturesSection />

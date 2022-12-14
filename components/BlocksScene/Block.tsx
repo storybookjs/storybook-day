@@ -3,7 +3,7 @@ import {
   TetrisBlock,
   tetrisBlockTypes,
   TetrisBlockType
-} from '@components/PuzzlePieces/TetrisBlock';
+} from '@components/BlocksScene/TetrisBlock';
 
 const OTHER_TYPES = {
   sphere: { shape: Sphere, args: [0.5, 32, 32] },

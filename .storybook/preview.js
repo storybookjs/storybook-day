@@ -31,7 +31,11 @@ export const parameters = {
       },
       {
         name: 'blueGradient',
-        value: 'linear-gradient(180deg, white 0%, #d9e6f2 100%);'
+        value: 'linear-gradient(180deg, white 0%, var(--bg-blue) 100%);'
+      },
+      {
+        name: 'blue',
+        value: 'var(--bg-blue)'
       }
     ]
   },
