@@ -33,6 +33,7 @@
     "@storybook/theming": "^7.0.0-alpha.61",
     "@supabase/supabase-js": "^1.35.4",
     "@types/three": "^0.146.0",
+    "@vercel/og": "^0.0.21",
     "canvas-sketch-util": "^1.10.0",
     "chrome-aws-lambda": "10.1.0",
     "classnames": "2.2.6",
