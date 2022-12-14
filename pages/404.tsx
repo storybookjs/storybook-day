@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import type { GetStaticProps, NextPage } from 'next';
 import { NotFoundScreen } from '@storybook/components-marketing';
+import { Button } from '@storybook/design-system';
 import { styled } from '@storybook/theming';
+import { LinkWrapper } from '@components/LinkWrapper';
 import Page from '@components/page';
 import { Layout } from '@components/Layout';
 import { META_DESCRIPTION } from '@lib/constants';
@@ -22,10 +24,24 @@ const NotFound: NextPage<Props> = ({ latestVersion }) => {
         <title>Component Encyclopedia | Storybook</title>
         <meta name="robots" content="noindex" />
       </Head>
-      <Layout hideNavCTA showFooter hideFooterRegistration>
+      <Layout
+        navCTA={
+          <Button
+            size="small"
+            appearance="secondary"
+            isLink
+            ButtonWrapper={LinkWrapper}
+            href="/#register"
+          >
+            Get your free ticket
+          </Button>
+        }
+        showFooter
+        hideFooterRegistration
+      >
         <GradientBackdrop>
           <NotFoundScreen
-            apiKey={process.env.ALGOLIA_API_KEY as string}
+            apiKey={process.env.NEXT_ALGOLIA_API_KEY as string}
             includeSpacing={false}
             latestVersionString={latestVersion}
             repoUrl="https://github.com/storybookjs/storybook/issues"
