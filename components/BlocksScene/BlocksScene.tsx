@@ -64,7 +64,8 @@ export const BlocksScene = () => {
           <ContactShadows
             position={[0, -8, 0]}
             opacity={0.75}
-            scale={20}
+            width={20}
+            height={10}
             blur={1}
             far={9}
             color="#333"
