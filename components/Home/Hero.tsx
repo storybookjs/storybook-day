@@ -70,9 +70,7 @@ const Copy = styled.div`
 `;
 
 const Register = styled(RegistrationForm)`
-  @media (min-width: ${breakpoints[2]}px) {
-    margin-bottom: 1.25rem;
-  }
+  margin-bottom: 1.25rem;
 `;
 
 const InfoWrapper = styled.div`
