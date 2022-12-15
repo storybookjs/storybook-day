@@ -32,7 +32,7 @@ export const Default: Story = {
     title: 'Performance overhaul',
     description:
       'Lorem ipsum dolor sit amet consectatur vestibulum aret sit click, hover, and type inside your story file. Powered by Jest and Testing.',
-    image: <CSF src="/csf-example.png" />,
+    image: <CSF src="/features/csf-example.png" />,
     background: '#E3F3FF'
   }
 };
@@ -47,7 +47,7 @@ export const WideImage: Story = {
     title: 'Design refresh',
     description:
       'Simulate user behavior like click, hover, and type inside your story file. Powered by Jest and Testing Library',
-    image: <StorybookUI src="/sb-ui.png" />,
+    image: <StorybookUI src="/features/7.0-design-mock.png" />,
     background: '#FEF59F'
   }
 };
