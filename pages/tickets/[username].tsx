@@ -40,9 +40,11 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
     return <Error statusCode={404} />;
   }
 
+  const firstName = name?.split(' ')[0] || name;
+
   const meta = username
     ? {
-        title: `${name}’s ${SITE_NAME} Ticket`,
+        title: `${firstName}’s  ticket to ${SITE_NAME}`,
         description: META_DESCRIPTION,
         image: `/api/ticket-images/${username}`,
         url: `${SITE_URL}/tickets/${username}`

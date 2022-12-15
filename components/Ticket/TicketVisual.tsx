@@ -139,6 +139,10 @@ const Site = styled.span`
 const Attribution = styled(ByChromatic)`
   width: 100%;
   justify-content: center;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    justify-content: flex-start;
+  }
 `;
 
 interface TicketVisualProps {

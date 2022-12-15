@@ -3,6 +3,7 @@ import { styles } from '@storybook/components-marketing';
 import { Avatar, Cardinal, Icon, animation } from '@storybook/design-system';
 import { SHORT_TIME, SHORT_TIMEZONE, SHORT_DATE } from '@lib/constants';
 import { withPrefix } from '@lib/with-prefix';
+import { VersionIcon } from './VersionIcon';
 
 const { typography, color, spacing, breakpoints } = styles;
 
@@ -145,7 +146,7 @@ export const TicketProfile = ({ name, username, loading, ticketNumber }: TicketP
           isLoading={loading}
         />
       ) : (
-        <Version src={withPrefix('/7-0.svg')} alt={'7.0'} />
+        <VersionIcon />
       )}
       <div>
         <Name loading={loading}>{name || username || 'Launch event'}</Name>

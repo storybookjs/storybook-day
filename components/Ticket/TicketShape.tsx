@@ -4,12 +4,23 @@ import { FC } from 'react';
 
 const { breakpoints } = styles;
 
+const Wrapper = styled.div`
+  position: relative;
+`;
+
 const SVG = styled.svg<{ visibility: 'desktop' | 'mobile' }>`
   display: block;
-  filter: drop-shadow(0px 52.2449px 39.1837px rgba(0, 0, 0, 0.05))
-    drop-shadow(0px 130.612px 104.49px rgba(0, 0, 0, 0.05))
-    drop-shadow(0px 13.0612px 26.1224px rgba(0, 0, 0, 0.1))
-    drop-shadow(0px 1.30612px 3.91837px rgba(0, 0, 0, 0.1));
+
+  /* This filter causes the SVG to disappear on iOS Safari,
+  so only show it elsewhere */
+  filter: drop-shadow(0px 130.612px 104.49px rgba(0, 0, 0, 0.1));
+
+  @supports not (-webkit-touch-callout: none) {
+    filter: drop-shadow(0px 52.2449px 39.1837px rgba(0, 0, 0, 0.05))
+      drop-shadow(0px 130.612px 104.49px rgba(0, 0, 0, 0.05))
+      drop-shadow(0px 13.0612px 26.1224px rgba(0, 0, 0, 0.1))
+      drop-shadow(0px 1.30612px 3.91837px rgba(0, 0, 0, 0.1));
+  }
 
   ${props =>
     props.visibility === 'desktop'
@@ -26,7 +37,7 @@ const SVG = styled.svg<{ visibility: 'desktop' | 'mobile' }>`
           @media (min-width: ${breakpoints[1]}px) {
             display: none;
           }
-        `}
+        `};
 `;
 
 const TicketHorizontal: FC = props => (
@@ -86,6 +97,13 @@ const TicketVertical: FC = props => (
     {...props}
   >
     <defs>
+      <clipPath id="svgPath">
+        <path
+          d="M20 1h126.707c4.118 11.652 15.231 20 28.293 20s24.175-8.348 28.293-20H330c11.046 0 20 8.954 20 20v454c0 11.046-8.954 20-20 20H203.627c-3.823-12.171-15.194-21-28.627-21-13.433 0-24.804 8.829-28.627 21H20c-11.046 0-20-8.954-20-20V21C0 9.954 8.954 1 20 1z"
+          opacity="0.95"
+          stroke="#000000"
+        ></path>
+      </clipPath>
       <linearGradient
         id="ticket-hologram-gradient-vertical"
         x1="105"
@@ -116,9 +134,9 @@ const TicketVertical: FC = props => (
 
 export const TicketShape = () => {
   return (
-    <>
+    <Wrapper>
       <TicketVertical />
       <TicketHorizontal />
-    </>
+    </Wrapper>
   );
 };

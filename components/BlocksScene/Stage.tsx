@@ -2,13 +2,25 @@ import { FC, useState } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { Canvas } from '@react-three/fiber';
-import { PerformanceMonitor } from '@react-three/drei';
 
 const { breakpoints } = styles;
 
 const Container = styled.div`
   position: relative;
   background: transparent;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  opacity: 0;
+  touch-action: none;
+  animation: fade-in 2.5s ease 0.5s forwards;
 
   height: calc(40vh);
 

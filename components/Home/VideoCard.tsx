@@ -14,6 +14,7 @@ const BackdropVideo = styled.video`
   position: absolute;
   top: 0;
   width: 100%;
+  height: 100%;
   transform: scale(1.25);
   filter: blur(10px);
   user-select: none;
@@ -33,8 +34,12 @@ interface VideoCardProps {
 export const VideoCard = ({ bgColor, src, poster, ...props }: VideoCardProps) => {
   return (
     <MediaWrapper bgColor={bgColor} {...props}>
-      <BackdropVideo src={src} playsInline />
-      <Video src={src} autoPlay loop playsInline muted poster={poster} />
+      <BackdropVideo className="js-lazy-video" autoPlay loop playsInline muted>
+        <source data-src={src} type="video/mp4" />
+      </BackdropVideo>
+      <Video className="js-lazy-video" autoPlay loop playsInline muted poster={poster}>
+        <source data-src={src} type="video/mp4" />
+      </Video>
     </MediaWrapper>
   );
 };
