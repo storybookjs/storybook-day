@@ -66,6 +66,7 @@ const NavLinks = styled.div`
 
 const Spacer = styled.div`
   min-width: 164px;
+  text-align: right;
 `;
 
 // Workaround for TS 2590 error
