@@ -287,7 +287,7 @@ export const TicketOGImage = ({ name, username, ticketNumber }: TicketOGImagePro
         justifyContent: 'center',
         width: '100%',
         height: '100%',
-        backgroundImage: `url(${'${SITE_URL}gradient-backdrop.svg'})`,
+        backgroundImage: `url('${SITE_URL}/gradient-backdrop.svg')`,
         backgroundSize: '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
