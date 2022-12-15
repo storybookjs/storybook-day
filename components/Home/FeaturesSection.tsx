@@ -157,7 +157,7 @@ export const FeaturesSection = () => {
               bgColor="#FDDE9C"
             />
           }
-          bgColor="#FEDED2"
+          bgColor="#FDDE9C"
           icon={withPrefix('/features/vite-icon.svg')}
         />
         <Feature
