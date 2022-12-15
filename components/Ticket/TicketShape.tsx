@@ -8,13 +8,41 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
+const Shadow = styled.div`
+  position: absolute;
+  inset: 0;
+  inset: 40px 20px;
+  z-index: -1;
+  border-radius: 7px;
+
+  box-shadow: 0px 52.2449px 39.1837px rgba(7, 6, 6, 0.05),
+    0px -52.2449px 39.1837px rgba(7, 6, 6, 0.05), 0px 130.612px 104.49px rgba(0, 0, 0, 0.05),
+    0px -130.612px 104.49px rgba(0, 0, 0, 0.05), 0px 13.0612px 26.1224px rgba(0, 0, 0, 0.1),
+    0px -13.0612px 26.1224px rgba(0, 0, 0, 0.1), 0px 1.30612px 3.91837px rgba(0, 0, 0, 0.1),
+    0px -1.30612px 3.91837px rgba(0, 0, 0, 0.1);
+
+  @media (min-width: ${breakpoints[1]}px) {
+    inset: 20px 40px;
+
+    box-shadow: 0px 52.2449px 39.1837px rgba(7, 6, 6, 0.05),
+      0px -52.2449px 39.1837px rgba(7, 6, 6, 0.05), 0px 130.612px 104.49px rgba(0, 0, 0, 0.05),
+      0px -130.612px 104.49px rgba(0, 0, 0, 0.05), 0px 13.0612px 26.1224px rgba(0, 0, 0, 0.1),
+      0px -13.0612px 26.1224px rgba(0, 0, 0, 0.1), 0px 1.30612px 3.91837px rgba(0, 0, 0, 0.1),
+      0px -1.30612px 3.91837px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Use this as the fallback shadow on iOS Safari */
+  display: none;
+  @supports (-webkit-touch-callout: none) {
+    display: block;
+  }
+`;
+
 const SVG = styled.svg<{ visibility: 'desktop' | 'mobile' }>`
   display: block;
 
   /* This filter causes the SVG to disappear on iOS Safari,
   so only show it elsewhere */
-  filter: drop-shadow(0px 130.612px 104.49px rgba(0, 0, 0, 0.1));
-
   @supports not (-webkit-touch-callout: none) {
     filter: drop-shadow(0px 52.2449px 39.1837px rgba(0, 0, 0, 0.05))
       drop-shadow(0px 130.612px 104.49px rgba(0, 0, 0, 0.05))
@@ -135,6 +163,7 @@ const TicketVertical: FC = props => (
 export const TicketShape = () => {
   return (
     <Wrapper>
+      <Shadow />
       <TicketVertical />
       <TicketHorizontal />
     </Wrapper>

@@ -131,7 +131,7 @@ export const RegistrationForm = ({
     <Container
       whileInView={disableAnimation ? {} : { x: [0, -6, 5, -3, 2, 0] }}
       transition={{ delay: 0.25, duration: 0.5, ease: 'easeInOut' }}
-      viewport={{ margin: '0px 0px -75% 0px', amount: 'all' }}
+      viewport={{ margin: '0px 0px -75% 0px', amount: 'all', once: true }}
       {...props}
     >
       <FormUI
