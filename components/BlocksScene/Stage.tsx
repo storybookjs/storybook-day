@@ -4,14 +4,9 @@ import { styles } from '@storybook/components-marketing';
 import { Canvas } from '@react-three/fiber';
 import { PerformanceMonitor } from '@react-three/drei';
 
-const { breakpoints, pageMargins } = styles;
+const { breakpoints } = styles;
 
 const Container = styled.div`
-  ${pageMargins};
-
-  && {
-    margin-top: -4rem;
-  }
   position: relative;
   background: transparent;
 
@@ -31,24 +26,19 @@ const Container = styled.div`
 `;
 
 export const Stage: FC = ({ children }) => {
-  const [dpr, setDpr] = useState(typeof window === 'undefined' ? 1 : window.devicePixelRatio);
-
   return (
-    <Container>
+    <Container aria-label="Storybook 7.0" role="img">
       <Canvas
         shadows
-        performance={{ min: 0.1 }}
-        dpr={dpr}
+        dpr={typeof window === 'undefined' ? 1 : window.devicePixelRatio}
         gl={{
           powerPreference: 'high-performance',
           antialias: false,
           stencil: false,
-          depth: false,
-          alpha: false
+          depth: false
         }}
         camera={{ position: [0, 0, 30], near: 0.1, far: 60, fov: 45 }}
       >
-        <PerformanceMonitor flipflops={3} onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} />
         <color attach="background" args={['#E3F3FF']} />
         {/* lights */}
         <ambientLight intensity={0.5} />

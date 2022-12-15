@@ -3,12 +3,14 @@ import { rest } from 'msw';
 import { userEvent, within, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { Stickers } from './Stickers';
+import { withPrefix } from '@lib/with-prefix';
 
 const meta: Meta<typeof Stickers> = {
   title: 'Pages/Stickers/Stickers',
   component: Stickers,
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    backgrounds: { default: 'gradient' }
   }
 };
 
@@ -41,7 +43,7 @@ export const Loading: Story = {
   parameters: {
     msw: {
       handlers: [
-        rest.post('/api/save-shipping-info', (req, res, ctx) => {
+        rest.post(withPrefix('/api/save-shipping-info'), (req, res, ctx) => {
           return res(ctx.delay(1000 * 60 * 60 * 60), ctx.json('Request was received'));
         })
       ]
@@ -60,7 +62,7 @@ export const Success: Story = {
   parameters: {
     msw: {
       handlers: [
-        rest.post('/api/save-shipping-info', (req, res, ctx) => {
+        rest.post(withPrefix('/api/save-shipping-info'), (req, res, ctx) => {
           return res(ctx.json('Request was received'));
         })
       ]
@@ -81,7 +83,7 @@ export const Error: Story = {
   parameters: {
     msw: {
       handlers: [
-        rest.post('/api/save-shipping-info', (req, res, ctx) => {
+        rest.post(withPrefix('/api/save-shipping-info'), (req, res, ctx) => {
           return res(
             ctx.status(400),
             ctx.json({
@@ -107,7 +109,7 @@ export const UserNotFound: Story = {
   parameters: {
     msw: {
       handlers: [
-        rest.post('/api/save-shipping-info', (req, res, ctx) => {
+        rest.post(withPrefix('/api/save-shipping-info'), (req, res, ctx) => {
           return res(
             ctx.status(400),
             ctx.json({

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { CustomizationForm } from './CustomizationForm';
 
 const meta: Meta<typeof CustomizationForm> = {
-  title: 'Pages/TicketPage/CustomizationForm',
+  title: 'Pages/Ticket/CustomizationForm',
   component: CustomizationForm,
   parameters: {
     layout: 'centered',

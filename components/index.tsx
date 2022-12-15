@@ -16,9 +16,11 @@
 
 import { useState } from 'react';
 import { PageState, ConfDataContext, UserData } from '@lib/hooks/use-conf-data';
+import { Button } from '@storybook/design-system';
 import { Ticket } from './Ticket';
 import { Layout } from './Layout';
 import { HomePage } from './Home';
+import { LinkWrapper } from './LinkWrapper';
 
 type Props = {
   defaultUserData: UserData;
@@ -26,6 +28,50 @@ type Props = {
   defaultPageState?: PageState;
   showFooter?: boolean;
 };
+
+function CTA({
+  username,
+  registered,
+  sharePage
+}: {
+  username?: string;
+  registered?: boolean;
+  sharePage?: boolean;
+}) {
+  if (sharePage) {
+    return null;
+  }
+
+  if (username) {
+    return (
+      <Button
+        size="small"
+        appearance="inverseSecondary"
+        isLink
+        ButtonWrapper={LinkWrapper}
+        href={`/tickets/${username}`}
+      >
+        View your ticket
+      </Button>
+    );
+  }
+
+  if (!registered) {
+    return (
+      <Button
+        size="small"
+        appearance="secondary"
+        isLink
+        ButtonWrapper={LinkWrapper}
+        href="/#register"
+      >
+        Get your free ticket
+      </Button>
+    );
+  }
+
+  return null;
+}
 
 export function ConfContent({
   defaultUserData,
@@ -48,6 +94,13 @@ export function ConfContent({
       <Layout
         showFooter={showFooter ? showFooter : notRegistered ? true : false}
         layoutStyle={notRegistered ? 'default' : 'full'}
+        navCTA={
+          <CTA
+            username={userData.username}
+            registered={!!userData.ticketNumber}
+            sharePage={sharePage}
+          />
+        }
       >
         {notRegistered ? (
           <HomePage />

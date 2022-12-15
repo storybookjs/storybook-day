@@ -1,5 +1,5 @@
 import { styled } from '@storybook/theming';
-import { Logos, Button } from '@storybook/design-system';
+import { Logos } from '@storybook/design-system';
 import { styles, NavItem } from '@storybook/components-marketing';
 import { SkipNavLink as RSkipNavLink } from '@reach/skip-nav';
 import { SNEAK_PEEK_URL, DISCORD_URL, TWITTER_URL } from '@lib/constants';
@@ -64,15 +64,20 @@ const NavLinks = styled.div`
   }
 `;
 
+const Spacer = styled.div`
+  min-width: 164px;
+  text-align: right;
+`;
+
 // Workaround for TS 2590 error
 const SkipNavLink: any = RSkipNavLink;
 
 interface NavProps {
   transparent?: boolean;
-  hideCTA?: boolean;
+  CTA?: React.ReactNode;
 }
 
-export const Nav = ({ transparent, hideCTA }: NavProps) => {
+export const Nav = ({ transparent, CTA }: NavProps) => {
   return (
     <>
       <SkipNavLink />
@@ -93,11 +98,7 @@ export const Nav = ({ transparent, hideCTA }: NavProps) => {
               Twitter
             </NavItem>
           </NavLinks>
-          {!hideCTA && (
-            <Button size="small" appearance="secondary" isLink href="#register">
-              Get your free ticket
-            </Button>
-          )}
+          <Spacer>{CTA}</Spacer>
         </NavContainer>
       </Wrapper>
     </>

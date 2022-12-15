@@ -15,36 +15,50 @@
  */
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import screenshot from '@lib/screenshot';
-import { SITE_URL, SAMPLE_TICKET_NUMBER } from '@lib/constants';
+import { SAMPLE_TICKET_NUMBER } from '@lib/constants';
 import { getUserByUsername } from '@lib/db-api';
+import { ImageResponse } from '@vercel/og';
+import { TicketOGImage } from '@components/Ticket/TicketOGImage';
 
-export default async function ticketImages(req: NextApiRequest, res: NextApiResponse) {
-  let url: string;
-  let name: string | null | undefined;
-  let ticketNumber: number | null | undefined = SAMPLE_TICKET_NUMBER;
-  const { username } = req.query || {};
-  if (username) {
-    const usernameString = username.toString();
-    const user = await getUserByUsername(usernameString);
-    name = user.name;
-    ticketNumber = user.ticketNumber;
-    url = `${SITE_URL}/ticket-image?username=${encodeURIComponent(
-      usernameString
-    )}&ticketNumber=${encodeURIComponent(ticketNumber ?? SAMPLE_TICKET_NUMBER)}`;
-    if (name) {
-      url = `${url}&name=${encodeURIComponent(name)}`;
+export const config = {
+  runtime: 'experimental-edge'
+};
+
+export default function ticketImages(req: any, res: NextApiResponse) {
+  return new ImageResponse(
+    <TicketOGImage ticketNumber={2} username="winkerVSbecks" name="Varun Vachhar" />,
+    {
+      width: 1200 * 2,
+      height: 627 * 2
     }
+  );
 
-    const file = await screenshot(url);
-    res.setHeader('Content-Type', `image/png`);
-    res.setHeader(
-      'Cache-Control',
-      `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
-    );
-    res.statusCode = 200;
-    res.end(file);
-  } else {
-    res.status(404).send('Not Found');
-  }
+  // let name: string | null | undefined;
+  // let ticketNumber: number | null | undefined = SAMPLE_TICKET_NUMBER;
+
+  // // const url = new URL(req.nextUrl as string);
+  // const { username } = req.query || {};
+
+  // if (username) {
+  //   const usernameString = username.toString();
+  //   const user = await getUserByUsername(usernameString);
+  //   name = user.name;
+  //   ticketNumber = user.ticketNumber || SAMPLE_TICKET_NUMBER;
+
+  //   return new ImageResponse(
+  //     <TicketOGImage ticketNumber={ticketNumber} username={usernameString} name={name} />,
+  //     {
+  //       width: 1200 * 2,
+  //       height: 627 * 2,
+  //       headers: {
+  //         'Content-Type': `image/png`,
+  //         'Cache-Control': `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
+  //       }
+  //     }
+  //   );
+  // } else {
+  //   return new Response('Not Found', {
+  //     status: 404
+  //   });
+  // }
 }

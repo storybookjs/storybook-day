@@ -82,10 +82,11 @@ const Middle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 15px;
+  gap: 24px;
 
   @media (min-width: ${breakpoints[1]}px) {
     padding-left: 40px;
+    gap: 15px;
   }
 `;
 
@@ -135,6 +136,11 @@ const Site = styled.span`
   }
 `;
 
+const Attribution = styled(ByChromatic)`
+  width: 100%;
+  justify-content: center;
+`;
+
 interface TicketVisualProps {
   size?: number;
   name?: string;
@@ -172,7 +178,7 @@ export const TicketVisual = ({
             />
           </Middle>
           <Bottom>
-            <ByChromatic monochrome />
+            <Attribution monochrome />
             <Site>storybook.js.org/day</Site>
           </Bottom>
         </Content>

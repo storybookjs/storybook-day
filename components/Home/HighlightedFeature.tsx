@@ -10,15 +10,10 @@ const Container = styled.div<{ background: string }>`
   align-items: center;
   border-radius: 20px;
   background: ${({ background }) => background};
-  padding-top: 20px;
   overflow: hidden;
 
-  @media (min-width: ${breakpoints[0]}px) {
-    padding-top: 30px;
-  }
-
   @media (min-width: ${breakpoints[2]}px) {
-    min-height: 512px;
+    min-height: 520px;
     padding-top: 0;
     flex-direction: row;
     padding-left: 60px;
@@ -29,34 +24,25 @@ const Title = styled.h2`
   ${marketing.textLargeBold};
   margin-bottom: 4px;
 
-  @media (min-width: ${breakpoints[0]}px) {
+  @media (min-width: ${breakpoints[1]}px) {
     ${marketing.subheading};
   }
 `;
 
 const Description = styled.div`
-  ${marketing.textSmall};
-
-  @media (min-width: ${breakpoints[0]}px) {
-    ${marketing.textLarge};
-  }
+  ${marketing.textLarge};
 `;
 
 const TextWrapper = styled.div`
   color: ${color.darkest};
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-top: 3rem;
+  margin-left: 30px;
+  margin-right: 30px;
   margin-bottom: 20px;
-
-  @media (min-width: ${breakpoints[0]}px) {
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-bottom: 30px;
-  }
 
   @media (min-width: ${breakpoints[2]}px) {
     flex: 1 1 40%;
-    max-width: 360px;
+    padding-right: 30px;
     margin: 0;
   }
 `;

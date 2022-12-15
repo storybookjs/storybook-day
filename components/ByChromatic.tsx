@@ -14,7 +14,7 @@ const ChromaticLogo = styled(Logos.Chromatic, {
   shouldForwardProp: prop => prop !== 'monochrome'
 })<{ monochrome?: boolean }>`
   height: 20px;
-  margin-left: 10px;
+  margin-left: 6px;
 
   ${props =>
     props.monochrome &&
@@ -28,6 +28,7 @@ const ChromaticLogo = styled(Logos.Chromatic, {
 const Wrapper = styled.div<{ monochrome?: boolean }>`
   display: flex;
   align-items: center;
+
   ${props =>
     props.monochrome &&
     css`

@@ -27,11 +27,15 @@ export const parameters = {
       { name: 'dark', value: '#171C23' },
       {
         name: 'gradient',
-        value: "center / cover no-repeat url('gradient-backdrop.svg')"
+        value: "center / cover no-repeat url('/day/gradient-backdrop.svg')"
       },
       {
         name: 'blueGradient',
-        value: 'linear-gradient(180deg, white 0%, #d9e6f2 100%);'
+        value: 'linear-gradient(180deg, white 0%, var(--bg-blue) 100%);'
+      },
+      {
+        name: 'blue',
+        value: 'var(--bg-blue)'
       }
     ]
   },

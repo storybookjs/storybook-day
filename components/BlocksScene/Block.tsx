@@ -1,9 +1,6 @@
 import { Sphere, Cylinder, Torus, Cone, Box } from '@react-three/drei';
-import {
-  TetrisBlock,
-  tetrisBlockTypes,
-  TetrisBlockType
-} from '@components/PuzzlePieces/TetrisBlock';
+import { TetrisBlock, tetrisBlockTypes, TetrisBlockType } from './TetrisBlock';
+import { materials } from './store';
 
 const OTHER_TYPES = {
   sphere: { shape: Sphere, args: [0.5, 32, 32] },
@@ -35,11 +32,11 @@ export const Block = ({ type, color }: BlockProps) => {
     const Component = OTHER_TYPES[type as OtherBlockType].shape;
 
     return (
-      <group>
-        <Component args={OTHER_TYPES[type as OtherBlockType].args as any} castShadow>
-          <meshStandardMaterial color={color} />
-        </Component>
-      </group>
+      <Component
+        args={OTHER_TYPES[type as OtherBlockType].args as any}
+        material={materials[color]}
+        castShadow
+      />
     );
   }
 };

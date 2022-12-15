@@ -1,33 +1,14 @@
 import { forwardRef, useMemo } from 'react';
 import * as THREE from 'three';
 import { Extrude } from '@react-three/drei';
+import { materials } from './store';
 
-// export const SIDE = 10;
 export const SIDE = 0.75;
 export const EXTRUDE_SETTINGS = {
   steps: 2,
-  depth: SIDE,
+  depth: SIDE * 0.75,
   bevelEnabled: false
 };
-
-export type TetrisBlockType = keyof typeof TYPES;
-
-interface TetrisBlockProps {
-  type: TetrisBlockType;
-  color: string;
-}
-
-export const TetrisBlock = forwardRef<THREE.Mesh, TetrisBlockProps>(
-  ({ type, color, ...props }, ref) => {
-    const shape = useMemo(() => TYPES[type](), [type]);
-
-    return (
-      <Extrude args={[shape, EXTRUDE_SETTINGS]} ref={ref} {...props}>
-        <meshStandardMaterial color={color} />
-      </Extrude>
-    );
-  }
-);
 
 const TYPES = {
   I: () => {
@@ -91,4 +72,21 @@ const TYPES = {
     return _shape;
   }
 } as const;
+
+export type TetrisBlockType = keyof typeof TYPES;
+
+interface TetrisBlockProps {
+  type: TetrisBlockType;
+  color: string;
+}
+
+export const TetrisBlock = forwardRef<THREE.Mesh, TetrisBlockProps>(
+  ({ type, color, ...props }, ref) => {
+    const shape = useMemo(() => TYPES[type](), [type]);
+    return (
+      <Extrude args={[shape, EXTRUDE_SETTINGS]} ref={ref} {...props} material={materials[color]} />
+    );
+  }
+);
+
 export const tetrisBlockTypes = Object.keys(TYPES) as TetrisBlockType[];

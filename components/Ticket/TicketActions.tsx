@@ -1,13 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { styled } from '@storybook/theming';
+import { styles } from '@storybook/components-marketing';
 import { Button, Icon, Clipboard } from '@storybook/design-system';
 import { SITE_URL, TWEET_TEXT } from '@lib/constants';
 import { withPrefix } from '@lib/with-prefix';
+
+const { color } = styles;
 
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+`;
+
+const StyledButton = styled(Button)`
+  box-shadow: 0 2px 5px 0 ${color.border};
 `;
 
 interface TicketActionsProps {
@@ -44,11 +51,12 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
   return (
     <Wrapper>
       <Clipboard toCopy={copyUrl}>
-        <Button appearance="inverseSecondary" size="medium" ButtonWrapper="div">
-          <Icon icon="copy" /> Copy URL
-        </Button>
+        <StyledButton appearance="inverseSecondary" size="medium" ButtonWrapper="div">
+          <Icon icon="copy" />
+          Copy URL
+        </StyledButton>
       </Clipboard>
-      <Button
+      <StyledButton
         appearance="inverseSecondary"
         size="medium"
         isLink
@@ -56,9 +64,10 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
         target="_blank"
         href={tweetUrl}
       >
-        <Icon icon="twitter" /> Tweet
-      </Button>
-      <Button
+        <Icon icon="twitter" />
+        Tweet
+      </StyledButton>
+      <StyledButton
         appearance="inverseSecondary"
         size="medium"
         isLink
@@ -66,9 +75,10 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
         target="_blank"
         href={linkedInUrl}
       >
-        <Icon icon="linkedin" /> Share
-      </Button>
-      <Button
+        <Icon icon="linkedin" />
+        Share
+      </StyledButton>
+      <StyledButton
         appearance="inverseSecondary"
         size="medium"
         isLink
@@ -85,8 +95,9 @@ export const TicketActions = ({ username }: TicketActionsProps) => {
         }}
         download="ticket.png"
       >
-        <Icon icon="download" /> Download
-      </Button>
+        <Icon icon="download" />
+        Download
+      </StyledButton>
     </Wrapper>
   );
 };

@@ -1,8 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { styles } from '@storybook/components-marketing';
+import { Button } from '@storybook/design-system';
 import { ByChromatic } from '@components/ByChromatic';
-import { RegistrationForm } from '@components/RegistrationForm';
 import { LinkWrapper } from '@components/LinkWrapper';
 import {
   TWITTER_URL,
@@ -23,16 +22,8 @@ import {
   FooterText
 } from './Footer.styles';
 
-const { breakpoints } = styles;
-
 const Attribution = styled(ByChromatic)`
   margin-top: 24px;
-`;
-
-const FooterRegistrationForm = styled(RegistrationForm)`
-  @media (min-width: ${breakpoints[1]}px) {
-    max-width: 360px;
-  }
 `;
 
 export const Footer = ({ showRegistrationForm = true }: { showRegistrationForm?: boolean }) => {
@@ -42,8 +33,10 @@ export const Footer = ({ showRegistrationForm = true }: { showRegistrationForm?:
         <Register>
           {showRegistrationForm && (
             <>
-              <Title>Get your ticket</Title>
-              <FooterRegistrationForm disableAnimation />
+              <Title>Register</Title>
+              <Button appearance="secondary" isLink ButtonWrapper={LinkWrapper} href="#register">
+                Get your free ticket
+              </Button>
             </>
           )}
           <Attribution />
@@ -54,10 +47,18 @@ export const Footer = ({ showRegistrationForm = true }: { showRegistrationForm?:
             <Title>Event details</Title>
             <FooterText>{DATE}</FooterText>
             <FooterText>{SHORT_TIME} live premier</FooterText>
-            <FooterLink tertiary href="/privacy-policy" LinkWrapper={LinkWrapper}>
+            <FooterLink
+              tertiary
+              href="https://www.chromatic.com/docs/privacy-policy"
+              LinkWrapper={LinkWrapper}
+            >
               Privacy policy
             </FooterLink>
-            <FooterLink tertiary href="/code-of-conduct" LinkWrapper={LinkWrapper}>
+            <FooterLink
+              tertiary
+              href="https://github.com/storybookjs/storybook/blob/next/CODE_OF_CONDUCT.md"
+              LinkWrapper={LinkWrapper}
+            >
               Code of conduct
             </FooterLink>
           </Column>
