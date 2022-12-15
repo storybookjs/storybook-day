@@ -96,10 +96,10 @@ export const FeaturesSection = () => (
           <VideoCard
             src={withPrefix('/features/videos/docs-sm.mp4')}
             poster={withPrefix('/features/videos/docs.png')}
-            bgColor="#BCECA7"
+            bgColor="#b7efa9"
           />
         }
-        bgColor="#BCECA7"
+        bgColor="#b7efa9"
       />
       <Feature
         title="Interaction testing"
@@ -108,10 +108,10 @@ export const FeaturesSection = () => (
           <VideoCard
             src={withPrefix('/features/videos/interaction-testing-sm.mp4')}
             poster={withPrefix('/features/videos/interaction-testing.png')}
-            bgColor="#F7DA9A"
+            bgColor="#fedd9b"
           />
         }
-        bgColor="#F7DA9A"
+        bgColor="#fedd9b"
       />
       <Feature
         title="Test runner"
