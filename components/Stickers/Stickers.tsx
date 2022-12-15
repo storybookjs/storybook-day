@@ -155,7 +155,7 @@ export const Stickers = ({ username }: { username: string }) => {
           />
         ) : (
           <>
-            <Heading>Get free stickers shipped to you</Heading>
+            <Heading>Get free stickers</Heading>
             <StickerForm
               value={formData}
               onChange={onChange}

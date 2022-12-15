@@ -19,17 +19,23 @@ const Wrapper = styled.div`
   ${pageMargins};
   display: flex;
   align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  @media (min-width: ${breakpoints[2]}px) {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 `;
 
 const Title = styled.h1`
-  ${marketing.hero2};
+  margin-bottom: 0.75rem;
   color: ${color.darkest};
 
-  @media (min-width: ${breakpoints[0]}px) {
-    ${marketing.hero1};
+  ${marketing.heading};
+
+  @media (min-width: ${breakpoints[1]}px) {
+    ${marketing.hero2};
   }
 `;
 
@@ -44,7 +50,7 @@ const Divider = styled.hr`
 `;
 
 const CustomizationContainer = styled.div`
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   margin-bottom: 1rem;
 `;
 
@@ -52,24 +58,22 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 64px;
+  gap: 3rem;
   justify-content: space-between;
   width: 100%;
 
   @media (min-width: ${breakpoints[3]}px) {
     flex-direction: row;
-    gap: 32px;
+    gap: 40px;
   }
 `;
 
 const StyledRegistrationForm = styled(RegistrationForm)`
-  @media (min-width: ${breakpoints[3]}px) {
-    max-width: 400px;
-  }
+  min-width: 320px;
+  max-width: 400px;
 `;
 
 const TicketInfoContainer = styled.div`
-  flex: 1 1 auto;
   min-width: 0;
 `;
 
@@ -112,7 +116,7 @@ export const Ticket = ({ username, name, ticketNumber, sharePage }: TicketProps)
           <div>
             {sharePage ? (
               <>
-                <Title>{name ? <>{name}’s Ticket</> : <>{SITE_NAME}</>}</Title>
+                <Title>{name ? <>{name}’s ticket</> : <>{SITE_NAME}</>}</Title>
                 <Subtitle>
                   Join {name ?? 'them'} on {DATE} for Storybook Day.
                 </Subtitle>
@@ -148,6 +152,7 @@ export const Ticket = ({ username, name, ticketNumber, sharePage }: TicketProps)
             </>
           )}
         </TicketInfoContainer>
+
         <div ref={ticketRef}>
           <TicketVisual
             username={username}

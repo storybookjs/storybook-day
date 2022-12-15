@@ -11,7 +11,7 @@ import { GitHubOAuthData } from '@lib/types';
 import { LinkWrapper } from '@components/LinkWrapper';
 import { Retry } from '@components/Retry';
 
-const { color, text } = styles;
+const { color, text, marketing } = styles;
 
 type FormState = 'default' | 'loading' | 'error';
 
@@ -27,6 +27,10 @@ const Form = styled.form`
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  ${marketing.textSmall};
 `;
 
 const AuthenticatedButton = styled(Button)`
@@ -176,9 +180,9 @@ export const CustomizationForm = ({
             {username}
           </AuthenticatedButton>
           {username && (
-            <Link href={`/stickers?username=${username}`} LinkWrapper={LinkWrapper} withArrow>
-              Get free stickers shipped to you
-            </Link>
+            <StyledLink href={`/stickers?username=${username}`} LinkWrapper={LinkWrapper} withArrow>
+              Get free stickers
+            </StyledLink>
           )}
         </>
       ) : (
