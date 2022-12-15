@@ -85,9 +85,31 @@ const TicketVertical: FC = props => (
     visibility="mobile"
     {...props}
   >
+    <defs>
+      <linearGradient
+        id="ticket-hologram-gradient-vertical"
+        x1="105"
+        y1="319"
+        x2="599"
+        y2="29"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0.0156834" stopColor="#FC521F" />
+        <stop offset="0.265625" stopColor="#66FC1F" />
+        <stop offset="0.479167" stopColor="#1FC0C0" />
+        <stop offset="0.734375" stopColor="#7A718B" />
+        <stop offset="1" stopColor="#DD1FFC" />
+      </linearGradient>
+    </defs>
     <path
-      fill="#fff"
       d="M20 1h126.707c4.118 11.652 15.231 20 28.293 20s24.175-8.348 28.293-20H330c11.046 0 20 8.954 20 20v454c0 11.046-8.954 20-20 20H203.627c-3.823-12.171-15.194-21-28.627-21-13.433 0-24.804 8.829-28.627 21H20c-11.046 0-20-8.954-20-20V21C0 9.954 8.954 1 20 1z"
+      opacity="0.95"
+      fill="#fff"
+    ></path>
+    <path
+      d="M20 1h126.707c4.118 11.652 15.231 20 28.293 20s24.175-8.348 28.293-20H330c11.046 0 20 8.954 20 20v454c0 11.046-8.954 20-20 20H203.627c-3.823-12.171-15.194-21-28.627-21-13.433 0-24.804 8.829-28.627 21H20c-11.046 0-20-8.954-20-20V21C0 9.954 8.954 1 20 1z"
+      opacity="0.1"
+      fill="url(#ticket-hologram-gradient-vertical)"
     ></path>
   </SVG>
 );
