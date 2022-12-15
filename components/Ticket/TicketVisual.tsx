@@ -82,10 +82,11 @@ const Middle = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 15px;
+  gap: 24px;
 
   @media (min-width: ${breakpoints[1]}px) {
     padding-left: 40px;
+    gap: 15px;
   }
 `;
 

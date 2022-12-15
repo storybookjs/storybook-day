@@ -92,10 +92,17 @@ const Username = styled('div', {
 `;
 const UserImage = styled(Avatar)`
   && {
-    width: 64px;
-    height: 64px;
     border: 3px solid ${color.secondary};
-    margin-right: 20px;
+    width: 96px;
+    height: 96px;
+    margin-bottom: 20px;
+
+    @media (min-width: ${breakpoints[1]}px) {
+      width: 64px;
+      height: 64px;
+      margin-right: 20px;
+      margin-bottom: 0;
+    }
   }
 `;
 const TicketNumber = styled.div<{ loading?: boolean }>`
