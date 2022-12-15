@@ -136,6 +136,11 @@ const Site = styled.span`
   }
 `;
 
+const Attribution = styled(ByChromatic)`
+  width: 100%;
+  justify-content: center;
+`;
+
 interface TicketVisualProps {
   size?: number;
   name?: string;
@@ -173,7 +178,7 @@ export const TicketVisual = ({
             />
           </Middle>
           <Bottom>
-            <ByChromatic monochrome />
+            <Attribution monochrome />
             <Site>storybook.js.org/day</Site>
           </Bottom>
         </Content>
