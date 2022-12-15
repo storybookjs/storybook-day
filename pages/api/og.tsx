@@ -25,13 +25,10 @@ export const config = {
 };
 
 export default function ticketImages(req: any, res: NextApiResponse) {
-  return new ImageResponse(
-    <TicketOGImage ticketNumber={2} username="winkerVSbecks" name="Varun Vachhar" />,
-    {
-      width: 1200 * 2,
-      height: 627 * 2
-    }
-  );
+  return new ImageResponse(<div style={{ width: 800, height: 600, background: 'red' }} />, {
+    width: 1200 * 2,
+    height: 627 * 2
+  });
 
   // let name: string | null | undefined;
   // let ticketNumber: number | null | undefined = SAMPLE_TICKET_NUMBER;
