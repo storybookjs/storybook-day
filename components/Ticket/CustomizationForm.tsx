@@ -123,7 +123,6 @@ export const CustomizationForm = ({
 
         let usernameFromResponse: string;
         let name: string;
-        console.log(data);
 
         if (data.type === 'token') {
           const res = await saveGithubToken({ id: userData.id, token: data.token });
@@ -140,7 +139,6 @@ export const CustomizationForm = ({
           name = data.name;
         }
 
-        document.body.classList.add('ticket-generated');
         setUserData({ ...userData, username: usernameFromResponse, name });
         setUsername(usernameFromResponse);
         setFormState('default');

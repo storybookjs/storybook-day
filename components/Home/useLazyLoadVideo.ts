@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 
 function loadVideos() {
-  console.log('####');
-
   const lazyVideos = [].slice.call(
     document.querySelectorAll('video.js-lazy-video')
   ) as HTMLVideoElement[];
