@@ -47,10 +47,18 @@ export const Footer = ({ showRegistrationForm = true }: { showRegistrationForm?:
             <Title>Event details</Title>
             <FooterText>{DATE}</FooterText>
             <FooterText>{SHORT_TIME} live premier</FooterText>
-            <FooterLink tertiary href="/privacy-policy" LinkWrapper={LinkWrapper}>
+            <FooterLink
+              tertiary
+              href="https://www.chromatic.com/docs/privacy-policy"
+              LinkWrapper={LinkWrapper}
+            >
               Privacy policy
             </FooterLink>
-            <FooterLink tertiary href="/code-of-conduct" LinkWrapper={LinkWrapper}>
+            <FooterLink
+              tertiary
+              href="https://github.com/storybookjs/storybook/blob/next/CODE_OF_CONDUCT.md"
+              LinkWrapper={LinkWrapper}
+            >
               Code of conduct
             </FooterLink>
           </Column>
