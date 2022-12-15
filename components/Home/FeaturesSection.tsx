@@ -12,31 +12,27 @@ const Section = styled.section`
 `;
 
 const Title = styled.h2`
-  ${marketing.subheading};
-  margin-bottom: 1.5rem;
-
-  @media (min-width: ${breakpoints[0]}px) {
-    margin-bottom: 2.5rem;
-    ${marketing.hero2};
-  }
+  ${marketing.hero2};
+  margin-bottom: 1.25rem;
 
   @media (min-width: ${breakpoints[2]}px) {
     ${marketing.hero1};
+    margin-bottom: 2.5rem;
   }
 `;
 
 const FeaturesGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 3rem;
   margin-bottom: 7rem;
 
   @media (min-width: ${breakpoints[0]}px) {
-    gap: 4rem 2.5rem;
   }
 
   @media (min-width: ${breakpoints[2]}px) {
     grid-template-columns: 1fr 1fr;
+    gap: 4rem 2.5rem;
   }
 `;
 
@@ -54,13 +50,20 @@ const CSF3Image = styled.img`
     margin-bottom: -8%;
   }
 `;
+
+const ScaledVideoCard = styled(VideoCard)`
+  transform: scale(1.75);
+  @media (min-width: ${breakpoints[1]}px) {
+    transform: scale(1.25);
+  }
+`;
 CSF3Image.defaultProps = {
   src: withPrefix('/features/csf-example.png')
 };
 
 export const FeaturesSection = () => (
   <Section>
-    <Title>Find out what’s new</Title>
+    <Title>See what’s new</Title>
     <FeaturesGrid>
       <HighlightedFeature
         background={`center / cover no-repeat url(${withPrefix('/gradient-backdrop.svg')})`}
@@ -177,11 +180,10 @@ export const FeaturesSection = () => (
         title="Auto-config for Next.js"
         description="Zero-config integration for Next 12 & 13 helps you develop, test, and document UI components in isolation."
         media={
-          <VideoCard
+          <ScaledVideoCard
             src={withPrefix('/features/videos/nextjs-framework-sm.mp4')}
             poster={withPrefix('/features/videos/nextjs-framework.png')}
             bgColor="#232A35"
-            style={{ transform: 'scale(1.25)' }}
           />
         }
         bgColor="#232A35"

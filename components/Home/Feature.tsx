@@ -5,24 +5,19 @@ const { marketing, color, breakpoints } = styles;
 
 const TextWrapper = styled.div`
   margin: 0 auto;
-  max-width: 92.30769231%;
   color: ${color.darkest};
 `;
 const Title = styled.div`
   ${marketing.textLargeBold};
   margin-bottom: 4px;
 
-  @media (min-width: ${breakpoints[0]}px) {
+  @media (min-width: ${breakpoints[1]}px) {
     ${marketing.subheading};
   }
 `;
 
 const Description = styled.div`
-  ${marketing.textSmall};
-
-  @media (min-width: ${breakpoints[0]}px) {
-    ${marketing.textLarge};
-  }
+  ${marketing.textLarge};
 `;
 
 const Figure = styled.div<{ bgColor: string }>`
@@ -37,14 +32,20 @@ const Figure = styled.div<{ bgColor: string }>`
   justify-content: center;
   overflow: hidden;
 
-  @media (min-width: ${breakpoints[0]}px) {
+  @media (min-width: ${breakpoints[1]}px) {
     margin-bottom: 2rem;
   }
 
   & > div,
   img {
-    max-height: 520px;
-    max-width: 520px;
+    height: 320px;
+    max-width: 320px;
+    @media (min-width: ${breakpoints[1]}px) {
+      height: auto;
+      max-height: 520px;
+      max-width: 520px;
+    }
+
     margin: 0 auto;
   }
 
@@ -65,7 +66,7 @@ const Icon = styled.img`
   border-radius: 10px;
   margin-right: 30px;
 
-  @media (min-width: ${breakpoints[0]}px) {
+  @media (min-width: ${breakpoints[1]}px) {
     display: block;
   }
 `;
