@@ -79,8 +79,10 @@ const InfoWrapper = styled.div`
 `;
 
 const Info = styled(Cardinal)`
-  padding: 0;
-  flex: none;
+  && {
+    padding: 0;
+    flex: none;
+  }
 `;
 
 const MetaWrapper = styled.div`
