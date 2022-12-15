@@ -1,3 +1,4 @@
+import { Layout } from '@components/Layout';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Ticket } from './Ticket';
 
@@ -6,7 +7,14 @@ const meta: Meta<typeof Ticket> = {
   component: Ticket,
   parameters: {
     backgrounds: { default: 'gradient' }
-  }
+  },
+  decorators: [
+    storyFn => (
+      <Layout showFooter={false} layoutStyle="full">
+        {storyFn()}
+      </Layout>
+    )
+  ]
 };
 
 export default meta;

@@ -24,7 +24,7 @@ export const BRAND_NAME = 'Storybook';
 export const SITE_NAME_MULTILINE = ['Storybook Day', 'March 1, 2023'];
 export const SITE_NAME = 'Storybook Day';
 export const META_DESCRIPTION =
-  'Join us for an online event about the future of UI development with Storybook. See what’s new in 7.0, meet world-class frontend devs, and check out the leading projects in the community.';
+  'Join us for an online event about the future of UI development with Storybook. See what’s new in 7.0 and meet world-class frontend devs.';
 export const SITE_DESCRIPTION =
   'An interactive online experience by the community, free for everyone.';
 export const DATE = 'March 1, 2023';
@@ -34,11 +34,10 @@ export const SHORT_TIME = '10am - 12pm';
 export const TIMEZONE = 'Pacific Standard Time';
 export const SHORT_TIMEZONE = 'Pacific Time';
 export const FULL_DATE = 'March 1st 10am Pacific Time (GMT-8)';
-export const TWEET_TEXT = `I'm excited to attend Storybook Day on ${DATE}.
-Can't wait to see what's in store for Storybook 7.0.
+export const TWEET_TEXT = `I'm going to Storybook Day on ${DATE}.
+Excited to see what's new in 7.0.
 
-Let's celebrate all things Storybook together!
-Register here 👉`;
+Join me there, the tickets are free 👉`;
 export const COOKIE = 'user-id';
 
 // Remove process.env.NEXT_PUBLIC_... below and replace them with

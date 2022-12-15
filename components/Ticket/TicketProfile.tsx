@@ -3,11 +3,11 @@ import { styles } from '@storybook/components-marketing';
 import { Avatar, Cardinal, Icon, animation } from '@storybook/design-system';
 import { SHORT_TIME, SHORT_TIMEZONE, SHORT_DATE } from '@lib/constants';
 import { withPrefix } from '@lib/with-prefix';
+import { VersionIcon } from './VersionIcon';
 
 const { typography, color, spacing, breakpoints } = styles;
 
 const loadingStyles = css`
-  position: relative;
   color: transparent;
 
   &::before {
@@ -63,6 +63,7 @@ const Name = styled('div', {
   line-height: 1;
   color: ${color.darkest};
   margin-bottom: 10px;
+  position: relative;
 
   ${props => props.loading && loadingStyles}
 `;
@@ -87,6 +88,7 @@ const Username = styled('div', {
   }
 
   span {
+    position: relative;
     ${props => props.loading && loadingStyles}
   }
 `;
@@ -145,12 +147,12 @@ export const TicketProfile = ({ name, username, loading, ticketNumber }: TicketP
           isLoading={loading}
         />
       ) : (
-        <Version src={withPrefix('/7-0.svg')} alt={'7.0'} />
+        <VersionIcon />
       )}
       <div>
-        <Name loading={loading}>{name || username || 'Launch event'}</Name>
+        <Name loading={false}>{name || username || 'Launch event'}</Name>
         <Lower>
-          <Username loading={loading}>
+          <Username loading={false}>
             <Icon icon="github" />
             <span>{username || 'Your username'}</span>
           </Username>

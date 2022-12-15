@@ -2,8 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { rest } from 'msw';
 import { userEvent, within, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
-import { Stickers } from './Stickers';
+import { Layout } from '@components/Layout';
 import { withPrefix } from '@lib/with-prefix';
+import { Stickers } from './Stickers';
 
 const meta: Meta<typeof Stickers> = {
   title: 'Pages/Stickers/Stickers',
@@ -11,7 +12,14 @@ const meta: Meta<typeof Stickers> = {
   parameters: {
     layout: 'fullscreen',
     backgrounds: { default: 'gradient' }
-  }
+  },
+  decorators: [
+    storyFn => (
+      <Layout showFooter={false} layoutStyle="full">
+        {storyFn()}
+      </Layout>
+    )
+  ]
 };
 
 export default meta;
