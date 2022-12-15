@@ -1,21 +1,24 @@
 import { StorybookDayLogo } from '@components/StorybookDayLogo';
-import { TicketProfile } from './TicketProfile';
-import { SHORT_DATE, SHORT_TIME, SHORT_TIMEZONE } from '@lib/constants';
-import { Scale } from '@storybook/design-system/dist/images/colored-icons';
+import { SHORT_DATE, SHORT_TIME, SHORT_TIMEZONE, SITE_URL } from '@lib/constants';
 
+/**
+ * This component is used to generate the image that is used
+ * for the Open Graph image for the ticket page.
+ *
+ * It has to use inline styles because the OG image is generated
+ * using @vercel/og which doesn't support emotion.
+ */
 const border = 'rgba(0, 0, 0, 0.2)';
 export const color = {
   secondary: '#1EA7FD',
   dark: '#666666',
   darkest: '#333333'
 };
-
 export const spacing = {
   borderRadius: {
     small: 5
   }
 };
-
 export const typography = {
   type: {
     primary: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
@@ -27,7 +30,7 @@ export const typography = {
   size: {
     s2: 14
   }
-} as const;
+};
 
 const TicketShape = () => (
   <svg
@@ -37,10 +40,7 @@ const TicketShape = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     style={{
-      display: 'flex',
-      filter: 'drop-shadow(0px 52px 39px rgba(0, 0, 0, 0.1))'
-      // filter:
-      //   'drop-shadow(0px 52px 39px rgba(0, 0, 0, 0.05)) drop-shadow(0px 130px 104px rgba(0, 0, 0, 0.05)) drop-shadow(0px 13px 26px rgba(0, 0, 0, 0.1)) drop-shadow(0px 1.3px 3.9px rgba(0, 0, 0, 0.1))'
+      display: 'flex'
     }}
   >
     <defs>
@@ -198,7 +198,7 @@ const styles = {
   }
 };
 
-const Middle = ({ name, username }: { name?: string; username: string }) => (
+const Middle = ({ name, username }: { name?: string | null; username: string }) => (
   <div
     style={{
       flex: '1',
@@ -210,7 +210,7 @@ const Middle = ({ name, username }: { name?: string; username: string }) => (
   >
     <div style={{ display: 'flex', width: '100%', marginBottom: 15, alignItems: 'center' }}>
       <img
-        src={`https://github.com/${username}.png`}
+        src={`https://github.com/${username || 'storybookjs'}.png`}
         style={{
           width: '64px',
           height: '64px',
@@ -244,12 +244,6 @@ const Middle = ({ name, username }: { name?: string; username: string }) => (
             </svg>
             <span>{username || 'Your username'}</span>
           </div>
-          {/* {ticketNumber && (
-            <TicketNumber>
-              <Icon icon="bookmark" />
-              <span>{ticketNumber}</span>
-            </TicketNumber>
-          )} */}
         </div>
       </div>
     </div>
@@ -274,7 +268,7 @@ const Middle = ({ name, username }: { name?: string; username: string }) => (
 
 interface TicketOGImageProps {
   size?: number;
-  name?: string;
+  name?: string | null;
   ticketNumber?: number;
   username: string;
   style?: React.CSSProperties;
@@ -293,7 +287,7 @@ export const TicketOGImage = ({ name, username, ticketNumber }: TicketOGImagePro
         justifyContent: 'center',
         width: '100%',
         height: '100%',
-        backgroundImage: `url(${'http://localhost:3000/day/gradient-backdrop.svg'})`,
+        backgroundImage: `url(${'${SITE_URL}gradient-backdrop.svg'})`,
         backgroundSize: '100% 100%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -346,7 +340,7 @@ export const TicketOGImage = ({ name, username, ticketNumber }: TicketOGImagePro
             {/* Top */}
             <Top tickerNumber={formattedTickerNumber} />
             {/* Middle */}
-            <Middle name={name} username={username} ticketNumber={formattedTickerNumber} />
+            <Middle name={name} username={username} />
             {/* Bottom */}
             <Bottom />
           </div>
@@ -354,109 +348,4 @@ export const TicketOGImage = ({ name, username, ticketNumber }: TicketOGImagePro
       </div>
     </div>
   );
-
-  // return (
-  //   <div
-  //     style={{
-  //       position: 'relative',
-  //       width: 500
-  //     }}
-  //     {...props}
-  //   >
-  //     <TicketShape />
-  //     <div
-  //       style={{
-  //         zIndex: '1',
-  //         position: 'absolute',
-  //         top: 0,
-  //         width: '100%',
-  //         height: '100%',
-  //         padding: '20px 40px'
-  //       }}
-  //     >
-  //       <div
-  //         style={{
-  //           border: `1px solid ${border}`,
-  //           borderRadius: '7px',
-  //           height: '100%',
-  //           display: 'flex',
-  //           flexDirection: 'column'
-  //         }}
-  //       >
-  //         <div
-  //           style={{
-  //             display: 'flex',
-  //             alignItems: 'center',
-  //             justifyContent: 'space-between',
-  //             padding: '17px 20px 15px',
-  //             borderBottom: `1px solid ${border}`
-  //           }}
-  //         >
-  //           <StorybookDayLogo style={{ height: 24 }} />
-  //           <div
-  //             style={{
-  //               borderRadius: `${spacing.borderRadius.small}px`,
-  //               padding: `4px 8px 4px 8px`,
-  //               border: `1px solid ${color.secondary}`,
-  //               color: `${color.secondary}`,
-  //               fontFamily: `${typography.type.code}`,
-  //               fontWeight: `400`,
-  //               fontSize: `${typography.size.s2}px`,
-  //               lineHeight: `16px`
-  //             }}
-  //           >
-  //             {formattedTickerNumber}
-  //           </div>
-  //         </div>
-  //         <div
-  //           style={{
-  //             flex: '1',
-  //             display: 'flex',
-  //             flexDirection: 'column',
-  //             justifyContent: 'center',
-  //             gap: 15,
-  //             paddingLeft: 40
-  //           }}
-  //         >
-  //           {/* <TicketProfile name={name} username={username} ticketNumber={formattedTickerNumber} /> */}
-  //         </div>
-  //         <div
-  //           style={{
-  //             fontSize: 14,
-  //             fontWeight: 400,
-  //             lineHeight: '20px',
-  //             color: `${color.darkest}`,
-  //             display: 'flex',
-  //             alignItems: 'center',
-  //             justifyContent: 'space-between',
-  //             padding: '17px 20px 15px',
-  //             borderTop: `1px solid ${border}`,
-  //             textAlign: 'center'
-  //           }}
-  //         >
-  //           <div style={{ display: 'flex', alignItems: 'center', opacity: 0.9 }}>
-  //             <div
-  //               style={{
-  //                 color: color.darkest,
-  //                 fontSize: typography.size.s2, // 14
-  //                 fontWeight: typography.weight.regular,
-  //                 lineHeight: '20px'
-  //               }}
-  //             >
-  //               Brought to you by
-  //             </div>
-  //             <Logos.Chromatic
-  //               style={{
-  //                 height: 20,
-  //                 marginLeft: 10,
-  //                 filter: 'grayscale(1)'
-  //               }}
-  //             />
-  //           </div>
-  //           <span>storybook.js.org/day</span>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 };
