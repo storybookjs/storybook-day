@@ -32,7 +32,7 @@ export const Default: Story = {
     title: 'Performance overhaul',
     description:
       'Lorem ipsum dolor sit amet consectatur vestibulum aret sit click, hover, and type inside your story file. Powered by Jest and Testing.',
-    image: <CSF src="/features/csf-example.png" />,
+    image: <CSF src="/features/csf-example.svg" />,
     background: '#E3F3FF'
   }
 };

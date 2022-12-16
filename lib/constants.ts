@@ -40,10 +40,7 @@ Excited to see what's new in 7.0.
 Join me there, the tickets are free 👉`;
 export const COOKIE = 'user-id';
 
-// Remove process.env.NEXT_PUBLIC_... below and replace them with
-// strings containing your own privacy policy URL and copyright holder name
 export const LEGAL_URL = 'https://www.chromatic.com/docs/privacy-policy';
-
 export const CODE_OF_CONDUCT =
   'https://github.com/storybookjs/storybook/blob/next/CODE_OF_CONDUCT.md';
 export const REPO = 'https://github.com/storybookjs/storybook-day';

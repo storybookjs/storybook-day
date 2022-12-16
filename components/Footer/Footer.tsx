@@ -9,7 +9,9 @@ import {
   YOUTUBE_URL,
   GITHUB_URL,
   DATE,
-  SHORT_TIME
+  SHORT_TIME,
+  LEGAL_URL,
+  CODE_OF_CONDUCT
 } from '@lib/constants';
 import {
   Title,
@@ -47,18 +49,10 @@ export const Footer = ({ showRegistrationForm = true }: { showRegistrationForm?:
             <Title>Event details</Title>
             <FooterText>{DATE}</FooterText>
             <FooterText>{SHORT_TIME} live premier</FooterText>
-            <FooterLink
-              tertiary
-              href="https://www.chromatic.com/docs/privacy-policy"
-              LinkWrapper={LinkWrapper}
-            >
+            <FooterLink tertiary href={LEGAL_URL}>
               Privacy policy
             </FooterLink>
-            <FooterLink
-              tertiary
-              href="https://github.com/storybookjs/storybook/blob/next/CODE_OF_CONDUCT.md"
-              LinkWrapper={LinkWrapper}
-            >
+            <FooterLink tertiary href={CODE_OF_CONDUCT}>
               Code of conduct
             </FooterLink>
           </Column>

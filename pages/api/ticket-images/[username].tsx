@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { SAMPLE_TICKET_NUMBER } from '@lib/constants';
+import { SAMPLE_TICKET_NUMBER, SITE_URL } from '@lib/constants';
 import { getUserByUsername } from '@lib/db-api';
 
 /**
@@ -28,19 +28,47 @@ export default async function ticketImages(req: NextApiRequest, res: NextApiResp
       name
     )}&ticketNumber=${ticketNumber}&username=${encodeURI(usernameString)}`;
 
-    const image = await fetch(URL);
-    const imageBuffer = Buffer.from(await image.arrayBuffer());
+    try {
+      const image = await fetchWithTimeout(URL);
+      if (!image.ok) throw new Error('Request failed.');
 
-    res.setHeader('Content-Type', `image/png`);
-    res.setHeader(
-      'Cache-Control',
-      `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
-    );
-    res.statusCode = 200;
-    res.end(imageBuffer);
+      const imageBuffer = Buffer.from(await image.arrayBuffer());
+
+      res.setHeader('Content-Type', `image/png`);
+      res.setHeader(
+        'Cache-Control',
+        `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
+      );
+      res.statusCode = 200;
+      res.end(imageBuffer);
+    } catch (error) {
+      const image = await fetch(`${SITE_URL}/ticket-og-fallback.png`);
+      const imageBuffer = Buffer.from(await image.arrayBuffer());
+
+      res.setHeader('Content-Type', `image/png`);
+      res.statusCode = 200;
+      res.end(imageBuffer);
+    }
   } else {
     return new Response('Not Found', {
       status: 404
     });
   }
+}
+
+interface Options extends RequestInit {
+  timeout?: number;
+}
+
+async function fetchWithTimeout(resource: string, options: Options = {}) {
+  const { timeout = 8000 } = options;
+
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  const response = await fetch(resource, {
+    ...options,
+    signal: controller.signal
+  });
+  clearTimeout(id);
+  return response;
 }
