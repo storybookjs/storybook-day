@@ -39,7 +39,7 @@ const FeaturesGrid = styled.div`
 
 const StorybookUiImage = styled.img`
   @media (min-width: ${breakpoints[2]}px) {
-    margin-bottom: -8%;
+    margin-bottom: -11%;
   }
 `;
 StorybookUiImage.defaultProps = {
@@ -59,7 +59,7 @@ const ScaledVideoCard = styled(VideoCard)`
   }
 `;
 CSF3Image.defaultProps = {
-  src: withPrefix('/features/csf-example.png')
+  src: withPrefix('/features/csf-example.svg')
 };
 
 export const FeaturesSection = () => {
@@ -154,10 +154,10 @@ export const FeaturesSection = () => {
             <VideoCard
               src={withPrefix('/features/videos/vite-sm.mp4')}
               poster={withPrefix('/features/videos/vite.png')}
-              bgColor="#FDDE9C"
+              bgColor="#FFDDD2"
             />
           }
-          bgColor="#FDDE9C"
+          bgColor="#FFDDD2"
           icon={withPrefix('/features/vite-icon.svg')}
         />
         <Feature
