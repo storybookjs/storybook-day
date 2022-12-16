@@ -17,7 +17,6 @@ export default async function ticketImages(req: NextApiRequest, res: NextApiResp
   let ticketNumber: number | null | undefined = SAMPLE_TICKET_NUMBER;
 
   const { username } = req.query || {};
-  console.log('username', username);
 
   if (username) {
     const usernameString = username.toString();
@@ -30,7 +29,7 @@ export default async function ticketImages(req: NextApiRequest, res: NextApiResp
     )}&ticketNumber=${ticketNumber}&username=${encodeURI(usernameString)}`;
 
     try {
-      const image = await fetch('https://sb-ticket-image.netlify.app/something');
+      const image = await fetchWithTimeout(URL);
       if (!image.ok) throw new Error('Request failed.');
 
       const imageBuffer = Buffer.from(await image.arrayBuffer());
@@ -43,8 +42,6 @@ export default async function ticketImages(req: NextApiRequest, res: NextApiResp
       res.statusCode = 200;
       res.end(imageBuffer);
     } catch (error) {
-      console.log(`${SITE_URL}/ticket-og-fallback.png`);
-
       const image = await fetch(`${SITE_URL}/ticket-og-fallback.png`);
       const imageBuffer = Buffer.from(await image.arrayBuffer());
 
@@ -57,4 +54,21 @@ export default async function ticketImages(req: NextApiRequest, res: NextApiResp
       status: 404
     });
   }
+}
+
+interface Options extends RequestInit {
+  timeout?: number;
+}
+
+async function fetchWithTimeout(resource: string, options: Options = {}) {
+  const { timeout = 8000 } = options;
+
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  const response = await fetch(resource, {
+    ...options,
+    signal: controller.signal
+  });
+  clearTimeout(id);
+  return response;
 }
