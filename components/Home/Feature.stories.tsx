@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Feature } from './Feature';
 import { VideoCard } from './VideoCard';
+import { withPrefix } from '@lib/with-prefix';
 
 const meta: Meta<typeof Feature> = {
   title: 'Pages/Home/Feature',
@@ -28,8 +29,14 @@ export const Video: Story = {
     title: 'Performance overhaul',
     description:
       'Lorem ipsum dolor sit amet consectatur vestibulum aret sit click, hover, and type inside your story file. Powered by Jest and Testing.',
-    media: <VideoCard bgColor="#E3F3FF" src="/day/features/videos/perf-sm.mp4" />,
-    bgColor: '#E3F3FF'
+    media: (
+      <VideoCard
+        src={withPrefix('/features/videos/perf-sm.mp4')}
+        poster={withPrefix('/features/videos/perf.png')}
+        bgColor="#E3F1FE"
+      />
+    ),
+    bgColor: '#E3F1FE'
   }
 };
 
