@@ -22,7 +22,8 @@ export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_U
 export const TWITTER_USER_NAME = 'storybookjs';
 export const BRAND_NAME = 'Storybook';
 export const SITE_NAME_MULTILINE = ['Storybook Day', 'March 14, 2023'];
-export const SITE_NAME = 'Storybook Day user conference';
+export const SITE_NAME = 'Storybook Day';
+export const META_TITLE = ' Storybook Day user conference';
 export const META_DESCRIPTION =
   'A free online conference about the future of UI development with Storybook. See what’s new in 7.0 and meet world-class frontend devs.';
 export const SITE_DESCRIPTION =
@@ -33,6 +34,7 @@ export const LONG_DATE = 'Mar 14 10:00am - 12:00pm PST';
 export const SHORT_TIME = '10am - 12pm';
 export const TIMEZONE = 'Pacific Standard Time';
 export const SHORT_TIMEZONE = 'Pacific Time';
+export const MINI_TIMEZONE = 'PST';
 export const FULL_DATE = 'March 14th 10am Pacific Time (GMT-8)';
 export const TWEET_TEXT = `I'm going to Storybook Day on ${DATE}.
 Excited to see what's new in 7.0.
@@ -82,4 +84,12 @@ export const TWITTER_URL = 'https://twitter.com/storybookjs';
 export const DISCORD_URL = 'https://discord.gg/storybook';
 export const YOUTUBE_URL = 'https://www.youtube.com/c/StorybookJS';
 export const GITHUB_URL = 'https://github.com/storybookjs';
-export const SNEAK_PEEK_URL = 'https://storybook.js.org/blog/storybook-7-0/';
+export const SNEAK_PEEK_URL = '/#sneak-peek';
+
+// https://www.labnol.org/calendar/
+export const CALENDAR_URL =
+  'https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230301T180000Z%2F20230301T200000Z&details=An%20online%20event%20about%20the%20future%20of%20UI%20development%20with%20Storybook.%20See%20what%E2%80%99s%20new%20in%207.0%2C%20meet%20world-class%20frontend%20devs%2C%20and%20check%20out%20the%20leading%20projects%20in%20the%20community.&location=https%3A%2F%2Fstorybook.js.org%2Fday&text=Storybook%20Day';
+
+//  <a download=""
+export const ICS =
+  'data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20230301T180000Z%0ADTEND:20230301T200000Z%0ASUMMARY:Storybook%20Day%0ADESCRIPTION:An%20online%20event%20about%20the%20future%20of%20UI%20development%20with%20Storybook.%20See%20what%E2%80%99s%20new%20in%207.0%2C%20meet%20world-class%20frontend%20devs%2C%20and%20check%20out%20the%20leading%20projects%20in%20the%20community.%0ALOCATION:https%3A%2F%2Fstorybook.js.org%2Fday%0AEND:VEVENT%0AEND:VCALENDAR%0A';

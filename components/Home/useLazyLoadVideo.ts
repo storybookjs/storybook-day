@@ -9,8 +9,6 @@ function loadVideos() {
     const lazyVideoObserver = new IntersectionObserver(function (entries) {
       entries.forEach((video: IntersectionObserverEntry) => {
         if (video.isIntersecting) {
-          console.log(video);
-
           for (const source in video.target.children) {
             const videoSource = video.target.children[source] as HTMLSourceElement;
             if (typeof videoSource.tagName === 'string' && videoSource.tagName === 'SOURCE') {
@@ -21,7 +19,6 @@ function loadVideos() {
           (video.target as HTMLVideoElement).load();
           video.target.classList.remove('js-lazy-video');
           lazyVideoObserver.unobserve(video.target);
-          console.log({ target: video.target });
         }
       });
     });

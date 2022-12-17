@@ -67,7 +67,7 @@ export const FeaturesSection = () => {
 
   return (
     <Section>
-      <Title>See what’s new</Title>
+      <Title id="sneak-peek">See what’s new</Title>
       <FeaturesGrid>
         <HighlightedFeature
           background={`center / cover no-repeat url(${withPrefix('/gradient-backdrop.svg')})`}

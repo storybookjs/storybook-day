@@ -19,9 +19,11 @@ const BackdropVideo = styled.video`
   filter: blur(10px);
   user-select: none;
   pointer-events: none;
+  border-radius: 20px;
 `;
 const Video = styled.video`
   position: relative;
+  border-radius: 20px;
 `;
 
 interface VideoCardProps {
