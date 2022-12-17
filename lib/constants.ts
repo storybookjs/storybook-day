@@ -21,19 +21,19 @@ export const SITE_URL = isDeployPreview
 export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_URL).origin;
 export const TWITTER_USER_NAME = 'storybookjs';
 export const BRAND_NAME = 'Storybook';
-export const SITE_NAME_MULTILINE = ['Storybook Day', 'March 1, 2023'];
-export const SITE_NAME = 'Storybook Day';
+export const SITE_NAME_MULTILINE = ['Storybook Day', 'March 14, 2023'];
+export const SITE_NAME = 'Storybook Day user conference';
 export const META_DESCRIPTION =
-  'Join us for an online event about the future of UI development with Storybook. See what’s new in 7.0 and meet world-class frontend devs.';
+  'A free online conference about the future of UI development with Storybook. See what’s new in 7.0 and meet world-class frontend devs.';
 export const SITE_DESCRIPTION =
   'An interactive online experience by the community, free for everyone.';
-export const DATE = 'March 1, 2023';
-export const SHORT_DATE = 'Mar 1, 2023';
-export const LONG_DATE = 'Mar 1 10:00am - 12:00pm PST';
+export const DATE = 'March 14, 2023';
+export const SHORT_DATE = 'Mar 14, 2023';
+export const LONG_DATE = 'Mar 14 10:00am - 12:00pm PST';
 export const SHORT_TIME = '10am - 12pm';
 export const TIMEZONE = 'Pacific Standard Time';
 export const SHORT_TIMEZONE = 'Pacific Time';
-export const FULL_DATE = 'March 1st 10am Pacific Time (GMT-8)';
+export const FULL_DATE = 'March 14th 10am Pacific Time (GMT-8)';
 export const TWEET_TEXT = `I'm going to Storybook Day on ${DATE}.
 Excited to see what's new in 7.0.
 
