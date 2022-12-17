@@ -22,7 +22,8 @@ export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_U
 export const TWITTER_USER_NAME = 'storybookjs';
 export const BRAND_NAME = 'Storybook';
 export const SITE_NAME_MULTILINE = ['Storybook Day', 'March 14, 2023'];
-export const SITE_NAME = 'Storybook Day user conference';
+export const SITE_NAME = 'Storybook Day';
+export const META_TITLE = ' Storybook Day user conference';
 export const META_DESCRIPTION =
   'A free online conference about the future of UI development with Storybook. See what’s new in 7.0 and meet world-class frontend devs.';
 export const SITE_DESCRIPTION =

@@ -42,7 +42,7 @@ export default async function ticketImages(req: NextApiRequest, res: NextApiResp
       res.statusCode = 200;
       res.end(imageBuffer);
     } catch (error) {
-      const image = await fetch(`${SITE_URL}/ticket-og-fallback.png`);
+      const image = await fetch(`${SITE_URL}/og-sb-day.png`);
       const imageBuffer = Buffer.from(await image.arrayBuffer());
 
       res.setHeader('Content-Type', `image/png`);
