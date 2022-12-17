@@ -37,12 +37,7 @@ const Container = styled.div`
   }
 `;
 
-function LoopControl({
-  setFrameLoop
-}: {
-  frameLoop: 'demand' | 'always';
-  setFrameLoop: (value: 'demand' | 'always') => void;
-}) {
+function LoopControl({ setFrameLoop }: { setFrameLoop: (value: 'demand' | 'always') => void }) {
   const { invalidate } = useThree();
 
   useEffect(() => {
@@ -50,7 +45,6 @@ function LoopControl({
       document.documentElement.clientWidth || 0,
       window.innerWidth || 0
     );
-    console.log({ viewportWidth });
 
     if (viewportWidth < 400) {
       setFrameLoop('demand');
