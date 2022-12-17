@@ -2,7 +2,6 @@ import { styled, css } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { Avatar, Cardinal, Icon, animation } from '@storybook/design-system';
 import { SHORT_TIME, SHORT_TIMEZONE, SHORT_DATE } from '@lib/constants';
-import { withPrefix } from '@lib/with-prefix';
 import { VersionIcon } from './VersionIcon';
 
 const { typography, color, spacing, breakpoints } = styles;
@@ -35,16 +34,6 @@ const Info = styled(Cardinal)`
   flex: none;
 `;
 
-const Version = styled.img`
-  display: block;
-  width: 136px;
-
-  @media (min-width: ${breakpoints[1]}px) {
-    max-height: 100px;
-    margin-right: 20px;
-    margin-left: -10px;
-  }
-`;
 const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
