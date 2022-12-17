@@ -44,6 +44,7 @@ export const SharePage: Story = {
 export const ShareNoName: Story = {
   args: {
     username: 'winkerVSbecks',
-    sharePage: true
+    sharePage: true,
+    ticketNumber: 1
   }
 };
