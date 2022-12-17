@@ -54,7 +54,7 @@ const CSF3Image = styled.img`
 
 const ScaledVideoCard = styled(VideoCard)`
   transform: scale(1.75);
-  @media (min-width: ${breakpoints[1]}px) {
+  @media (min-width: ${breakpoints[2]}px) {
     transform: scale(1.25);
   }
 `;
