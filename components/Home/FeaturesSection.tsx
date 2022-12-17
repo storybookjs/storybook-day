@@ -13,12 +13,16 @@ const Section = styled.section`
 `;
 
 const Title = styled.h2`
-  ${marketing.hero2};
-  margin-bottom: 1.25rem;
+  ${marketing.subheading};
+  margin-bottom: 1rem;
+  @media (min-width: ${breakpoints[1]}px) {
+    ${marketing.hero2};
+    margin-bottom: 1.5rem;
+  }
 
   @media (min-width: ${breakpoints[2]}px) {
     ${marketing.hero1};
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 `;
 
