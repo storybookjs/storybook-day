@@ -35,12 +35,13 @@ const Description = styled.div`
 
 const TextWrapper = styled.div`
   color: ${color.darkest};
-  margin-top: 3rem;
+  margin-top: 30px;
   margin-left: 30px;
   margin-right: 30px;
   margin-bottom: 20px;
 
   @media (min-width: ${breakpoints[2]}px) {
+    margin-top: 3rem;
     flex: 1 1 40%;
     padding-right: 30px;
     margin: 0;

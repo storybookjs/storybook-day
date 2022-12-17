@@ -13,12 +13,16 @@ const Section = styled.section`
 `;
 
 const Title = styled.h2`
-  ${marketing.hero2};
-  margin-bottom: 1.25rem;
+  ${marketing.subheading};
+  margin-bottom: 1rem;
+  @media (min-width: ${breakpoints[1]}px) {
+    ${marketing.hero2};
+    margin-bottom: 1.5rem;
+  }
 
   @media (min-width: ${breakpoints[2]}px) {
     ${marketing.hero1};
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -54,7 +58,7 @@ const CSF3Image = styled.img`
 
 const ScaledVideoCard = styled(VideoCard)`
   transform: scale(1.75);
-  @media (min-width: ${breakpoints[1]}px) {
+  @media (min-width: ${breakpoints[2]}px) {
     transform: scale(1.25);
   }
 `;
@@ -67,7 +71,7 @@ export const FeaturesSection = () => {
 
   return (
     <Section>
-      <Title>See what’s new</Title>
+      <Title id="sneak-peek">See what’s new</Title>
       <FeaturesGrid>
         <HighlightedFeature
           background={`center / cover no-repeat url(${withPrefix('/gradient-backdrop.svg')})`}
@@ -168,7 +172,7 @@ export const FeaturesSection = () => {
           icon={withPrefix('/features/typescript-icon.svg')}
         />
         <Feature
-          title="Official Figma integration"
+          title="Figma integration sneak peek"
           description="Speed up UI implementation by connecting with design. Embed designs in Storybook and embed stories in Figma."
           media={
             <VideoCard

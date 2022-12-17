@@ -11,7 +11,8 @@ import {
   DATE,
   SHORT_TIME,
   LEGAL_URL,
-  CODE_OF_CONDUCT
+  CODE_OF_CONDUCT,
+  MINI_TIMEZONE
 } from '@lib/constants';
 import {
   Title,
@@ -48,7 +49,9 @@ export const Footer = ({ showRegistrationForm = true }: { showRegistrationForm?:
           <Column>
             <Title>Event details</Title>
             <FooterText>{DATE}</FooterText>
-            <FooterText>{SHORT_TIME} live premier</FooterText>
+            <FooterText>
+              {SHORT_TIME} {MINI_TIMEZONE}
+            </FooterText>
             <FooterLink tertiary href={LEGAL_URL}>
               Privacy policy
             </FooterLink>

@@ -18,6 +18,7 @@ const { marketing, breakpoints, color, pageMargins } = styles;
 const Wrapper = styled.div`
   ${pageMargins};
   display: flex;
+  width: 100%;
   align-items: center;
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -118,7 +119,7 @@ export const Ticket = ({ username, name, ticketNumber, sharePage }: TicketProps)
               <>
                 <Title>{name ? <>{name}’s ticket</> : <>{SITE_NAME}</>}</Title>
                 <Subtitle>
-                  Join {name ?? 'them'} on {DATE} for Storybook Day.
+                  Join {name ?? 'us'} on {DATE} for Storybook Day.
                 </Subtitle>
               </>
             ) : (

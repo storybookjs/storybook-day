@@ -16,7 +16,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { SITE_NAME, SITE_URL, TWITTER_USER_NAME } from '@lib/constants';
+import { META_TITLE, SITE_NAME, SITE_URL, TWITTER_USER_NAME } from '@lib/constants';
 import { withPrefix } from '@lib/with-prefix';
 
 type Meta = {
@@ -34,7 +34,7 @@ type Props = {
 export default function Page({ meta, children }: Props) {
   const router = useRouter();
   const image = meta.image || '/og-sb-day.png';
-  const title = meta.title || SITE_NAME;
+  const title = meta.title || META_TITLE;
   const url = meta.url || `${SITE_URL}${router.asPath}`;
   const description = meta.description || SITE_NAME;
 

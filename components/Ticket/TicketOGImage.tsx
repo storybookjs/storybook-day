@@ -154,7 +154,7 @@ const Bottom = () => (
       textAlign: 'center'
     }}
   >
-    <div style={{ display: 'flex', alignItems: 'center', opacity: 0.9, transform: 'scale(0.9)' }}>
+    <div style={{ display: 'flex', alignItems: 'center', opacity: 0.9 }}>
       <span
         style={{
           color: color.darkest,

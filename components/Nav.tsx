@@ -88,7 +88,7 @@ export const Nav = ({ transparent, CTA }: NavProps) => {
             <YearTag>2023</YearTag>
           </LogoNavItem>
           <NavLinks>
-            <NavItem variant="default" href={SNEAK_PEEK_URL}>
+            <NavItem variant="default" href={SNEAK_PEEK_URL} LinkWrapper={LinkWrapper}>
               Sneak peek
             </NavItem>
             <NavItem variant="default" href={DISCORD_URL}>
