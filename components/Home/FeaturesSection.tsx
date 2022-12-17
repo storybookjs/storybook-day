@@ -168,7 +168,7 @@ export const FeaturesSection = () => {
           icon={withPrefix('/features/typescript-icon.svg')}
         />
         <Feature
-          title="Official Figma integration"
+          title="Figma integration sneak peek"
           description="Speed up UI implementation by connecting with design. Embed designs in Storybook and embed stories in Figma."
           media={
             <VideoCard

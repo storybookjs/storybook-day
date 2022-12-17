@@ -6,6 +6,11 @@ const { marketing, color, breakpoints } = styles;
 const TextWrapper = styled.div`
   margin: 0 auto;
   color: ${color.darkest};
+
+  @media (min-width: ${breakpoints[2]}px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 const Title = styled.div`
   ${marketing.textLargeBold};
@@ -23,7 +28,7 @@ const Description = styled.div`
 const Figure = styled.div<{ bgColor: string }>`
   border-radius: 20px;
   background: ${({ bgColor }) => bgColor};
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   max-height: 520px;
   margin-left: auto;
   margin-right: auto;
@@ -61,13 +66,18 @@ const Figure = styled.div<{ bgColor: string }>`
 const Icon = styled.img`
   flex: none;
   display: none;
-  width: 80px;
-  height: 80px;
-  border-radius: 10px;
-  margin-right: 30px;
 
   @media (min-width: ${breakpoints[1]}px) {
     display: block;
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+  }
+
+  @media (min-width: ${breakpoints[3]}px) {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
   }
 `;
 
