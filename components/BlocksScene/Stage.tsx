@@ -1,7 +1,7 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Canvas, useThree } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 
 const { breakpoints } = styles;
 
