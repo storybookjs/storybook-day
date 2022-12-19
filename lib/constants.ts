@@ -42,6 +42,8 @@ Excited to see what's new in 7.0.
 Join me there, the tickets are free 👉`;
 export const COOKIE = 'user-id';
 
+export const CHROMATIC_URL =
+  'https://www.chromatic.com/?utm_source=storybook_website&utm_medium=link&utm_campaign=storybook_day';
 export const LEGAL_URL = 'https://www.chromatic.com/docs/privacy-policy';
 export const CODE_OF_CONDUCT =
   'https://github.com/storybookjs/storybook/blob/next/CODE_OF_CONDUCT.md';

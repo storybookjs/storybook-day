@@ -6,8 +6,9 @@ import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
 import { Block, blockTypes } from './Block';
 import { VersionText } from './VersionText';
 import { Stage } from './Stage';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { colors } from './store';
+import { useThree } from '@react-three/fiber';
 
 interface Sphere {
   position: number[];
@@ -41,9 +42,30 @@ const blocks = pack({
   };
 });
 
+function LoopControl({ setFrameLoop }: { setFrameLoop: (value: 'demand' | 'always') => void }) {
+  const { invalidate } = useThree();
+
+  useEffect(() => {
+    const viewportWidth = Math.max(
+      document.documentElement.clientWidth || 0,
+      window.innerWidth || 0
+    );
+
+    if (viewportWidth < 400) {
+      setFrameLoop('demand');
+      invalidate();
+    }
+  }, [invalidate, setFrameLoop]);
+
+  return null;
+}
+
 export const BlocksScene = () => {
+  const [frameLoop, setFrameLoop] = useState<'demand' | 'always'>('always');
+
   return (
-    <Stage>
+    <Stage frameLoop={frameLoop}>
+      <LoopControl setFrameLoop={setFrameLoop} />
       <Suspense fallback={null}>
         <group position={[0, 0.5, 0]}>
           <VersionText />
@@ -54,8 +76,8 @@ export const BlocksScene = () => {
               quaternion={block.rotation}
               scale={block.size}
               speed={1}
-              rotationIntensity={2}
-              floatIntensity={2}
+              rotationIntensity={frameLoop === 'demand' ? 0 : 2}
+              floatIntensity={frameLoop === 'demand' ? 0 : 2}
               floatingRange={[-0.25, 0.25]}
             >
               <Block type={block.type} color={block.color} />

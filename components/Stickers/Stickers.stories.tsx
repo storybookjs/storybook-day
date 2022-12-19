@@ -5,6 +5,7 @@ import { expect } from '@storybook/jest';
 import { Layout } from '@components/Layout';
 import { withPrefix } from '@lib/with-prefix';
 import { Stickers } from './Stickers';
+import { M } from 'msw/lib/SetupApi-b2f0e5ac';
 
 const meta: Meta<typeof Stickers> = {
   title: 'Pages/Stickers/Stickers',
@@ -26,7 +27,6 @@ export default meta;
 type Story = StoryObj<typeof Stickers>;
 
 async function fillForm(canvas: any) {
-  await userEvent.type(canvas.getByLabelText('Name'), 'Marsha Wallace', { delay: 5 });
   await userEvent.type(canvas.getByLabelText('Address'), '996 Lakeshore Boulevard', { delay: 5 });
   await userEvent.type(canvas.getByLabelText('Apartment/Suite'), 'Unit 541', { delay: 5 });
   await userEvent.type(canvas.getByLabelText('City/town'), 'Toronto', { delay: 5 });
@@ -42,7 +42,8 @@ async function fillForm(canvas: any) {
 
 export const Default: Story = {
   args: {
-    username: 'rashy'
+    username: 'rashy',
+    name: 'Marcus Rashford'
   }
 };
 

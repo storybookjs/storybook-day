@@ -1,7 +1,7 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Canvas, useThree } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 
 const { breakpoints } = styles;
 
@@ -18,9 +18,11 @@ const Container = styled.div`
     }
   }
 
-  opacity: 0;
-  touch-action: none;
-  animation: fade-in 2.5s ease 0.5s forwards;
+  canvas {
+    opacity: 0;
+    touch-action: pan-y;
+    animation: fade-in 2.5s ease 0.5s forwards;
+  }
 
   height: calc(40vh);
 
@@ -37,31 +39,15 @@ const Container = styled.div`
   }
 `;
 
-function LoopControl({ setFrameLoop }: { setFrameLoop: (value: 'demand' | 'always') => void }) {
-  const { invalidate } = useThree();
-
-  useEffect(() => {
-    const viewportWidth = Math.max(
-      document.documentElement.clientWidth || 0,
-      window.innerWidth || 0
-    );
-
-    if (viewportWidth < 400) {
-      setFrameLoop('demand');
-      invalidate();
-    }
-  }, [invalidate, setFrameLoop]);
-
-  return null;
-}
-
-export const Stage: FC = ({ children }) => {
-  const [frameLoop, setFrameLoop] = useState<'demand' | 'always'>('always');
-
+export const Stage: FC<{ frameLoop: 'demand' | 'always' | 'never' }> = ({
+  frameLoop,
+  children
+}) => {
   return (
     <Container aria-label="Storybook 7.0" role="img">
       <Canvas
         frameloop={frameLoop}
+        resize={{ scroll: false, debounce: { scroll: 500, resize: 500 } }}
         shadows
         dpr={typeof window === 'undefined' ? 1 : window.devicePixelRatio}
         gl={{
@@ -72,7 +58,6 @@ export const Stage: FC = ({ children }) => {
         }}
         camera={{ position: [0, 0, 30], near: 0.1, far: 60, fov: 45 }}
       >
-        <LoopControl setFrameLoop={setFrameLoop} />
         <color attach="background" args={['#E3F3FF']} />
         {/* lights */}
         <ambientLight intensity={0.5} />
