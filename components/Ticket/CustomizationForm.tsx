@@ -178,7 +178,11 @@ export const CustomizationForm = ({
             {username}
           </AuthenticatedButton>
           {username && (
-            <StyledLink href={`/stickers?username=${username}`} LinkWrapper={LinkWrapper} withArrow>
+            <StyledLink
+              href={`/stickers?username=${username}&name=${userData.name}`}
+              LinkWrapper={LinkWrapper}
+              withArrow
+            >
               Get free stickers
             </StyledLink>
           )}

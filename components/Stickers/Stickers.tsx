@@ -57,9 +57,9 @@ const Attribution = styled(ByChromatic)`
 
 type FormState = 'default' | 'loading' | 'error' | 'success';
 
-export const Stickers = ({ username }: { username: string }) => {
+export const Stickers = ({ username, name = '' }: { username: string; name: string }) => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
+    name,
     address: '',
     address2: '',
     cityTown: '',

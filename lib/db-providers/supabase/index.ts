@@ -100,9 +100,8 @@ export async function updateUserWithShippingInfo(
     .select('username')
     .eq('username', username)
     .single();
-  const login = data;
 
-  if (!login) {
+  if (!data) {
     throw new Error('The registration does not exist. Please register for the event first.');
   }
 

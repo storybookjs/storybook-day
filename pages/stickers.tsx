@@ -10,6 +10,7 @@ import { LinkWrapper } from '@components/LinkWrapper';
 export default function Conf() {
   const { query } = useRouter();
   const username = query.username?.toString();
+  const name = query.name?.toString();
 
   return (
     <>
@@ -35,7 +36,7 @@ export default function Conf() {
             </Button>
           }
         >
-          <Stickers username={username} />
+          <Stickers username={username} name={name} />
         </Layout>
       </Page>
     </>
