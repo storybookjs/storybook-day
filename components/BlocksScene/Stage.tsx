@@ -20,7 +20,7 @@ const Container = styled.div`
 
   canvas {
     opacity: 0;
-    touch-action: none;
+    touch-action: pan-y;
     animation: fade-in 2.5s ease 0.5s forwards;
   }
 

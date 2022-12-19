@@ -29,9 +29,15 @@ type Meta = {
 type Props = {
   meta: Meta;
   children: React.ReactNode;
+  theme?: 'blue' | 'yellow';
 };
 
-export default function Page({ meta, children }: Props) {
+const THEMES = {
+  blue: '#e3f3ff',
+  yellow: '#FDFF93'
+};
+
+export default function Page({ meta, children, theme = 'blue' }: Props) {
   const router = useRouter();
   const image = meta.image || '/og-sb-day.png';
   const title = meta.title || META_TITLE;
@@ -55,6 +61,7 @@ export default function Page({ meta, children }: Props) {
         <link rel="shortcut icon" href={withPrefix('/favicon.svg')} />
         <link rel="preconnect" href="https://fonts.gstatic.com/" />
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="anonymous" />
+        <meta name="theme-color" content={THEMES[theme]} />
         {image && (
           <meta
             property="og:image"

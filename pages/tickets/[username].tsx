@@ -57,7 +57,7 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
       };
 
   return (
-    <Page meta={meta}>
+    <Page meta={meta} theme="yellow">
       <Head>
         <meta name="robots" content="noindex" />
       </Head>

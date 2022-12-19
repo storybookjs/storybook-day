@@ -16,7 +16,10 @@ export default function Conf() {
       <Head>
         <meta name="robots" content="noindex" />
       </Head>
-      <Page meta={{ title: 'Storybook Day | Stickers', description: META_DESCRIPTION }}>
+      <Page
+        meta={{ title: 'Storybook Day | Stickers', description: META_DESCRIPTION }}
+        theme="yellow"
+      >
         <Layout
           showFooter={false}
           layoutStyle="full"
