@@ -18,9 +18,11 @@ const Container = styled.div`
     }
   }
 
-  opacity: 0;
-  touch-action: none;
-  animation: fade-in 2.5s ease 0.5s forwards;
+  canvas {
+    opacity: 0;
+    touch-action: none;
+    animation: fade-in 2.5s ease 0.5s forwards;
+  }
 
   height: calc(40vh);
 
@@ -62,6 +64,7 @@ export const Stage: FC = ({ children }) => {
     <Container aria-label="Storybook 7.0" role="img">
       <Canvas
         frameloop={frameLoop}
+        resize={{ scroll: false, debounce: { scroll: 50, resize: 0 } }}
         shadows
         dpr={typeof window === 'undefined' ? 1 : window.devicePixelRatio}
         gl={{
