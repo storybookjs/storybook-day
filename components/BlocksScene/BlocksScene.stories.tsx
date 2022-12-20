@@ -7,7 +7,17 @@ const meta: Meta<typeof BlocksScene> = {
     layout: 'fullscreen',
     backgrounds: { default: 'blue' }
   },
-  component: BlocksScene
+  component: BlocksScene,
+  argTypes: {
+    focusDistance: { control: { type: 'range', min: 0, max: 1, step: 0.05 } },
+    bokehScale: { control: { type: 'range', min: 0, max: 20, step: 1 } },
+    focalLength: { control: { type: 'range', min: 0, max: 1, step: 0.01 } }
+  },
+  args: {
+    focusDistance: 0.5,
+    bokehScale: 7,
+    focalLength: 0.2
+  }
 };
 export default meta;
 type Story = StoryObj<typeof BlocksScene>;

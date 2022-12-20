@@ -60,7 +60,17 @@ function LoopControl({ setFrameLoop }: { setFrameLoop: (value: 'demand' | 'alway
   return null;
 }
 
-export const BlocksScene = () => {
+interface BlocksSceneProps {
+  focusDistance?: number;
+  bokehScale?: number;
+  focalLength?: number;
+}
+
+export const BlocksScene = ({
+  focusDistance = 0.5,
+  bokehScale = 7,
+  focalLength = 0.2
+}: BlocksSceneProps) => {
   const [frameLoop, setFrameLoop] = useState<'demand' | 'always'>('always');
 
   return (
@@ -94,7 +104,11 @@ export const BlocksScene = () => {
             resolution={256}
           />
           <EffectComposer multisampling={8}>
-            <DepthOfField focusDistance={0.5} bokehScale={7} focalLength={0.2} />
+            <DepthOfField
+              focusDistance={focusDistance}
+              bokehScale={bokehScale}
+              focalLength={focalLength}
+            />
           </EffectComposer>
         </group>
       </Suspense>
