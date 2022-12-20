@@ -4,12 +4,12 @@ import { styles } from '@storybook/components-marketing';
 const { marketing, color, breakpoints } = styles;
 
 const TextWrapper = styled.div`
-  margin: 0 auto;
   color: ${color.darkest};
 
-  @media (min-width: ${breakpoints[2]}px) {
+  @media (min-width: ${breakpoints[3]}px) {
     padding-left: 20px;
     padding-right: 20px;
+    margin: 0 auto;
   }
 `;
 const Title = styled.div`
@@ -66,6 +66,7 @@ const Figure = styled.div<{ bgColor: string }>`
 const Icon = styled.img`
   flex: none;
   display: none;
+  margin-right: 20px;
 
   @media (min-width: ${breakpoints[1]}px) {
     display: block;
@@ -77,7 +78,7 @@ const Icon = styled.img`
   @media (min-width: ${breakpoints[3]}px) {
     width: 80px;
     height: 80px;
-    margin-right: 10px;
+    margin-right: 0;
   }
 `;
 
