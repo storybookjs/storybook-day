@@ -27,7 +27,7 @@ export async function getUserByUsername(username: string): Promise<ConfUser> {
   const { data } = await supabase!
     .from<ConfUser>('users')
     .select('name, ticketNumber')
-    .eq('username', username)
+    .ilike('username', `%${username}%`)
     .single();
 
   return data ?? {};
