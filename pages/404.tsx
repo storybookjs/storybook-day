@@ -21,7 +21,7 @@ const NotFound: NextPage<Props> = ({ latestVersion }) => {
   return (
     <Page meta={{ title: 'Storybook Day | Stickers', description: META_DESCRIPTION }}>
       <Head>
-        <title>Component Encyclopedia | Storybook</title>
+        <title>Storybook Day</title>
         <meta name="robots" content="noindex" />
       </Head>
       <Layout
