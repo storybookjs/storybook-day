@@ -44,7 +44,7 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
 
   const meta = username
     ? {
-        title: `${firstName}’s  ticket to ${SITE_NAME}`,
+        title: `${firstName}’s ticket to ${SITE_NAME}`,
         description: META_DESCRIPTION,
         image: `/api/ticket-images/${username}`,
         url: `${SITE_URL}/tickets/${username}`
