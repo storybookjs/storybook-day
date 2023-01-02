@@ -12,17 +12,6 @@ const Lights = ({ position, debug }) => {
       <ambientLight intensity={0.5} />
       <spotLight ref={debug ? light : null} position={position} penumbra={1} angle={Math.PI / 7} />
       <pointLight position={[-10, -10, -10]} />
-      {/* <ambientLight intensity={0.8} />
-      <spotLight
-        ref={debug ? light : null}
-        // castShadow
-        intensity={1}
-        position={position}
-        angle={Math.PI / 7}
-        penumbra={1}
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-      /> */}
     </>
   );
 };

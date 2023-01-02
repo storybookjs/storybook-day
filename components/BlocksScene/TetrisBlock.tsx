@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { Extrude } from '@react-three/drei';
 import { materials } from './store';
 
-export const SIDE = 0.75;
+export const SIDE = 0.5;
 export const EXTRUDE_SETTINGS = {
   steps: 2,
   depth: SIDE * 0.75,

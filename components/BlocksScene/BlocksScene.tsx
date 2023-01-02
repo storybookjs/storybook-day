@@ -64,12 +64,20 @@ interface BlocksSceneProps {
   focusDistance?: number;
   bokehScale?: number;
   focalLength?: number;
+  depthOfField?: boolean;
+  shadows?: boolean;
+  blocks?: boolean;
+  text?: boolean;
 }
 
 export const BlocksScene = ({
   focusDistance = 0.5,
   bokehScale = 7,
-  focalLength = 0.2
+  focalLength = 0.2,
+  depthOfField = true,
+  shadows = true,
+  blocks: showBlocks = true,
+  text = true
 }: BlocksSceneProps) => {
   const [frameLoop, setFrameLoop] = useState<'demand' | 'always'>('always');
 
@@ -78,38 +86,43 @@ export const BlocksScene = ({
       <LoopControl setFrameLoop={setFrameLoop} />
       <Suspense fallback={null}>
         <group position={[0, 0.5, 0]}>
-          <VersionText />
-          {blocks.map((block: any) => (
-            <Float
-              key={block.id}
-              position={block.position}
-              quaternion={block.rotation}
-              scale={block.size}
-              speed={1}
-              rotationIntensity={frameLoop === 'demand' ? 0 : 2}
-              floatIntensity={frameLoop === 'demand' ? 0 : 2}
-              floatingRange={[-0.25, 0.25]}
-            >
-              <Block type={block.type} color={block.color} />
-            </Float>
-          ))}
-          <ContactShadows
-            position={[0, -8, 0]}
-            opacity={0.75}
-            width={20}
-            height={10}
-            blur={1}
-            far={9}
-            color="#333"
-            resolution={256}
-          />
-          <EffectComposer multisampling={8}>
-            <DepthOfField
-              focusDistance={focusDistance}
-              bokehScale={bokehScale}
-              focalLength={focalLength}
+          {text && <VersionText />}
+          {showBlocks &&
+            blocks.map((block: any) => (
+              <Float
+                key={block.id}
+                position={block.position}
+                quaternion={block.rotation}
+                scale={block.size}
+                speed={1}
+                rotationIntensity={0 /* frameLoop === 'demand' ? 0 : 2 */}
+                floatIntensity={0 /* frameLoop === 'demand' ? 0 : 2 */}
+                floatingRange={[-0.25, 0.25]}
+              >
+                <Block type={block.type} color={block.color} />
+              </Float>
+            ))}
+          {shadows && (
+            <ContactShadows
+              position={[0, -8, 0]}
+              opacity={0.75}
+              width={20}
+              height={10}
+              blur={1}
+              far={9}
+              color="#333"
+              resolution={256}
             />
-          </EffectComposer>
+          )}
+          {depthOfField && (
+            <EffectComposer multisampling={8}>
+              <DepthOfField
+                focusDistance={focusDistance}
+                bokehScale={bokehScale}
+                focalLength={focalLength}
+              />
+            </EffectComposer>
+          )}
         </group>
       </Suspense>
     </Stage>

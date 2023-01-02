@@ -11,12 +11,20 @@ const meta: Meta<typeof BlocksScene> = {
   argTypes: {
     focusDistance: { control: { type: 'range', min: 0, max: 1, step: 0.05 } },
     bokehScale: { control: { type: 'range', min: 0, max: 20, step: 1 } },
-    focalLength: { control: { type: 'range', min: 0, max: 1, step: 0.01 } }
+    focalLength: { control: { type: 'range', min: 0, max: 1, step: 0.01 } },
+    depthOfField: { control: { type: 'boolean' } },
+    shadows: { control: { type: 'boolean' } },
+    blocks: { control: { type: 'boolean' } },
+    text: { control: { type: 'boolean' } }
   },
   args: {
     focusDistance: 0.5,
     bokehScale: 7,
-    focalLength: 0.2
+    focalLength: 0.2,
+    depthOfField: false,
+    shadows: false,
+    blocks: true,
+    text: true
   }
 };
 export default meta;
