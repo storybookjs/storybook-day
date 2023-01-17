@@ -23,27 +23,10 @@ export const Analytics = () =>
     </>
   ) : null;
 
-type TrackCustomEvent = (options: {
-  action?: 'click' | 'subscribe';
-  category: 'Component' | 'Project' | 'add-your-project' | 'newsletter' | 'search';
-  label: string;
-  value?: number;
-}) => void;
+type TrackCustomEvent = (options: { name: string; data: Record<string, string | number> }) => void;
 
-export const trackCustomEvent: TrackCustomEvent = ({
-  action = 'click',
-  category,
-  label,
-  value
-}) => {
-  typeof window !== 'undefined' &&
-    // @ts-expect-error - It's fine, TS...
-    typeof window.gtag !== 'undefined' &&
-    // See: https://developers.google.com/analytics/devguides/collection/gtagjs/events#send_events
-    // @ts-expect-error - It's fine, TS...
-    window.gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value: value
-    });
+export const trackCustomEvent: TrackCustomEvent = ({ name, data }) => {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', name, data);
+  }
 };

@@ -9,6 +9,7 @@ import { register } from '@lib/user-api';
 import { useCaptcha } from '../Captcha';
 import { FormUI } from './FormUI';
 import { Retry } from '@components/Retry';
+import { trackCustomEvent } from '@components/Analytics';
 
 const Container = styled(motion.div)`
   position: relative;
@@ -59,6 +60,11 @@ export const RegistrationForm = ({
             name: data.name,
             username: data.username
           };
+
+          trackCustomEvent({
+            name: 'sb_day_2023_register',
+            data: { ticketNumber: data.ticketNumber }
+          });
 
           if (sharePage) {
             const queryString = Object.keys(params)
