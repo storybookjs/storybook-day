@@ -32,22 +32,22 @@ const Shadow = styled.div`
   }
 
   /* Use this as the fallback shadow on iOS Safari */
-  display: none;
-  @supports (-webkit-touch-callout: none) {
-    display: block;
-  }
+  display: block;
 `;
 
 const SVG = styled.svg<{ visibility: 'desktop' | 'mobile' }>`
   display: block;
+  filter: drop-shadow(0px 13.0612px 26.1224px rgba(0, 0, 0, 0.1))
+    drop-shadow(0px 1.30612px 3.91837px rgba(0, 0, 0, 0.1));
 
-  /* This filter causes the SVG to disappear on iOS Safari,
-  so only show it elsewhere */
-  @supports not (-webkit-touch-callout: none) {
-    filter: drop-shadow(0px 52.2449px 39.1837px rgba(0, 0, 0, 0.05))
-      drop-shadow(0px 130.612px 104.49px rgba(0, 0, 0, 0.05))
-      drop-shadow(0px 13.0612px 26.1224px rgba(0, 0, 0, 0.1))
-      drop-shadow(0px 1.30612px 3.91837px rgba(0, 0, 0, 0.1));
+  @supports (-webkit-touch-callout: none) {
+    filter: drop-shadow(0px 13.0612px 26.1224px rgba(0, 0, 0, 0.1));
+  }
+
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      filter: none;
+    }
   }
 
   ${props =>
