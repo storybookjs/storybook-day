@@ -18,7 +18,6 @@ export const Analytics = () =>
           gtag('js', new Date());
 
           gtag('config', '${trackingId}');
-          gtag('set', 'content_group', 'storybook_day_2023');
         `}
       </Script>
     </>
