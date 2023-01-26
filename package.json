@@ -10,7 +10,6 @@
     "dev": "next",
     "start": "next start",
     "build": "next build",
-    "postbuild": "bash scripts/move-public-files.sh",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
