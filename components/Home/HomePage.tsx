@@ -3,6 +3,7 @@ import { styles } from '@storybook/components-marketing';
 import { BlocksScene } from '@components/BlocksScene';
 import { Hero } from './Hero';
 import { FeaturesSection } from './FeaturesSection';
+import { CFPSection } from './CFPSection';
 
 const { breakpoints } = styles;
 
@@ -37,6 +38,7 @@ export const HomePage = ({ disable3D = false }: { disable3D?: boolean }) => (
     </SolidBackdrop>
     <GradientBackdrop>
       <FeaturesSection />
+      <CFPSection />
     </GradientBackdrop>
   </>
 );
