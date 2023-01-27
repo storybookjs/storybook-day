@@ -48,6 +48,8 @@ export const CFPSection = () => (
     </Copy>
     <SubTitle>Format</SubTitle>
     <Copy>Lightning talk (5-10 minutes). Talks will be recorded ahead of time.</Copy>
+    <SubTitle>Deadline</SubTitle>
+    <Copy>Feb 7, 2023</Copy>
     <Copy>
       <Button
         isLink
