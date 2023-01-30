@@ -87,6 +87,7 @@ export const DISCORD_URL = 'https://discord.gg/storybook';
 export const YOUTUBE_URL = 'https://www.youtube.com/c/StorybookJS';
 export const GITHUB_URL = 'https://github.com/storybookjs';
 export const SNEAK_PEEK_URL = '/#sneak-peek';
+export const CFP_URL = '/#cfp';
 
 // https://www.labnol.org/calendar/
 export const CALENDAR_URL =

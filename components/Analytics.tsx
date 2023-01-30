@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Script from 'next/script';
 
+const oldTrackingId = process.env.NEXT_PUBLIC_GA3_TRACKING_ID;
 const trackingId = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
 
 export const Analytics = () =>
@@ -17,6 +18,7 @@ export const Analytics = () =>
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
+          gtag('config', '${oldTrackingId}');
           gtag('config', '${trackingId}');
           gtag('set', 'content_group', 'storybook_day_2023');
         `}
