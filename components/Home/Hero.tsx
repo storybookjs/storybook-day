@@ -1,10 +1,11 @@
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Cardinal } from '@storybook/design-system';
+import { Cardinal, Badge, Button, Link } from '@storybook/design-system';
 import { RegistrationForm } from '@components/RegistrationForm';
 import { FreeStickers } from '@components/FreeStickers';
 import { ByChromatic } from '@components/ByChromatic';
-import { SITE_NAME_MULTILINE, SHORT_TIME, TIMEZONE } from '@lib/constants';
+import { SITE_NAME_MULTILINE, SHORT_TIME, TIMEZONE, CFP_URL } from '@lib/constants';
+import { LinkWrapper } from '@components/LinkWrapper';
 
 const { marketing, breakpoints, pageMargins } = styles;
 
@@ -134,12 +135,10 @@ const ByChromaticDesktop = styled(ByChromatic)`
   }
 `;
 
-const FreeStickersDesktop = styled(FreeStickers)`
-  display: none;
-
-  @media (min-width: ${breakpoints[2]}px) {
-    display: inline;
-  }
+const Badges = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 `;
 const ByChromaticMobile = styled(ByChromatic)`
   display: flex;
@@ -148,6 +147,11 @@ const ByChromaticMobile = styled(ByChromatic)`
     display: none;
   }
 `;
+export const CFP = () => (
+  <Link href={CFP_URL} tertiary withArrow LinkWrapper={LinkWrapper}>
+    Submit a talk proposal
+  </Link>
+);
 
 export const Hero = () => (
   <Container>
@@ -171,7 +175,10 @@ export const Hero = () => (
         community.
       </Copy>
       <Register />
-      <FreeStickersDesktop />
+      <Badges>
+        <FreeStickers />
+        <CFP />
+      </Badges>
     </div>
     <ByChromaticMobile />
   </Container>

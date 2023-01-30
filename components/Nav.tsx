@@ -2,7 +2,7 @@ import { styled } from '@storybook/theming';
 import { Logos } from '@storybook/design-system';
 import { styles, NavItem } from '@storybook/components-marketing';
 import { SkipNavLink as RSkipNavLink } from '@reach/skip-nav';
-import { SNEAK_PEEK_URL, DISCORD_URL, TWITTER_URL } from '@lib/constants';
+import { SNEAK_PEEK_URL, DISCORD_URL, TWITTER_URL, CFP_URL } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
 
 const { pageMargins, spacing, color, breakpoints, typography } = styles;
@@ -90,6 +90,9 @@ export const Nav = ({ transparent, CTA }: NavProps) => {
           <NavLinks>
             <NavItem variant="default" href={SNEAK_PEEK_URL} LinkWrapper={LinkWrapper}>
               Sneak peek
+            </NavItem>
+            <NavItem variant="default" href={CFP_URL} LinkWrapper={LinkWrapper}>
+              CFP
             </NavItem>
             <NavItem variant="default" href={DISCORD_URL}>
               Discord
