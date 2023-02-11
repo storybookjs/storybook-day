@@ -17,8 +17,7 @@
 import { GetStaticProps } from 'next';
 
 import Page from '@components/page';
-import Schedule from '@components/Schedule';
-import { Layout } from '@components/Layout';
+import { Schedule } from '@components/Schedule';
 
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
@@ -30,15 +29,13 @@ type Props = {
 
 export default function SchedulePage({ allStages }: Props) {
   const meta = {
-    title: 'Schedule - Virtual Event Starter Kit',
+    title: 'Schedule - Storybook Day',
     description: META_DESCRIPTION
   };
 
   return (
     <Page meta={meta}>
-      <Layout>
-        <Schedule allStages={allStages} />
-      </Layout>
+      <Schedule allStages={allStages} />
     </Page>
   );
 }
