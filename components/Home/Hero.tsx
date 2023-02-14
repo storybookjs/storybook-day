@@ -177,7 +177,7 @@ export const Hero = () => (
       <Register />
       <Badges>
         <FreeStickers />
-        <CFP />
+        {/* <CFP /> */}
       </Badges>
     </div>
     <ByChromaticMobile />
