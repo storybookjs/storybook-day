@@ -32,7 +32,8 @@ function transformResponse(response: any[], _speakers?: any) {
     Object.keys(item).map(key => {
       // assign the urls directly if not an image
       const noAssign = ['image', 'logo', 'cardImage'];
-      if (item[key].url && noAssign.indexOf(key) === -1) {
+
+      if (item[key] && item[key].url && noAssign.indexOf(key) === -1) {
         item[key] = item[key].url;
       }
 
@@ -103,7 +104,7 @@ export async function getAllSpeakers(): Promise<Speaker[]> {
         }
       }
     }
-  }  
+  }
   `);
 
   const responseData = data.SpeakerItems.items.map((s: any) => {
@@ -175,7 +176,7 @@ export async function getAllSponsors(): Promise<Sponsor[]> {
         }
       }
     }
-  }  
+  }
   `);
 
   const transformedData = transformResponse(data.CompanyItems.items);

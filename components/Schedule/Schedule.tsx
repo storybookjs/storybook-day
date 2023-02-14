@@ -1,84 +1,98 @@
-import cn from 'classnames';
+import { useMemo } from 'react';
+import { styled } from '@storybook/theming';
+import { styles } from '@storybook/components-marketing';
 import { Stage, Talk } from '@lib/types';
-import styles from './schedule.module.css';
 import { TalkCard } from './TalkCard';
 
-function StageRow({ stage }: { stage: Stage }) {
-  // Group talks by the time block
-  const timeBlocks = stage.schedule.reduce((allBlocks: any, talk) => {
-    allBlocks[talk.start] = [...(allBlocks[talk.start] || []), talk];
-    return allBlocks;
-  }, {});
+const { pageMargins, color, marketing, spacing, breakpoints } = styles;
 
-  return (
-    <div key={stage.name} className={styles.row}>
-      <h3 className={cn(styles['stage-name'], styles[stage.slug])}>
-        <span>{stage.name}</span>
-      </h3>
-      <div className={cn(styles.talks, styles[stage.slug])}>
-        {Object.keys(timeBlocks).map((startTime: string) => (
-          <div key={startTime}>
-            {timeBlocks[startTime].map((talk: Talk, index: number) => (
-              <TalkCard key={talk.title} talk={talk} showTime={index === 0} />
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+const ScheduleWrapper = styled.main`
+  ${pageMargins};
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+`;
+
+const Title = styled.h1`
+  ${marketing.subheading};
+  margin-bottom: 1rem;
+  @media (min-width: ${breakpoints[1]}px) {
+    ${marketing.hero2};
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: ${breakpoints[2]}px) {
+    ${marketing.hero1};
+    margin-bottom: 2rem;
+  }
+`;
+
+const SectionTitle = styled.div`
+  ${marketing.textLargeBold};
+  margin-bottom: 0.625rem;
+
+  @media (min-width: ${breakpoints[1]}px) {
+    ${marketing.subheading};
+  }
+`;
+const Section = styled.div`
+  border: 1px solid ${color.border};
+  border-radius: ${spacing.borderRadius.small}px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+`;
 
 type Props = {
   allStages: Stage[];
 };
 
-/**
- *
- * 👋 Event kickoff [Chan `5min`]
- * 🗺️ Evolution of Storybook [Dom `10min`]
- *
- * --------------------------
- * Storybook 7
- * --------------------------
- * 🎥 Promo video [`1min`]
- * 🎨 Foundational Changes [Shilman `15min`]
- * ⚡ Perf [Ian VS `15min`]
- * 📝 Docs revamp [Tom `10min`]
- * 🧪 Test [Yann `15min`]
- * 🧩 Compatibility [Kyle `10min`]
- * 🚦 Stability  [Shilman `10min`]
- * --------------------------
- *
- * BREAK [`15min`]
- *
- * --------------------------
- * 💼 Use cases
- * --------------------------
- *   How [Monday.com](http://monday.com/) uses Storybook [Orr Gottlieb] [`10min`]
- *   Who owns this component? It Depends! [Natalia Zmyslowska] [`10min`]
- *   Faster feature development with storybook, mirage and interactions [Christopher Webb] [`10min`]
- *   Cultivating a Digital Garden in Storybook [Tricia Leach] [`10min`]
- *   Storybook at the Guardian [Oliver Barnwell] [`10min`]
- *   Conquer Style Bleeding with the CSS Chaos Addon [Alex Wilson] [`10min`]
- *
- * --------------------------
- * 🌐 Ecosystem
- * --------------------------
- *    Shaun [`10min`]
- *    Katerina [`10min`]
- * --------------------------
- * ⏭️ What’s next [Shilman `5mins`]
- * 👋 Wrap-up [Chan `5min`]
- */
+function groupBySection(talks: Talk[]) {
+  return talks.reduce((acc, talk) => {
+    const section = talk.section || 'Other';
+    if (!acc[section]) {
+      acc[section] = [];
+    }
+    acc[section].push(talk);
+    return acc;
+  }, {} as Record<string, Talk[]>);
+}
 
 export function Schedule({ allStages }: Props) {
+  const mainStage = allStages[0];
+  const sections = useMemo(() => groupBySection(mainStage.schedule), [mainStage.schedule]);
+
   return (
-    <div className={styles.container}>
-      <div className={styles['row-wrapper']}>
-        {allStages.map(stage => (
-          <StageRow key={stage.slug} stage={stage} />
+    <ScheduleWrapper>
+      <Title>Schedule</Title>
+      {/* Intro */}
+      <Section>
+        {sections.intro.map((talk: Talk) => (
+          <TalkCard key={talk.title} talk={talk} />
         ))}
-      </div>
-    </div>
+      </Section>
+      <SectionTitle>Storybook 7.0</SectionTitle>
+      <Section>
+        {sections['storybook-7'].map((talk: Talk) => (
+          <TalkCard key={talk.title} talk={talk} />
+        ))}
+      </Section>
+      <SectionTitle>💼 Use cases</SectionTitle>
+      <Section>
+        {sections['use-cases'].map((talk: Talk) => (
+          <TalkCard key={talk.title} talk={talk} />
+        ))}
+      </Section>
+      <SectionTitle>🌐 Ecosystem</SectionTitle>
+      <Section>
+        {sections.ecosystem.map((talk: Talk) => (
+          <TalkCard key={talk.title} talk={talk} />
+        ))}
+      </Section>
+      {/* Wrap up */}
+      <Section>
+        {sections['wrap-up'].map((talk: Talk) => (
+          <TalkCard key={talk.title} talk={talk} />
+        ))}
+      </Section>
+    </ScheduleWrapper>
   );
 }

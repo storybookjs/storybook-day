@@ -1,27 +1,12 @@
-/**
- * Copyright 2020 Vercel Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import { GetStaticProps } from 'next';
-
 import Page from '@components/page';
 import { Schedule } from '@components/Schedule';
-
+import { Layout } from '@components/Layout';
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
 import { META_DESCRIPTION } from '@lib/constants';
+import { Button } from '@storybook/design-system';
+import { LinkWrapper } from '@components/LinkWrapper';
 
 type Props = {
   allStages: Stage[];
@@ -29,14 +14,31 @@ type Props = {
 
 export default function SchedulePage({ allStages }: Props) {
   const meta = {
-    title: 'Schedule - Storybook Day',
+    title: 'Schedule | Storybook Day',
     description: META_DESCRIPTION
   };
 
   return (
-    <Page meta={meta}>
-      <Schedule allStages={allStages} />
-    </Page>
+    <>
+      <Page meta={meta} theme="yellow">
+        <Layout
+          showFooter
+          navCTA={
+            <Button
+              size="small"
+              appearance="secondary"
+              isLink
+              ButtonWrapper={LinkWrapper}
+              href="/#register"
+            >
+              Get your free ticket
+            </Button>
+          }
+        >
+          <Schedule allStages={allStages} />
+        </Layout>
+      </Page>
+    </>
   );
 }
 

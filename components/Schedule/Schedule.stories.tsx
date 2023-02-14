@@ -20,32 +20,6 @@ const mockStages = [
         title: 'Keynote',
         speaker: [
           {
-            name: 'Blagun Dobromil',
-            bio:
-              'They have over ten years of experience building blazing-fast web applications with Next.js and Vercel. Outside of work, they enjoy hiking, skiing, and surfing. Before becoming a developer, they worked in finance for a Fortune 500 company.',
-            title: 'Designer & Developer',
-            slug: 'blagun',
-            twitter: 'https://twitter.com/vercel',
-            github: 'https://github.com/vercel',
-            company: 'Company',
-            image: { url: 'https://a.storyblok.com/f/101757/619x972/152194dcc2/image_blagun.jpeg' },
-            talk: {
-              end: '2020-10-27T09:30-08:00',
-              _uid: 'abe7b451-9e8d-4423-b19f-8d8e31bb9d94',
-              start: '2020-10-27T09:00-08:00',
-              title: 'Keynote',
-              speaker: [
-                'f23bbaf3-de0f-4aa1-b24c-5ad72af27afe',
-                '648fcd31-9fe5-46c8-a7a7-ab6e5d39e175',
-                'f578ebc8-52c5-4831-aa22-00a4858cac2a'
-              ],
-              component: 'talk',
-              description:
-                "In this talk, you'll learn how Next.js and Vercel help transform the workflow of front-end developers. Hear about the latest developments with Next.js 10 and deploy your application with one click to Vercel."
-            },
-            uuid: '648fcd31-9fe5-46c8-a7a7-ab6e5d39e175'
-          },
-          {
             name: 'Christa Collyn',
             bio:
               'They have over ten years of experience building blazing-fast web applications with Next.js and Vercel. Outside of work, they enjoy hiking, skiing, and surfing. Before becoming a developer, they worked in finance for a Fortune 500 company.',
@@ -99,8 +73,13 @@ const mockStages = [
           }
         ],
         component: 'talk',
-        description:
-          "In this talk, you'll learn how Next.js and Vercel help transform the workflow of front-end developers. Hear about the latest developments with Next.js 10 and deploy your application with one click to Vercel."
+        description: `Storybook 7.0 is our biggest update ever! We’ve re-architected Storybook for improved performance and stability, including hundreds of improvements. In this session, Michael will cover some of the foundational changes.
+
+        The design refresh in 7.0 streamlines the developer experience to speed up workflows. This includes an edge-to-edge layout, redrawn icons, refined forms, and faster start and build performance.
+
+        The Component Story Format 3 (CSF3) marks an evolution in stories, reducing boilerplate code and improving ergonomics. This makes stories more concise and faster to write.
+
+        Storybook 7 also provides enhanced type safety for stories, made possible with the combination of CSF3 and the new TypeScript (4.9+) satisfies operator.`
       },
       {
         end: '2020-10-27T10:50-08:00',
