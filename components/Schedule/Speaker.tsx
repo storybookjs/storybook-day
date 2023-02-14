@@ -23,6 +23,10 @@ const Company = styled.span`
   color: ${color.dark};
 `;
 
+const SpeakerImage = styled(Avatar)`
+  flex: none;
+`;
+
 interface SpeakerProps {
   name: string;
   title: string;
@@ -34,7 +38,7 @@ interface SpeakerProps {
 export const Speaker = ({ name, title, company, avatarUrl, slug }: SpeakerProps) => (
   <Link href={`/speakers/${slug}`} LinkWrapper={LinkWrapper}>
     <SpeakerWrapper>
-      {avatarUrl && <Avatar size="large" username={name} src={avatarUrl} />}
+      {avatarUrl && <SpeakerImage size="large" username={name} src={avatarUrl} />}
       <div>
         <Name>{name}</Name>
         <Title>

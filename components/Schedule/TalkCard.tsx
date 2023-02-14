@@ -61,6 +61,7 @@ const Description = styled.div`
 
 const Speakers = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
 `;
 
