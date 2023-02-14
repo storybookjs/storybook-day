@@ -5,7 +5,6 @@ import { expect } from '@storybook/jest';
 import { Layout } from '@components/Layout';
 import { withPrefix } from '@lib/with-prefix';
 import { Stickers } from './Stickers';
-import { M } from 'msw/lib/SetupApi-b2f0e5ac';
 
 const meta: Meta<typeof Stickers> = {
   title: 'Pages/Stickers/Stickers',

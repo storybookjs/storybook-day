@@ -18,6 +18,7 @@ export const Default: Story = {
       end: '2020-10-27T10:50-08:00',
       start: '2020-10-27T10:10-08:00',
       title: 'Serverless Databases at the Edge',
+      section: 'intro',
       speaker: [
         {
           name: 'Ricohard Bohuslav',
@@ -33,18 +34,15 @@ export const Default: Story = {
           },
           talk: {
             end: '2020-10-27T10:50-08:00',
-            _uid: 'dc902e24-60be-4ea2-863f-2e6af281bd9b',
             start: '2020-10-27T10:10-08:00',
             title: 'Serverless Databases at the Edge',
-            speaker: ['d81d530c-77a4-48b4-90fa-3561be660b97'],
-            component: 'talk',
+            speaker: {} as any,
+            section: 'intro',
             description:
               "In this talk, you'll learn how Next.js and Vercel help transform the workflow of front-end developers. Hear about the latest developments with Next.js 10 and deploy your application with one click to Vercel."
-          },
-          uuid: 'd81d530c-77a4-48b4-90fa-3561be660b97'
+          }
         }
       ],
-      component: 'talk',
       description:
         "In this talk, you'll learn how Next.js and Vercel help transform the workflow of front-end developers. Hear about the latest developments with Next.js 10 and deploy your application with one click to Vercel."
     }

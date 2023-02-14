@@ -1,11 +1,8 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { parseISO, format } from 'date-fns';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { Talk } from '@lib/types';
-import { Avatar } from '@storybook/design-system';
 import { Speaker } from './Speaker';
 
 const { color, spacing, text, typography, breakpoints } = styles;
@@ -80,8 +77,6 @@ export function TalkCard({
   useEffect(() => {
     setStartAndEndTime(`${formatDate(start)} – ${formatDate(end)}`);
   }, [end, start]);
-
-  const firstSpeakerLink = `/speakers/${speakers[0].slug}`;
 
   return (
     <TalkWrapper>
