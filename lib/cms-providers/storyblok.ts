@@ -37,6 +37,11 @@ function transformResponse(response: any[], _speakers?: any) {
         item[key] = item[key].url;
       }
 
+      // remove empty social links
+      if ((key === 'github' || key === 'twitter') && item[key].url === '') {
+        item[key] = null;
+      }
+
       // remove nesting from schedule and assign speakers
       if (key === 'schedule') {
         item[key] = item[key].map((slot: { content: any; speaker: any }) => {

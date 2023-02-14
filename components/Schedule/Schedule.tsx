@@ -14,6 +14,7 @@ const ScheduleWrapper = styled.main`
 
 const Title = styled.h1`
   ${marketing.subheading};
+  color: ${color.darkest};
   margin-bottom: 1rem;
   @media (min-width: ${breakpoints[1]}px) {
     ${marketing.hero2};
@@ -28,6 +29,7 @@ const Title = styled.h1`
 
 const SectionTitle = styled.div`
   ${marketing.textLargeBold};
+  color: ${color.darkest};
   margin-bottom: 0.625rem;
 
   @media (min-width: ${breakpoints[1]}px) {

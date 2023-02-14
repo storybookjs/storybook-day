@@ -26,5 +26,14 @@ module.exports = {
       'localhost' // For Strapi
     ],
     imageSizes: [24, 64, 300]
+  },
+  async redirects() {
+    return [
+      {
+        source: '/speakers',
+        destination: '/schedule',
+        permanent: true
+      }
+    ];
   }
 };
