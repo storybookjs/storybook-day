@@ -7,7 +7,7 @@ import { styles } from '@storybook/components-marketing';
 
 const { pageMargins, color, marketing, spacing, breakpoints, text, subheading } = styles;
 
-const SpeakerWrapper = styled.main`
+const SpeakerWrapper = styled.div`
   ${pageMargins};
   padding-top: 4rem;
   padding-bottom: 4rem;

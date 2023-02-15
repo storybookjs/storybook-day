@@ -6,7 +6,7 @@ import { TalkCard } from './TalkCard';
 
 const { pageMargins, color, marketing, spacing, breakpoints } = styles;
 
-const ScheduleWrapper = styled.main`
+const ScheduleWrapper = styled.div`
   ${pageMargins};
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -39,7 +39,6 @@ const SectionTitle = styled.div`
 const Section = styled.div`
   border: 1px solid ${color.border};
   border-radius: ${spacing.borderRadius.small}px;
-  overflow: hidden;
   margin-bottom: 2rem;
 `;
 
