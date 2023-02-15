@@ -11,6 +11,10 @@ const ScheduleWrapper = styled.div`
   padding-top: 4rem;
   padding-bottom: 4rem;
 `;
+const Container = styled.div`
+  max-width: 660px;
+  margin: 0 auto;
+`;
 
 const Title = styled.h1`
   ${marketing.subheading};
@@ -39,6 +43,7 @@ const SectionTitle = styled.div`
 const Section = styled.div`
   border: 1px solid ${color.border};
   border-radius: ${spacing.borderRadius.small}px;
+  contain: paint;
   margin-bottom: 2rem;
 `;
 
@@ -63,37 +68,39 @@ export function Schedule({ allStages }: Props) {
 
   return (
     <ScheduleWrapper>
-      <Title>Schedule</Title>
-      {/* Intro */}
-      <Section>
-        {sections.intro.map((talk: Talk) => (
-          <TalkCard key={talk.title} talk={talk} />
-        ))}
-      </Section>
-      <SectionTitle>Storybook 7.0</SectionTitle>
-      <Section>
-        {sections['storybook-7'].map((talk: Talk) => (
-          <TalkCard key={talk.title} talk={talk} />
-        ))}
-      </Section>
-      <SectionTitle>💼 Use cases</SectionTitle>
-      <Section>
-        {sections['use-cases'].map((talk: Talk) => (
-          <TalkCard key={talk.title} talk={talk} />
-        ))}
-      </Section>
-      <SectionTitle>🌐 Ecosystem</SectionTitle>
-      <Section>
-        {sections.ecosystem.map((talk: Talk) => (
-          <TalkCard key={talk.title} talk={talk} />
-        ))}
-      </Section>
-      {/* Wrap up */}
-      <Section>
-        {sections['wrap-up'].map((talk: Talk) => (
-          <TalkCard key={talk.title} talk={talk} />
-        ))}
-      </Section>
+      <Container>
+        <Title>Schedule</Title>
+        {/* Intro */}
+        <Section>
+          {sections.intro.map((talk: Talk) => (
+            <TalkCard key={talk.title} talk={talk} />
+          ))}
+        </Section>
+        <SectionTitle>Storybook 7.0</SectionTitle>
+        <Section>
+          {sections['storybook-7'].map((talk: Talk) => (
+            <TalkCard key={talk.title} talk={talk} />
+          ))}
+        </Section>
+        <SectionTitle>💼 Use cases</SectionTitle>
+        <Section>
+          {sections['use-cases'].map((talk: Talk) => (
+            <TalkCard key={talk.title} talk={talk} />
+          ))}
+        </Section>
+        <SectionTitle>🌐 Ecosystem</SectionTitle>
+        <Section>
+          {sections.ecosystem.map((talk: Talk) => (
+            <TalkCard key={talk.title} talk={talk} />
+          ))}
+        </Section>
+        {/* Wrap up */}
+        <Section>
+          {sections['wrap-up'].map((talk: Talk) => (
+            <TalkCard key={talk.title} talk={talk} />
+          ))}
+        </Section>
+      </Container>
     </ScheduleWrapper>
   );
 }

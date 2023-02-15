@@ -5,8 +5,7 @@ import { Layout } from '@components/Layout';
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
 import { META_DESCRIPTION } from '@lib/constants';
-import { Button } from '@storybook/design-system';
-import { LinkWrapper } from '@components/LinkWrapper';
+import { NavCTA } from '@components/NavCTA';
 
 type Props = {
   allStages: Stage[];
@@ -21,20 +20,7 @@ export default function SchedulePage({ allStages }: Props) {
   return (
     <>
       <Page meta={meta} theme="yellow">
-        <Layout
-          showFooter
-          navCTA={
-            <Button
-              size="small"
-              appearance="secondary"
-              isLink
-              ButtonWrapper={LinkWrapper}
-              href="/#register"
-            >
-              Get your free ticket
-            </Button>
-          }
-        >
+        <Layout showFooter navCTA={<NavCTA />}>
           <Schedule allStages={allStages} />
         </Layout>
       </Page>

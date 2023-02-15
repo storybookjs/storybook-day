@@ -21,6 +21,7 @@ import { Ticket } from './Ticket';
 import { Layout } from './Layout';
 import { HomePage } from './Home';
 import { LinkWrapper } from './LinkWrapper';
+import { NavCTA } from './NavCTA';
 
 type Props = {
   defaultUserData: UserData;
@@ -57,17 +58,7 @@ function CTA({
   }
 
   if (!registered) {
-    return (
-      <Button
-        size="small"
-        appearance="secondary"
-        isLink
-        ButtonWrapper={LinkWrapper}
-        href="/#register"
-      >
-        Get your free ticket
-      </Button>
-    );
+    return <NavCTA />;
   }
 
   return null;

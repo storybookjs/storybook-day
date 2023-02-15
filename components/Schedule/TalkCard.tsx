@@ -15,8 +15,6 @@ const formatDate = (date: string) => {
 const TalkWrapper = styled.div`
   background-color: ${color.lightest};
   text-align: left;
-  border-top-left-radius: ${spacing.borderRadius.small}px;
-  border-top-right-radius: ${spacing.borderRadius.small}px;
 
   &:not(:last-of-type) {
     border-bottom: 1px solid ${color.border};
@@ -38,8 +36,6 @@ const Time = styled.div`
   padding: 10px 20px;
   border-bottom: 1px solid ${color.border};
   background: ${color.lighter};
-  border-top-left-radius: ${spacing.borderRadius.small}px;
-  border-top-right-radius: ${spacing.borderRadius.small}px;
 
   @media (min-width: ${breakpoints[1]}px) {
     flex: none;

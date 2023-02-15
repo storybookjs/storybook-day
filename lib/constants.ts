@@ -30,8 +30,8 @@ export const SITE_DESCRIPTION =
   'An interactive online experience by the community, free for everyone.';
 export const DATE = 'March 14, 2023';
 export const SHORT_DATE = 'Mar 14, 2023';
-export const LONG_DATE = 'Mar 14 10:00am - 12:00pm PST';
-export const SHORT_TIME = '10am - 12pm';
+export const LONG_DATE = 'Mar 14 10:00am - 02:00pm PST';
+export const SHORT_TIME = '10am - 2pm';
 export const TIMEZONE = 'Pacific Standard Time';
 export const SHORT_TIMEZONE = 'Pacific Time';
 export const MINI_TIMEZONE = 'PST';

@@ -6,7 +6,7 @@ import { getAllSpeakers } from '@lib/cms-api';
 import { Speaker } from '@lib/types';
 import { META_DESCRIPTION } from '@lib/constants';
 import { Layout } from '@components/Layout';
-import { LinkWrapper } from '@components/LinkWrapper';
+import { NavCTA } from '@components/NavCTA';
 
 type Props = {
   speaker: Speaker;
@@ -20,20 +20,7 @@ export default function SpeakerPage({ speaker }: Props) {
 
   return (
     <Page meta={meta}>
-      <Layout
-        showFooter
-        navCTA={
-          <Button
-            size="small"
-            appearance="secondary"
-            isLink
-            ButtonWrapper={LinkWrapper}
-            href="/#register"
-          >
-            Get your free ticket
-          </Button>
-        }
-      >
+      <Layout showFooter navCTA={<NavCTA />}>
         <SpeakerSection speaker={speaker} />
       </Layout>
     </Page>
