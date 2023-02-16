@@ -51,7 +51,8 @@
 
 .talks {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
   margin-top: 40px;
 }
@@ -68,12 +69,12 @@
 
   .row {
     margin: 0 var(--space-8x) 0 0;
-    flex-direction: row;
+    /* flex-direction: row; */
     padding: var(--space-8x) 0;
   }
 
   .talks {
-    flex-direction: row;
+    /* flex-direction: row; */
     margin-top: 0;
   }
 

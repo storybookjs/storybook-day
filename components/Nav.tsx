@@ -91,8 +91,8 @@ export const Nav = ({ transparent, CTA }: NavProps) => {
             <NavItem variant="default" href={SNEAK_PEEK_URL} LinkWrapper={LinkWrapper}>
               Sneak peek
             </NavItem>
-            <NavItem variant="default" href={CFP_URL} LinkWrapper={LinkWrapper}>
-              CFP
+            <NavItem variant="default" href="/schedule" LinkWrapper={LinkWrapper}>
+              Schedule
             </NavItem>
             <NavItem variant="default" href={DISCORD_URL}>
               Discord

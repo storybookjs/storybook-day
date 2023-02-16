@@ -24,12 +24,12 @@ export type Speaker = {
   bio: string;
   title: string;
   slug: string;
-  twitter: string;
-  github: string;
+  twitter?: string;
+  github?: string;
   company: string;
   talk: Talk;
   image: Image;
-  imageSquare: Image;
+  imageSquare?: Image;
 };
 
 export type Stage = {
@@ -50,6 +50,7 @@ export type Talk = {
   start: string;
   end: string;
   speaker: Speaker[];
+  section: string;
 };
 
 export type Link = {

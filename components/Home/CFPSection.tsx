@@ -31,7 +31,7 @@ const Copy = styled.p`
 
 export const CFPSection = () => (
   <Section>
-    <Title id="cfp">Call for proposals</Title>
+    <Title id="cfp">Call for proposals (closed)</Title>
     <Copy>
       Share your experience with thousands of passionate UI developers and open source contributors.
     </Copy>
@@ -53,6 +53,7 @@ export const CFPSection = () => (
     <Copy>
       <Button
         isLink
+        disabled
         appearance="secondary"
         href="https://forms.gle/m5aUhQ5rWSFtjGoe6"
         target="_blank"
