@@ -3,12 +3,14 @@ import pack from 'pack-spheres';
 import { Float, ContactShadows } from '@react-three/drei';
 import * as Random from 'canvas-sketch-util/random';
 import { EffectComposer, DepthOfField } from '@react-three/postprocessing';
+import { useThree } from '@react-three/fiber';
+import { ErrorBoundary } from 'react-error-boundary';
 import { Block, blockTypes } from './Block';
 import { VersionText } from './VersionText';
 import { Stage } from './Stage';
 import { Suspense, useEffect, useState } from 'react';
 import { colors } from './store';
-import { useThree } from '@react-three/fiber';
+import { withPrefix } from '@lib/with-prefix';
 
 interface Sphere {
   position: number[];
@@ -60,44 +62,50 @@ function LoopControl({ setFrameLoop }: { setFrameLoop: (value: 'demand' | 'alway
   return null;
 }
 
+function ErrorFallback() {
+  return <img src={withPrefix('/block-scene-fallback.png')} style={{ width: '100%' }} />;
+}
+
 export const BlocksScene = () => {
   const [frameLoop, setFrameLoop] = useState<'demand' | 'always'>('always');
 
   return (
-    <Stage frameLoop={frameLoop}>
-      <LoopControl setFrameLoop={setFrameLoop} />
-      <Suspense fallback={null}>
-        <group position={[0, 0.5, 0]}>
-          <VersionText />
-          {blocks.map((block: any) => (
-            <Float
-              key={block.id}
-              position={block.position}
-              quaternion={block.rotation}
-              scale={block.size}
-              speed={1}
-              rotationIntensity={frameLoop === 'demand' ? 0 : 2}
-              floatIntensity={frameLoop === 'demand' ? 0 : 2}
-              floatingRange={[-0.25, 0.25]}
-            >
-              <Block type={block.type} color={block.color} />
-            </Float>
-          ))}
-          <ContactShadows
-            position={[0, -8, 0]}
-            opacity={0.75}
-            width={20}
-            height={10}
-            blur={1}
-            far={9}
-            color="#333"
-            resolution={256}
-          />
-          <EffectComposer multisampling={8}>
-            <DepthOfField focusDistance={0.5} bokehScale={7} focalLength={0.2} />
-          </EffectComposer>
-        </group>
-      </Suspense>
-    </Stage>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <Stage frameLoop={frameLoop}>
+        <LoopControl setFrameLoop={setFrameLoop} />
+        <Suspense fallback={null}>
+          <group position={[0, 0.5, 0]}>
+            <VersionText />
+            {blocks.map((block: any) => (
+              <Float
+                key={block.id}
+                position={block.position}
+                quaternion={block.rotation}
+                scale={block.size}
+                speed={1}
+                rotationIntensity={frameLoop === 'demand' ? 0 : 2}
+                floatIntensity={frameLoop === 'demand' ? 0 : 2}
+                floatingRange={[-0.25, 0.25]}
+              >
+                <Block type={block.type} color={block.color} />
+              </Float>
+            ))}
+            <ContactShadows
+              position={[0, -8, 0]}
+              opacity={0.75}
+              width={20}
+              height={10}
+              blur={1}
+              far={9}
+              color="#333"
+              resolution={256}
+            />
+            <EffectComposer multisampling={8}>
+              <DepthOfField focusDistance={0.5} bokehScale={7} focalLength={0.2} />
+            </EffectComposer>
+          </group>
+        </Suspense>
+      </Stage>
+    </ErrorBoundary>
   );
 };
