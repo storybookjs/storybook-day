@@ -4,7 +4,7 @@ import { styles } from '@storybook/components-marketing';
 import { Stage, Talk } from '@lib/types';
 import { TalkCard } from './TalkCard';
 
-const { pageMargins, color, marketing, spacing, breakpoints } = styles;
+const { pageMargins, typography, color, marketing, spacing, breakpoints } = styles;
 
 const ScheduleWrapper = styled.div`
   ${pageMargins};
@@ -47,6 +47,13 @@ const Section = styled.div`
   margin-bottom: 2rem;
 `;
 
+const Note = styled.div`
+  font-size: ${typography.size.s3}px;
+  line-height: 24px;
+  color: ${color.darkest};
+  margin-bottom: 0.5rem;
+`;
+
 type Props = {
   allStages: Stage[];
 };
@@ -70,6 +77,7 @@ export function Schedule({ allStages }: Props) {
     <ScheduleWrapper>
       <Container>
         <Title>Schedule</Title>
+        <Note>Times below are shown in your local browser's time zone</Note>
         {/* Intro */}
         <Section>
           {sections.intro.map((talk: Talk) => (

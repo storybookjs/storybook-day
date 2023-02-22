@@ -1,15 +1,28 @@
 import { useState, useEffect } from 'react';
-import { parseISO, format } from 'date-fns';
+import { zonedTimeToUtc, format } from 'date-fns-tz';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
 import { Talk } from '@lib/types';
 import { Speaker } from './Speaker';
 
-const { color, spacing, text, typography, breakpoints } = styles;
+const { color, text, typography, breakpoints } = styles;
 
 const formatDate = (date: string) => {
+  const laTime = zonedTimeToUtc(date, 'America/Los_Angeles');
+  console.log(
+    laTime,
+    format(laTime, 'yyyy-MM-dd HH:mm:ss zzz', {
+      timeZone: 'Europe/Amsterdam'
+    })
+  );
+
   // https://github.com/date-fns/date-fns/issues/946
-  return format(parseISO(date), "h:mmaaaaa'm'");
+  return format(laTime, "h:mmaaaaa'm'");
+};
+
+const timeZone = (date: string) => {
+  const laTime = zonedTimeToUtc(date, 'America/Los_Angeles');
+  return format(laTime, 'zzz');
 };
 
 const TalkWrapper = styled.div`
@@ -76,7 +89,7 @@ export function TalkCard({
   const [startAndEndTime, setStartAndEndTime] = useState('');
 
   useEffect(() => {
-    setStartAndEndTime(`${formatDate(start)} – ${formatDate(end)}`);
+    setStartAndEndTime(`${formatDate(start)} – ${formatDate(end)} (${timeZone(end)})`);
   }, [end, start]);
 
   return (
