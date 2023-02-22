@@ -36,6 +36,7 @@
     "classnames": "2.2.6",
     "cookie": "0.4.1",
     "date-fns": "2.16.1",
+    "date-fns-tz": "^2.0.0",
     "framer-motion": "^7.6.12",
     "framer-motion-3d": "^7.6.18",
     "htmlescape": "1.1.1",
