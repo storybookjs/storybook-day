@@ -159,6 +159,12 @@ export const CFP = () => (
     Submit a talk proposal
   </Link>
 );
+const EUTime = styled(Info)`
+  display: none;
+  @media (min-width: ${breakpoints[1]}px) {
+    display: block;
+  }
+`;
 
 export const Hero = () => (
   <Container>
@@ -170,7 +176,7 @@ export const Hero = () => (
       <MetaWrapper>
         <InfoWrapper>
           <Info size="small" text={TIMEZONE} count={SHORT_TIME} />
-          <Info size="small" text={TIMEZONE_EU} count={SHORT_TIME_EU} />
+          <EUTime size="small" text={TIMEZONE_EU} count={SHORT_TIME_EU} />
           <Info size="small" text="Online event" count="Watch live" />
         </InfoWrapper>
         <ByChromaticDesktop />
