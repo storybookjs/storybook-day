@@ -8,6 +8,7 @@ const { breakpoints } = styles;
 const Container = styled.div`
   position: relative;
   background: transparent;
+  width: 100%;
 
   @keyframes fade-in {
     from {
