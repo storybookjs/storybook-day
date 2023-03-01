@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
-import styleUtils from '../utils.module.css';
-import styles from '../conf-entry.module.css';
+import styleUtils from '../Stage/utils.module.css';
+import styles from '../Stage/conf-entry.module.css';
 import { PreviewScreen } from './preview';
 import { useHMSActions } from '@100mslive/react-sdk';
 import { parsedUserAgent } from '@100mslive/hms-video';

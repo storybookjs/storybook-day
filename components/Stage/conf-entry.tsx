@@ -18,10 +18,10 @@ import cn from 'classnames';
 import { useCallback, useState } from 'react';
 import styleUtils from './utils.module.css';
 import styles from './conf-entry.module.css';
-import LoadingDots from './loading-dots';
+import LoadingDots from '../loading-dots';
 import { register } from '@lib/user-api';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
-import Captcha, { useCaptcha } from './Captcha';
+import Captcha, { useCaptcha } from '../Captcha';
 
 type FormState = 'default' | 'loading' | 'error';
 
