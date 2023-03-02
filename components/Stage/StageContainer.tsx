@@ -1,14 +1,18 @@
 import useSWR from 'swr';
+import dynamic from 'next/dynamic';
 import cn from 'classnames';
 import { Stage } from '@lib/types';
 import { withPrefix } from '@lib/with-prefix';
 import { styled } from '@storybook/theming';
 import { Button, Icon, Input } from '@storybook/design-system';
-import WidgetBot from '@widgetbot/react-embed';
 // import { styles } from '@storybook/components-marketing';
 import styles from './stage-container.module.css';
 import styleUtils from './utils.module.css';
 import ScheduleSidebar from './schedule-sidebar';
+
+export const DiscordEmbed = dynamic(() => import('@widgetbot/react-embed'), {
+  ssr: false
+});
 
 const { color } = styles;
 
@@ -44,7 +48,7 @@ export function StageContainer({ stage, allStages }: StageContainerProps) {
             'waiting for stream to start'
           )}
         </div>
-        <WidgetBot
+        <DiscordEmbed
           server="486522875931656193"
           channel="1080238817962885210"
           style={{ width: '40%' }}

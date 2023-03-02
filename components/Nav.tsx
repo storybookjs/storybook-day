@@ -75,9 +75,10 @@ const SkipNavLink: any = RSkipNavLink;
 interface NavProps {
   transparent?: boolean;
   CTA?: React.ReactNode;
+  activeRoute: string;
 }
 
-export const Nav = ({ transparent, CTA }: NavProps) => {
+export const Nav = ({ transparent, CTA, activeRoute }: NavProps) => {
   return (
     <>
       <SkipNavLink />
@@ -91,8 +92,21 @@ export const Nav = ({ transparent, CTA }: NavProps) => {
             <NavItem variant="default" href={SNEAK_PEEK_URL} LinkWrapper={LinkWrapper}>
               Sneak peek
             </NavItem>
-            <NavItem variant="default" href="/schedule" LinkWrapper={LinkWrapper}>
+            <NavItem
+              variant="default"
+              href="/schedule"
+              LinkWrapper={LinkWrapper}
+              active={activeRoute === '/schedule'}
+            >
               Schedule
+            </NavItem>
+            <NavItem
+              variant="default"
+              href="/stage/main"
+              LinkWrapper={LinkWrapper}
+              active={activeRoute === '/stage/main'}
+            >
+              Stage
             </NavItem>
             <NavItem variant="default" href={DISCORD_URL}>
               Discord
