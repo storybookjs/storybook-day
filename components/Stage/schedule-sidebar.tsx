@@ -1,13 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Stage } from '@lib/types';
-import styles from './schedule-sidebar.module.css';
+import { styled } from '@storybook/theming';
+import { styles } from '@storybook/components-marketing';
 import { TalkCard } from '../Schedule/TalkCard';
-import { SHORT_DATE } from '@lib/constants';
+
+const { color, marketing, spacing, breakpoints } = styles;
 
 type Props = {
   allStages: Stage[];
 };
+
+const ScheduleWrapper = styled.div`
+  max-width: 660px;
+  margin: 0 auto;
+  height: 40vh;
+  overflow: scroll;
+  border: 1px solid ${color.border};
+  border-radius: ${spacing.borderRadius.small}px;
+  contain: paint;
+`;
 
 export default function ScheduleSidebar({ allStages }: Props) {
   const router = useRouter();
@@ -19,14 +31,10 @@ export default function ScheduleSidebar({ allStages }: Props) {
   }, [router.query.slug]);
 
   return (
-    <div className={styles.schedule}>
-      <h3 className={styles.header}>Schedule</h3>
-      <p>{SHORT_DATE}</p>
-      <div className={styles.talks}>
-        {currentStage?.schedule.map(talk => (
-          <TalkCard key={talk.title} talk={talk} />
-        ))}
-      </div>
-    </div>
+    <ScheduleWrapper>
+      {currentStage?.schedule.map(talk => (
+        <TalkCard key={talk.title} talk={talk} />
+      ))}
+    </ScheduleWrapper>
   );
 }
