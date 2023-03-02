@@ -4,7 +4,7 @@ import { Stage } from '@lib/types';
 import { withPrefix } from '@lib/with-prefix';
 import { styled } from '@storybook/theming';
 import { AspectRatio, styles } from '@storybook/components-marketing';
-import ScheduleSidebar from './schedule-sidebar';
+import { Schedule } from '@components/Schedule';
 
 export const DiscordEmbed = dynamic(() => import('@widgetbot/react-embed'), {
   ssr: false
@@ -20,10 +20,6 @@ type StageContainerProps = {
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  // gap: ${spacing.padding.medium}px;
-  // padding: 0 ${spacing.padding.medium}px;
-  // margin-top: ${spacing.padding.medium}px;
-  // margin-bottom: ${spacing.padding.medium}px;
 
   @media (min-width: ${breakpoints[2]}px) {
     grid-template-columns: 2fr 1fr;
@@ -33,14 +29,7 @@ const Container = styled.div`
     grid-template-columns: 3fr 1fr;
   }
 `;
-const Video = styled(AspectRatio)`
-  border-radius: 7px;
-`;
-
-const Schedule = styled.div`
-  ${pageMargins};
-  padding-bottom: 4rem;
-`;
+const Video = styled(AspectRatio)``;
 
 export function StageContainer({ stage, allStages }: StageContainerProps) {
   const response = useSWR(withPrefix('/api/stages'), {
@@ -64,11 +53,13 @@ export function StageContainer({ stage, allStages }: StageContainerProps) {
             height="100%"
           />
         </Video>
-        <DiscordEmbed server="486522875931656193" channel="1080238817962885210" />
+        <DiscordEmbed
+          server="486522875931656193"
+          channel="1080238817962885210"
+          style={{ borderRadius: 0 }}
+        />
       </Container>
-      <Schedule>
-        <ScheduleSidebar allStages={updatedStages} />
-      </Schedule>
+      <Schedule allStages={updatedStages} />
     </div>
   );
 }
