@@ -36,7 +36,7 @@ export default function StagePage({ stage, allStages }: Props) {
   };
   return (
     <Page meta={meta}>
-      <Layout transparentNav isLive={stage.isLive}>
+      <Layout transparentNav>
         <StageContainer stage={stage} allStages={allStages} />
       </Layout>
     </Page>

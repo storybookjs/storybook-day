@@ -20,17 +20,17 @@ type StageContainerProps = {
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${spacing.padding.medium}px;
-  padding: 0 ${spacing.padding.medium}px;
-  margin-top: ${spacing.padding.medium}px;
-  margin-bottom: ${spacing.padding.medium}px;
+  // gap: ${spacing.padding.medium}px;
+  // padding: 0 ${spacing.padding.medium}px;
+  // margin-top: ${spacing.padding.medium}px;
+  // margin-bottom: ${spacing.padding.medium}px;
 
   @media (min-width: ${breakpoints[2]}px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
   }
 
   @media (min-width: ${breakpoints[3]}px) {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 1fr;
   }
 `;
 const Video = styled(AspectRatio)`
@@ -39,6 +39,7 @@ const Video = styled(AspectRatio)`
 
 const Schedule = styled.div`
   ${pageMargins};
+  padding-bottom: 4rem;
 `;
 
 export function StageContainer({ stage, allStages }: StageContainerProps) {

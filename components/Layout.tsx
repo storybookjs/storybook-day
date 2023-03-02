@@ -52,7 +52,6 @@ const SkipNavContent: any = RSkipNavContent;
 
 type LayoutProps = {
   children: React.ReactNode;
-  isLive?: boolean;
   showFooter?: boolean;
   transparentNav?: boolean;
   hideFooterRegistration?: boolean;

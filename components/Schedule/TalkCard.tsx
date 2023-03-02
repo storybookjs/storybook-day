@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import { zonedTimeToUtc, format } from 'date-fns-tz';
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
@@ -9,12 +9,6 @@ const { color, text, typography, breakpoints } = styles;
 
 const formatDate = (date: string) => {
   const laTime = zonedTimeToUtc(date, 'America/Los_Angeles');
-  console.log(
-    laTime,
-    format(laTime, 'yyyy-MM-dd HH:mm:ss zzz', {
-      timeZone: 'Europe/Amsterdam'
-    })
-  );
 
   // https://github.com/date-fns/date-fns/issues/946
   return format(laTime, "h:mmaaaaa'm'");
@@ -83,36 +77,36 @@ type TalkCardProps = {
   talk: Talk;
 };
 
-export function TalkCard({
-  talk: { title, description, speaker: speakers, start, end }
-}: TalkCardProps) {
-  const [startAndEndTime, setStartAndEndTime] = useState('');
+export const TalkCard = forwardRef<HTMLDivElement, TalkCardProps>(
+  ({ talk: { title, description, speaker: speakers, start, end } }, ref) => {
+    const [startAndEndTime, setStartAndEndTime] = useState('');
 
-  useEffect(() => {
-    setStartAndEndTime(`${formatDate(start)} – ${formatDate(end)} (${timeZone(end)})`);
-  }, [end, start]);
+    useEffect(() => {
+      setStartAndEndTime(`${formatDate(start)} – ${formatDate(end)} (${timeZone(end)})`);
+    }, [end, start]);
 
-  return (
-    <TalkWrapper>
-      <Time>{startAndEndTime || <>&nbsp;</>}</Time>
-      <Inner>
-        <Info>
-          <Title>{title}</Title>
-          <Description>{description}</Description>
-        </Info>
-        <Speakers>
-          {speakers.map(speaker => (
-            <Speaker
-              key={speaker.name}
-              slug={speaker.slug}
-              name={speaker.name}
-              title={speaker.title}
-              company={speaker.company}
-              avatarUrl={speaker.image.url}
-            />
-          ))}
-        </Speakers>
-      </Inner>
-    </TalkWrapper>
-  );
-}
+    return (
+      <TalkWrapper>
+        <Time>{startAndEndTime || <>&nbsp;</>}</Time>
+        <Inner>
+          <Info>
+            <Title>{title}</Title>
+            <Description>{description}</Description>
+          </Info>
+          <Speakers>
+            {speakers.map(speaker => (
+              <Speaker
+                key={speaker.name}
+                slug={speaker.slug}
+                name={speaker.name}
+                title={speaker.title}
+                company={speaker.company}
+                avatarUrl={speaker.image.url}
+              />
+            ))}
+          </Speakers>
+        </Inner>
+      </TalkWrapper>
+    );
+  }
+);

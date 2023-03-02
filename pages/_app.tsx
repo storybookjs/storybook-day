@@ -23,7 +23,6 @@ import type { AppProps } from 'next/app';
 import { global } from '@storybook/design-system';
 import NProgress from '@components/nprogress';
 import ResizeHandler from '@components/resize-handler';
-import { HMSRoomProvider } from '@100mslive/react-sdk';
 import { Analytics } from '@components/Analytics';
 const { GlobalStyle } = global;
 
@@ -31,13 +30,11 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <SSRProvider>
       <OverlayProvider>
-        <HMSRoomProvider>
-          <GlobalStyle />
-          <Component {...pageProps} />
-          <ResizeHandler />
-          <NProgress />
-          <Analytics />
-        </HMSRoomProvider>
+        <GlobalStyle />
+        <Component {...pageProps} />
+        <ResizeHandler />
+        <NProgress />
+        <Analytics />
       </OverlayProvider>
     </SSRProvider>
   );
