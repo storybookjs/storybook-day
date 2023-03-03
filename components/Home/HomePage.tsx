@@ -5,7 +5,7 @@ import { Hero } from './Hero';
 import { FeaturesSection } from './FeaturesSection';
 import { CFPSection } from './CFPSection';
 
-const { breakpoints } = styles;
+const { pageMargins, color, breakpoints } = styles;
 
 const SolidBackdrop = styled.div`
   background: var(--bg-blue);
@@ -30,6 +30,22 @@ const Placeholder = styled.div`
   }
 `;
 
+const Wrapper = styled.div`
+  ${pageMargins}
+`;
+const Hr = styled.hr`
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  border: 0;
+  border-bottom: 1px solid ${color.border};
+`;
+
+const Divider = () => (
+  <Wrapper>
+    <Hr />
+  </Wrapper>
+);
+
 export const HomePage = ({ disable3D = false }: { disable3D?: boolean }) => (
   <>
     <SolidBackdrop>
@@ -38,6 +54,7 @@ export const HomePage = ({ disable3D = false }: { disable3D?: boolean }) => (
     </SolidBackdrop>
     <GradientBackdrop>
       <FeaturesSection />
+      <Divider />
       <CFPSection />
     </GradientBackdrop>
   </>

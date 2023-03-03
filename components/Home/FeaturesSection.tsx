@@ -5,6 +5,8 @@ import { HighlightedFeature } from './HighlightedFeature';
 import { Feature } from './Feature';
 import { VideoCard } from './VideoCard';
 import { useLazyLoadVideo } from './useLazyLoadVideo';
+import { Button } from '@storybook/design-system';
+import { LinkWrapper } from '@components/LinkWrapper';
 
 const { marketing, breakpoints, pageMargins } = styles;
 
@@ -65,6 +67,22 @@ const ScaledVideoCard = styled(VideoCard)`
 CSF3Image.defaultProps = {
   src: withPrefix('/features/csf-example.svg')
 };
+
+const Copy = styled.div`
+  ${marketing.textLarge};
+`;
+const TalksWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    display: grid;
+    grid-template-columns: minmax(auto, 640px) 1fr;
+    align-items: center;
+    justify-items: center;
+  }
+`;
 
 export const FeaturesSection = () => {
   useLazyLoadVideo();
@@ -198,6 +216,26 @@ export const FeaturesSection = () => {
           icon={withPrefix('/features/svelte-icon.svg')}
         />
       </FeaturesGrid>
+      <div>
+        <Title>Talks</Title>
+        <TalksWrapper>
+          <Copy>
+            You'll get a tour of Storybook 7.0's features and see what's new in the ecosystem,
+            including frameworks, addons, and recipes. We're also thrilled to welcome community
+            members on stage to share first-hand accounts of how Storybook helps them craft design
+            systems, ship micro-frontends, and even engage in creative coding.
+          </Copy>
+          <Button
+            size="medium"
+            appearance="secondary"
+            isLink
+            ButtonWrapper={LinkWrapper}
+            href="/schedule"
+          >
+            View Schedule
+          </Button>
+        </TalksWrapper>
+      </div>
     </Section>
   );
 };
