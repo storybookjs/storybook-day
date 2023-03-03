@@ -10,7 +10,7 @@ export const DiscordEmbed = dynamic(() => import('@widgetbot/react-embed'), {
   ssr: false
 });
 
-const { color, pageMargins, spacing, breakpoints } = styles;
+const { breakpoints } = styles;
 
 type StageContainerProps = {
   stage: Stage;
@@ -20,6 +20,7 @@ type StageContainerProps = {
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  height: calc(100vh - 72px);
 
   @media (min-width: ${breakpoints[2]}px) {
     grid-template-columns: 2fr 1fr;
@@ -30,6 +31,15 @@ const Container = styled.div`
   }
 `;
 const Video = styled(AspectRatio)``;
+const Chat = styled.div`
+  display: none;
+  width: 100%;
+  height: 100%;
+
+  @media (min-width: ${breakpoints[2]}px) {
+    display: block;
+  }
+`;
 
 export function StageContainer({ stage, allStages }: StageContainerProps) {
   const response = useSWR(withPrefix('/api/stages'), {
@@ -42,22 +52,24 @@ export function StageContainer({ stage, allStages }: StageContainerProps) {
   return (
     <div>
       <Container>
-        <Video ratio={`${16}/${9}`}>
-          <iframe
-            allow="autoplay; picture-in-picture"
-            allowFullScreen
-            frameBorder="0"
-            src={`${updatedStage.stream}?autoplay=1&mute=1`}
-            title={updatedStage.name}
-            width="100%"
-            height="100%"
-          />
-        </Video>
-        <DiscordEmbed
-          server="486522875931656193"
-          channel="1080238817962885210"
-          style={{ borderRadius: 0 }}
+        {/* <Video ratio={`${16}/${9}`}> */}
+        <iframe
+          allow="autoplay; picture-in-picture"
+          allowFullScreen
+          frameBorder="0"
+          src={`${updatedStage.stream}?autoplay=1&mute=1`}
+          title={updatedStage.name}
+          width="100%"
+          height="100%"
         />
+        {/* </Video> */}
+        <Chat>
+          <DiscordEmbed
+            server="486522875931656193"
+            channel="1080238817962885210"
+            style={{ borderRadius: 0, width: '100%', height: '100%' }}
+          />
+        </Chat>
       </Container>
       <Schedule allStages={updatedStages} />
     </div>

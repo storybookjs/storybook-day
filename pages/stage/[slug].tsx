@@ -15,14 +15,17 @@
  */
 
 import { GetStaticProps, GetStaticPaths } from 'next';
-
+import { Global, css } from '@storybook/theming';
 import Page from '@components/page';
 import { StageContainer } from '@components/Stage';
-import { Layout } from '@components/Layout';
+import { SkipNavContent as RSkipNavContent } from '@reach/skip-nav';
 
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
 import { META_DESCRIPTION } from '@lib/constants';
+import { StageNav } from '@components/Stage/StageNav';
+
+const SkipNavContent: any = RSkipNavContent;
 
 type Props = {
   stage: Stage;
@@ -35,11 +38,22 @@ export default function StagePage({ stage, allStages }: Props) {
     description: META_DESCRIPTION
   };
   return (
-    <Page meta={meta}>
-      <Layout transparentNav>
-        <StageContainer stage={stage} allStages={allStages} />
-      </Layout>
-    </Page>
+    <>
+      <Global
+        styles={css`
+          body {
+            background-color: #171c23;
+          }
+        `}
+      />
+      <Page meta={meta}>
+        <StageNav transparent activeRoute={'/stage/main'} />
+        <SkipNavContent />
+        <main>
+          <StageContainer stage={stage} allStages={allStages} />
+        </main>
+      </Page>
+    </>
   );
 }
 
