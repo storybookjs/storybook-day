@@ -16,9 +16,9 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const Title = styled.h1`
+const Title = styled.h1<{ inverse?: boolean }>`
   ${marketing.subheading};
-  color: ${color.darkest};
+  color: ${props => (props.inverse ? color.lightest : color.darkest)};
   margin-bottom: 1rem;
   @media (min-width: ${breakpoints[1]}px) {
     ${marketing.hero2};
@@ -31,31 +31,32 @@ const Title = styled.h1`
   }
 `;
 
-const SectionTitle = styled.div`
+const SectionTitle = styled.div<{ inverse?: boolean }>`
   ${marketing.textLargeBold};
-  color: ${color.darkest};
+  color: ${props => (props.inverse ? color.lightest : color.darkest)};
   margin-bottom: 0.625rem;
 
   @media (min-width: ${breakpoints[1]}px) {
     ${marketing.subheading};
   }
 `;
-const Section = styled.div`
-  border: 1px solid ${color.border};
+const Section = styled.div<{ inverse?: boolean }>`
+  border: 1px solid ${props => (props.inverse ? 'rgba(255, 255, 255, 0.1)' : color.border)};
   border-radius: ${spacing.borderRadius.small}px;
   contain: paint;
   margin-bottom: 2rem;
 `;
 
-const Note = styled.div`
+const Note = styled.div<{ inverse?: boolean }>`
   font-size: ${typography.size.s3}px;
   line-height: 24px;
-  color: ${color.darkest};
+  color: ${props => (props.inverse ? color.lightest : color.darkest)};
   margin-bottom: 0.5rem;
 `;
 
 type Props = {
   allStages: Stage[];
+  inverse?: boolean;
 };
 
 function groupBySection(talks: Talk[]) {
@@ -69,43 +70,43 @@ function groupBySection(talks: Talk[]) {
   }, {} as Record<string, Talk[]>);
 }
 
-export function Schedule({ allStages }: Props) {
+export function Schedule({ inverse, allStages }: Props) {
   const mainStage = allStages[0];
   const sections = useMemo(() => groupBySection(mainStage.schedule), [mainStage.schedule]);
 
   return (
     <ScheduleWrapper>
       <Container>
-        <Title>Schedule</Title>
-        <Note>Times below are shown in your local browser's time zone</Note>
+        <Title inverse={inverse}>Schedule</Title>
+        <Note inverse={inverse}>Times below are shown in your local browser's time zone</Note>
         {/* Intro */}
-        <Section>
+        <Section inverse={inverse}>
           {sections.intro.map((talk: Talk) => (
-            <TalkCard key={talk.title} talk={talk} />
+            <TalkCard inverse={inverse} key={talk.title} talk={talk} />
           ))}
         </Section>
-        <SectionTitle>Storybook 7.0</SectionTitle>
-        <Section>
+        <SectionTitle inverse={inverse}>Storybook 7.0</SectionTitle>
+        <Section inverse={inverse}>
           {sections['storybook-7'].map((talk: Talk) => (
-            <TalkCard key={talk.title} talk={talk} />
+            <TalkCard inverse={inverse} key={talk.title} talk={talk} />
           ))}
         </Section>
-        <SectionTitle>💼 Use cases</SectionTitle>
-        <Section>
+        <SectionTitle inverse={inverse}>💼 Use cases</SectionTitle>
+        <Section inverse={inverse}>
           {sections['use-cases'].map((talk: Talk) => (
-            <TalkCard key={talk.title} talk={talk} />
+            <TalkCard inverse={inverse} key={talk.title} talk={talk} />
           ))}
         </Section>
-        <SectionTitle>🌐 Ecosystem</SectionTitle>
-        <Section>
+        <SectionTitle inverse={inverse}>🌐 Ecosystem</SectionTitle>
+        <Section inverse={inverse}>
           {sections.ecosystem.map((talk: Talk) => (
-            <TalkCard key={talk.title} talk={talk} />
+            <TalkCard inverse={inverse} key={talk.title} talk={talk} />
           ))}
         </Section>
         {/* Wrap up */}
-        <Section>
+        <Section inverse={inverse}>
           {sections['wrap-up'].map((talk: Talk) => (
-            <TalkCard key={talk.title} talk={talk} />
+            <TalkCard inverse={inverse} key={talk.title} talk={talk} />
           ))}
         </Section>
       </Container>

@@ -1,7 +1,5 @@
-import useSWR from 'swr';
 import dynamic from 'next/dynamic';
 import { Stage } from '@lib/types';
-import { withPrefix } from '@lib/with-prefix';
 import { styled } from '@storybook/theming';
 import { AspectRatio, styles } from '@storybook/components-marketing';
 import { Schedule } from '@components/Schedule';
@@ -14,7 +12,6 @@ const { breakpoints } = styles;
 
 type StageContainerProps = {
   stage: Stage;
-  allStages: Stage[];
 };
 
 const Container = styled.div`
@@ -27,10 +24,9 @@ const Container = styled.div`
   }
 
   @media (min-width: ${breakpoints[3]}px) {
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 3fr 1.25fr;
   }
 `;
-const Video = styled(AspectRatio)``;
 const Chat = styled.div`
   display: none;
   width: 100%;
@@ -41,28 +37,19 @@ const Chat = styled.div`
   }
 `;
 
-export function StageContainer({ stage, allStages }: StageContainerProps) {
-  const response = useSWR(withPrefix('/api/stages'), {
-    initialData: allStages,
-    refreshInterval: 5000
-  });
-  const updatedStages = response.data || [];
-  const updatedStage = updatedStages.find((s: Stage) => s.slug === stage.slug) || stage;
-
+export function StagePage({ stage }: StageContainerProps) {
   return (
     <div>
       <Container>
-        {/* <Video ratio={`${16}/${9}`}> */}
         <iframe
           allow="autoplay; picture-in-picture"
           allowFullScreen
           frameBorder="0"
-          src={`${updatedStage.stream}?autoplay=1&mute=1`}
-          title={updatedStage.name}
+          src={`${stage.stream}?autoplay=1&mute=1`}
+          title={stage.name}
           width="100%"
           height="100%"
         />
-        {/* </Video> */}
         <Chat>
           <DiscordEmbed
             server="486522875931656193"
@@ -71,7 +58,7 @@ export function StageContainer({ stage, allStages }: StageContainerProps) {
           />
         </Chat>
       </Container>
-      <Schedule allStages={updatedStages} />
+      <Schedule allStages={[stage]} inverse />
     </div>
   );
 }

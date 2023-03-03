@@ -1,1 +1,1 @@
-export * from './StageContainer';
+export * from './StagePage';
