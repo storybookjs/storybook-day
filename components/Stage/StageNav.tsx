@@ -2,7 +2,7 @@ import { styled } from '@storybook/theming';
 import { Icon, Logos, Clipboard, Button } from '@storybook/design-system';
 import { styles, NavItem } from '@storybook/components-marketing';
 import { SkipNavLink as RSkipNavLink } from '@reach/skip-nav';
-import { DISCORD_URL, TWITTER_URL } from '@lib/constants';
+import { DISCORD_URL, SITE_URL, TWITTER_URL } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
 
 const { spacing, color, breakpoints, typography } = styles;
@@ -52,28 +52,35 @@ const NavContainer = styled.nav`
 `;
 
 const NavLinks = styled.div`
-  display: none;
   align-items: center;
 
   > * {
     margin-right: 9px;
   }
 
-  @media (min-width: ${breakpoints[1] * 1.25}px) {
-    display: flex;
+  > a:not(:first-of-type) {
+    display: none;
+  }
+
+  > button {
+    display: none;
+  }
+
+  @media (min-width: ${breakpoints[1]}px) {
+    > a:not(:first-of-type) {
+      display: inline-flex;
+    }
+
+    > button {
+      display: inline-block;
+    }
   }
 `;
 
 // Workaround for TS 2590 error
 const SkipNavLink: any = RSkipNavLink;
 
-const CopyURL = styled(NavItem)`
-  align-items: center;
-
-  svg {
-    margin-right: 5px;
-  }
-`;
+const copyUrl = `${SITE_URL}/stage/main/`;
 
 interface StageNavProps {
   transparent?: boolean;
@@ -94,7 +101,7 @@ export const StageNav = ({ transparent, activeRoute }: StageNavProps) => {
           <NavLinks>
             <NavItem
               variant="inverse"
-              href="/schedule"
+              href="#schedule"
               LinkWrapper={LinkWrapper}
               active={activeRoute === '/schedule'}
             >
@@ -106,9 +113,9 @@ export const StageNav = ({ transparent, activeRoute }: StageNavProps) => {
             <NavItem variant="inverse" href={TWITTER_URL}>
               Twitter
             </NavItem>
-            <Clipboard toCopy="http://storybook.js.org/day/stage/main">
+            <Clipboard toCopy={copyUrl}>
               <Button appearance="inverseOutline" size="small" ButtonWrapper="div">
-                <Icon icon="share" /> Copy URL
+                <Icon icon="link" /> Copy link
               </Button>
             </Clipboard>
           </NavLinks>

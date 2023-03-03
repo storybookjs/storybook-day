@@ -77,7 +77,9 @@ export function Schedule({ inverse, allStages }: Props) {
   return (
     <ScheduleWrapper>
       <Container>
-        <Title inverse={inverse}>Schedule</Title>
+        <Title inverse={inverse} id="schedule">
+          Schedule
+        </Title>
         <Note inverse={inverse}>Times below are shown in your local browser's time zone</Note>
         {/* Intro */}
         <Section inverse={inverse}>
