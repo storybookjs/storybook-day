@@ -1,11 +1,11 @@
 import { styled } from '@storybook/theming';
-import { Logos } from '@storybook/design-system';
+import { Icon, Logos, Clipboard, Button } from '@storybook/design-system';
 import { styles, NavItem } from '@storybook/components-marketing';
 import { SkipNavLink as RSkipNavLink } from '@reach/skip-nav';
-import { SNEAK_PEEK_URL, DISCORD_URL, TWITTER_URL, CFP_URL } from '@lib/constants';
+import { DISCORD_URL, SITE_URL, TWITTER_URL } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
 
-const { pageMargins, spacing, color, breakpoints, typography } = styles;
+const { spacing, color, breakpoints, typography } = styles;
 
 const LogoNavItem = styled(NavItem)`
   background-color: transparent;
@@ -22,7 +22,7 @@ const LogoNavItem = styled(NavItem)`
   }
 `;
 
-const StorybookLogo = styled(Logos.Storybook)`
+const StorybookLogo = styled(Logos.StorybookInverted)`
   height: 20px;
   display: block;
 `;
@@ -45,40 +45,50 @@ const Wrapper = styled.div<{ inverse?: boolean; transparent?: boolean }>`
 `;
 
 const NavContainer = styled.nav`
-  ${pageMargins}
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 ${spacing.padding.medium}px;
 `;
 
 const NavLinks = styled.div`
-  display: none;
   align-items: center;
 
   > * {
     margin-right: 9px;
   }
 
-  @media (min-width: ${breakpoints[1] * 1.25}px) {
-    display: flex;
+  > a:not(:first-of-type) {
+    display: none;
   }
-`;
 
-const Spacer = styled.div`
-  min-width: 164px;
-  text-align: right;
+  > button {
+    display: none;
+  }
+
+  @media (min-width: ${breakpoints[1]}px) {
+    > a:not(:first-of-type) {
+      display: inline-flex;
+    }
+
+    > button {
+      display: inline-block;
+    }
+  }
 `;
 
 // Workaround for TS 2590 error
 const SkipNavLink: any = RSkipNavLink;
 
-interface NavProps {
+const copyUrl = `${SITE_URL}/stage/main/`;
+
+interface StageNavProps {
   transparent?: boolean;
   CTA?: React.ReactNode;
   activeRoute: string;
 }
 
-export const Nav = ({ transparent, CTA, activeRoute }: NavProps) => {
+export const StageNav = ({ transparent, activeRoute }: StageNavProps) => {
   return (
     <>
       <SkipNavLink />
@@ -89,33 +99,26 @@ export const Nav = ({ transparent, CTA, activeRoute }: NavProps) => {
             <YearTag>2023</YearTag>
           </LogoNavItem>
           <NavLinks>
-            <NavItem variant="default" href={SNEAK_PEEK_URL} LinkWrapper={LinkWrapper}>
-              Sneak peek
-            </NavItem>
             <NavItem
-              variant="default"
-              href="/schedule"
+              variant="inverse"
+              href="#schedule"
               LinkWrapper={LinkWrapper}
               active={activeRoute === '/schedule'}
             >
               Schedule
             </NavItem>
-            {/* <NavItem
-              variant="default"
-              href="/stage/main"
-              LinkWrapper={LinkWrapper}
-              active={activeRoute === '/stage/main'}
-            >
-              Stage
-            </NavItem> */}
-            <NavItem variant="default" href={DISCORD_URL}>
+            <NavItem variant="inverse" href={DISCORD_URL}>
               Discord
             </NavItem>
-            <NavItem variant="default" href={TWITTER_URL}>
+            <NavItem variant="inverse" href={TWITTER_URL}>
               Twitter
             </NavItem>
+            <Clipboard toCopy={copyUrl}>
+              <Button appearance="inverseOutline" size="small" ButtonWrapper="div">
+                <Icon icon="link" /> Copy link
+              </Button>
+            </Clipboard>
           </NavLinks>
-          <Spacer>{CTA}</Spacer>
         </NavContainer>
       </Wrapper>
     </>

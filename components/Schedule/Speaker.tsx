@@ -11,16 +11,16 @@ const SpeakerWrapper = styled.div`
   align-items: center;
   gap: 10px;
 `;
-const Name = styled.div`
+const Name = styled.div<{ inverse?: boolean }>`
   font-size: ${typography.size.s3}px;
   font-weight: ${typography.weight.bold};
-  color: ${color.darkest};
+  color: ${props => (props.inverse ? color.lightest : color.darkest)};
 `;
-const Title = styled.div`
-  color: ${color.dark};
+const Title = styled.div<{ inverse?: boolean }>`
+  color: ${props => (props.inverse ? color.mediumdark : color.dark)};
 `;
-const Company = styled.span`
-  color: ${color.dark};
+const Company = styled.span<{ inverse?: boolean }>`
+  color: ${props => (props.inverse ? color.mediumdark : color.dark)};
 `;
 
 const SpeakerImage = styled(Avatar)`
@@ -33,20 +33,21 @@ interface SpeakerProps {
   company: string;
   avatarUrl: string;
   slug: string;
+  inverse?: boolean;
 }
 
-export const Speaker = ({ name, title, company, avatarUrl, slug }: SpeakerProps) => (
+export const Speaker = ({ name, title, company, avatarUrl, slug, inverse }: SpeakerProps) => (
   <Link href={`/speakers/${slug}`} LinkWrapper={LinkWrapper}>
     <SpeakerWrapper>
       {avatarUrl && <SpeakerImage size="large" username={name} src={avatarUrl} />}
       <div>
-        <Name>{name}</Name>
-        <Title>
+        <Name inverse={inverse}>{name}</Name>
+        <Title inverse={inverse}>
           {title}
           {company && (
             <>
               {' at '}
-              <Company>{company}</Company>
+              <Company inverse={inverse}>{company}</Company>
             </>
           )}
         </Title>

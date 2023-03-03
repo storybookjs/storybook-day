@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Schedule } from './Schedule';
+import { StagePage } from './StagePage';
 
 const mockStages = [
   {
     name: 'Main Stage',
     slug: 'main',
-    stream: 'https://www.youtube.com/embed/1-NzQ9ObsfM',
+    stream: 'https://www.youtube.com/embed/p-LFh5Y89eM',
     discord: 'https://discord.com',
     isLive: true,
     roomId: 'main',
@@ -329,20 +329,15 @@ const mockStages = [
   }
 ];
 
-const meta: Meta<typeof Schedule> = {
-  title: 'Components/Schedule',
-  component: Schedule,
+const meta: Meta<typeof StagePage> = {
+  title: 'Pages/StagePage',
+  component: StagePage,
   args: {
-    allStages: mockStages as any
+    stage: mockStages[0] as any
   }
 };
 
 export default meta;
-type Story = StoryObj<typeof Schedule>;
+type Story = StoryObj<typeof StagePage>;
 
-export const Default: Story = {};
-
-export const inverse: Story = {
-  args: { inverse: true },
-  parameters: { backgrounds: { default: 'dark' } }
-};
+export const Default: Story = { parameters: { backgrounds: { default: 'dark' } } };

@@ -48,3 +48,8 @@ export const Default: Story = {
     }
   }
 };
+
+export const inverse: Story = {
+  args: { ...Default.args, inverse: true },
+  parameters: { backgrounds: { default: 'dark' } }
+};

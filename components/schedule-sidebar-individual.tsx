@@ -17,7 +17,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Stage } from '@lib/types';
-import styles from './schedule-sidebar.module.css';
+import styles from './Stage/schedule-sidebar.module.css';
 import { TalkCard } from './Schedule/TalkCard';
 import { SHORT_DATE } from '@lib/constants';
 

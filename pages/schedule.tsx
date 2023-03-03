@@ -20,7 +20,7 @@ export default function SchedulePage({ allStages }: Props) {
   return (
     <>
       <Page meta={meta} theme="yellow">
-        <Layout showFooter navCTA={<NavCTA />}>
+        <Layout transparentNav showFooter navCTA={<NavCTA />}>
           <Schedule allStages={allStages} />
         </Layout>
       </Page>

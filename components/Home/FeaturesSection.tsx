@@ -172,19 +172,6 @@ export const FeaturesSection = () => {
           icon={withPrefix('/features/typescript-icon.svg')}
         />
         <Feature
-          title="Figma integration sneak peek"
-          description="Speed up UI implementation by connecting with design. Embed designs in Storybook and embed stories in Figma."
-          media={
-            <VideoCard
-              src={withPrefix('/features/videos/figma-sm.mp4')}
-              poster={withPrefix('/features/videos/figma.png')}
-              bgColor="#EFEEEF"
-            />
-          }
-          bgColor="#EFEEEF"
-          icon={withPrefix('/features/figma-icon.svg')}
-        />
-        <Feature
           title="Auto-config for Next.js"
           description="Zero-config integration for Next 12 & 13 helps you develop, test, and document UI components in isolation."
           media={
@@ -196,6 +183,19 @@ export const FeaturesSection = () => {
           }
           bgColor="#232A35"
           icon={withPrefix('/features/nextjs-icon.svg')}
+        />
+        <Feature
+          title="Storybook for SvelteKit"
+          description="Zero-config integration for SvelteKit. It enables you to reuse your Vite config and use lib alias for imports and asset paths, and access the app environment."
+          media={
+            <VideoCard
+              src={withPrefix('/features/videos/sveltekit-sm.mp4')}
+              poster={withPrefix('/features/videos/sveltekit.png')}
+              bgColor="#F3EAFF"
+            />
+          }
+          bgColor="#F3EAFF"
+          icon={withPrefix('/features/svelte-icon.svg')}
         />
       </FeaturesGrid>
     </Section>

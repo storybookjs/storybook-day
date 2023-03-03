@@ -9,12 +9,6 @@ const { color, text, typography, breakpoints } = styles;
 
 const formatDate = (date: string) => {
   const laTime = zonedTimeToUtc(date, 'America/Los_Angeles');
-  console.log(
-    laTime,
-    format(laTime, 'yyyy-MM-dd HH:mm:ss zzz', {
-      timeZone: 'Europe/Amsterdam'
-    })
-  );
 
   // https://github.com/date-fns/date-fns/issues/946
   return format(laTime, "h:mmaaaaa'm'");
@@ -25,8 +19,8 @@ const timeZone = (date: string) => {
   return format(laTime, 'zzz');
 };
 
-const TalkWrapper = styled.div`
-  background-color: ${color.lightest};
+const TalkWrapper = styled.div<{ inverse?: boolean }>`
+  background-color: ${props => (props.inverse ? color.midnight : color.lightest)};
   text-align: left;
 
   &:not(:last-of-type) {
@@ -40,36 +34,36 @@ const Inner = styled.div`
   gap: 1rem;
 `;
 
-const Time = styled.div`
+const Time = styled.div<{ inverse?: boolean }>`
   ${text.regularBold};
   position: sticky;
   top: 0;
   flex: 1;
-  color: ${color.dark};
+  color: ${props => (props.inverse ? color.medium : color.dark)};
   padding: 10px 20px;
-  border-bottom: 1px solid ${color.border};
-  background: ${color.lighter};
+  border-bottom: 1px solid ${props => (props.inverse ? 'rgba(255, 255, 255, 0.0)' : color.border)};
+  background: ${props => (props.inverse ? color.darkest : color.lighter)};
 
   @media (min-width: ${breakpoints[1]}px) {
     flex: none;
   }
 `;
 
-const Info = styled.div`
-  border-bottom: 1px solid ${color.border};
+const Info = styled.div<{ inverse?: boolean }>`
+  border-bottom: 1px solid ${props => (props.inverse ? 'rgba(255, 255, 255, 0.1)' : color.border)};
   padding-bottom: 1rem;
 `;
-const Title = styled.div`
+const Title = styled.div<{ inverse?: boolean }>`
   font-weight: ${typography.weight.bold};
   font-size: ${typography.size.m1}px;
   line-height: 24px;
-  color: color.darkest;
+  color: ${props => (props.inverse ? color.lightest : color.darkest)};
   margin-bottom: 10px;
 `;
-const Description = styled.div`
+const Description = styled.div<{ inverse?: boolean }>`
   font-size: ${typography.size.s3}px;
   line-height: 24px;
-  color: ${color.darkest};
+  color: ${props => (props.inverse ? color.lightest : color.darkest)};
 `;
 
 const Speakers = styled.div`
@@ -81,10 +75,12 @@ const Speakers = styled.div`
 type TalkCardProps = {
   key: string;
   talk: Talk;
+  inverse?: boolean;
 };
 
 export function TalkCard({
-  talk: { title, description, speaker: speakers, start, end }
+  talk: { title, description, speaker: speakers, start, end },
+  inverse
 }: TalkCardProps) {
   const [startAndEndTime, setStartAndEndTime] = useState('');
 
@@ -93,16 +89,17 @@ export function TalkCard({
   }, [end, start]);
 
   return (
-    <TalkWrapper>
-      <Time>{startAndEndTime || <>&nbsp;</>}</Time>
+    <TalkWrapper inverse={inverse}>
+      <Time inverse={inverse}>{startAndEndTime || <>&nbsp;</>}</Time>
       <Inner>
-        <Info>
-          <Title>{title}</Title>
-          <Description>{description}</Description>
+        <Info inverse={inverse}>
+          <Title inverse={inverse}>{title}</Title>
+          <Description inverse={inverse}>{description}</Description>
         </Info>
         <Speakers>
           {speakers.map(speaker => (
             <Speaker
+              inverse={inverse}
               key={speaker.name}
               slug={speaker.slug}
               name={speaker.name}
