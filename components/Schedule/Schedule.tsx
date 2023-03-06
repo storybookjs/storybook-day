@@ -47,6 +47,21 @@ const Section = styled.div<{ inverse?: boolean }>`
   margin-bottom: 2rem;
 `;
 
+const Break = styled.div<{ inverse?: boolean }>`
+  border: 1px solid ${props => (props.inverse ? 'rgba(255, 255, 255, 0.1)' : color.border)};
+  border-radius: ${spacing.borderRadius.small}px;
+  background: ${props => (props.inverse ? color.darkest : color.lighter)};
+  margin-bottom: 2rem;
+  padding: 1rem;
+
+  ${marketing.textLargeBold};
+  color: ${props => (props.inverse ? color.lightest : color.darkest)};
+
+  @media (min-width: ${breakpoints[1]}px) {
+    ${marketing.subheading};
+  }
+`;
+
 const Note = styled.div<{ inverse?: boolean }>`
   font-size: ${typography.size.s3}px;
   line-height: 24px;
@@ -93,15 +108,16 @@ export function Schedule({ inverse, allStages }: Props) {
             <TalkCard inverse={inverse} key={talk.title} talk={talk} />
           ))}
         </Section>
-        <SectionTitle inverse={inverse}>💼 Use cases</SectionTitle>
-        <Section inverse={inverse}>
-          {sections['use-cases'].map((talk: Talk) => (
-            <TalkCard inverse={inverse} key={talk.title} talk={talk} />
-          ))}
-        </Section>
+        <Break inverse={inverse}>🥪 Break</Break>
         <SectionTitle inverse={inverse}>🌐 Ecosystem</SectionTitle>
         <Section inverse={inverse}>
           {sections.ecosystem.map((talk: Talk) => (
+            <TalkCard inverse={inverse} key={talk.title} talk={talk} />
+          ))}
+        </Section>
+        <SectionTitle inverse={inverse}>💼 Use cases</SectionTitle>
+        <Section inverse={inverse}>
+          {sections['use-cases'].map((talk: Talk) => (
             <TalkCard inverse={inverse} key={talk.title} talk={talk} />
           ))}
         </Section>
