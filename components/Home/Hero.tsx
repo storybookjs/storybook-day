@@ -1,6 +1,6 @@
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Cardinal, Badge, Button, Link } from '@storybook/design-system';
+import { Cardinal, Badge, Button, Link, Icon } from '@storybook/design-system';
 import { RegistrationForm } from '@components/RegistrationForm';
 import { FreeStickers } from '@components/FreeStickers';
 import { ByChromatic } from '@components/ByChromatic';
@@ -10,9 +10,11 @@ import {
   TIMEZONE,
   CFP_URL,
   TIMEZONE_EU,
-  SHORT_TIME_EU
+  SHORT_TIME_EU,
+  STAGE_URL
 } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
+import BringToStageIcon from '@components/icons/icon-bring-stage';
 
 const { marketing, breakpoints, pageMargins } = styles;
 
@@ -168,6 +170,21 @@ const WatchLive = styled(Info)`
   }
 `;
 
+const StageLink = styled(Button)`
+  && {
+    svg {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
+`;
+
 export const Hero = () => (
   <Container>
     <TitleWrapper>
@@ -190,11 +207,16 @@ export const Hero = () => (
         new in 7.0, meet world-class frontend devs, and check out the leading projects in the
         community.
       </Copy>
-      <Register />
+      {/* On event day */}
+      <StageLink appearance="secondary" isLink ButtonWrapper={LinkWrapper} href={STAGE_URL}>
+        <BringToStageIcon /> Go to Live Stage
+      </StageLink>
+      {/* During registration period */}
+      {/* <Register />
       <Badges>
         <FreeStickers />
-        {/* <CFP /> */}
-      </Badges>
+        <CFP />
+      </Badges> */}
     </div>
     <ByChromaticMobile />
   </Container>

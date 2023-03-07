@@ -1,11 +1,5 @@
 const BringToStageIcon = () => (
-  <svg
-    width={20}
-    style={{ marginRight: '10px' }}
-    height={20}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg width={24} height={24} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M6.889 3.333v12.445a.889.889 0 11-1.778 0M5.111 15.778v-8.89"
       stroke="#fff"

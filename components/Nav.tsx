@@ -100,14 +100,6 @@ export const Nav = ({ transparent, CTA, activeRoute }: NavProps) => {
             >
               Schedule
             </NavItem>
-            {/* <NavItem
-              variant="default"
-              href="/stage/main"
-              LinkWrapper={LinkWrapper}
-              active={activeRoute === '/stage/main'}
-            >
-              Stage
-            </NavItem> */}
             <NavItem variant="default" href={DISCORD_URL}>
               Discord
             </NavItem>

@@ -90,6 +90,7 @@ export const YOUTUBE_URL = 'https://www.youtube.com/c/StorybookJS';
 export const GITHUB_URL = 'https://github.com/storybookjs';
 export const SNEAK_PEEK_URL = '/#sneak-peek';
 export const CFP_URL = '/#cfp';
+export const STAGE_URL = '/stage/main';
 
 // https://www.labnol.org/calendar/
 export const CALENDAR_URL =

@@ -2,7 +2,7 @@ import { styled } from '@storybook/theming';
 import { Icon, Logos, Clipboard, Button } from '@storybook/design-system';
 import { styles, NavItem } from '@storybook/components-marketing';
 import { SkipNavLink as RSkipNavLink } from '@reach/skip-nav';
-import { DISCORD_URL, SITE_URL, TWITTER_URL } from '@lib/constants';
+import { DISCORD_URL, SITE_URL, STAGE_URL, TWITTER_URL } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
 
 const { spacing, color, breakpoints, typography } = styles;
@@ -80,7 +80,7 @@ const NavLinks = styled.div`
 // Workaround for TS 2590 error
 const SkipNavLink: any = RSkipNavLink;
 
-const copyUrl = `${SITE_URL}/stage/main/`;
+const copyUrl = `${SITE_URL}${STAGE_URL}/`;
 
 interface StageNavProps {
   transparent?: boolean;

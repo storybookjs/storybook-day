@@ -6,7 +6,7 @@ import { SkipNavContent as RSkipNavContent } from '@reach/skip-nav';
 
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
-import { META_DESCRIPTION } from '@lib/constants';
+import { META_DESCRIPTION, STAGE_URL } from '@lib/constants';
 import { StageNav } from '@components/Stage/StageNav';
 
 const SkipNavContent: any = RSkipNavContent;
@@ -31,7 +31,7 @@ export default function MainStagePage({ stage }: Props) {
         `}
       />
       <Page meta={meta}>
-        <StageNav transparent activeRoute={'/stage/main'} />
+        <StageNav transparent activeRoute={STAGE_URL} />
         <SkipNavContent />
         <main>
           <StagePage stage={stage} />
