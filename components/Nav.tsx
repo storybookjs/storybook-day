@@ -2,8 +2,9 @@ import { styled } from '@storybook/theming';
 import { Logos } from '@storybook/design-system';
 import { styles, NavItem } from '@storybook/components-marketing';
 import { SkipNavLink as RSkipNavLink } from '@reach/skip-nav';
-import { SNEAK_PEEK_URL, DISCORD_URL, TWITTER_URL, CFP_URL } from '@lib/constants';
+import { SNEAK_PEEK_URL, DISCORD_URL, TWITTER_URL } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
+import { Eyebrow } from '@components/Eyebrow';
 
 const { pageMargins, spacing, color, breakpoints, typography } = styles;
 
@@ -82,6 +83,7 @@ export const Nav = ({ transparent, CTA, activeRoute }: NavProps) => {
   return (
     <>
       <SkipNavLink />
+      <Eyebrow />
       <Wrapper transparent={transparent}>
         <NavContainer>
           <LogoNavItem aria-label="home" href="/" LinkWrapper={LinkWrapper}>

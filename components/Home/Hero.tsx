@@ -1,6 +1,6 @@
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Cardinal, Badge, Button, Link, Icon } from '@storybook/design-system';
+import { Cardinal, Button, Link } from '@storybook/design-system';
 import { RegistrationForm } from '@components/RegistrationForm';
 import { FreeStickers } from '@components/FreeStickers';
 import { ByChromatic } from '@components/ByChromatic';
@@ -15,6 +15,7 @@ import {
 } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
 import BringToStageIcon from '@components/icons/icon-bring-stage';
+import { Mode } from '@lib/types';
 
 const { marketing, breakpoints, pageMargins } = styles;
 
@@ -185,7 +186,7 @@ const StageLink = styled(Button)`
   }
 `;
 
-export const Hero = () => (
+export const Hero = ({ mode = 'registration' }: { mode: Mode }) => (
   <Container>
     <TitleWrapper>
       <Title>
@@ -207,16 +208,19 @@ export const Hero = () => (
         new in 7.0, meet world-class frontend devs, and check out the leading projects in the
         community.
       </Copy>
-      {/* On event day */}
-      <StageLink appearance="secondary" isLink ButtonWrapper={LinkWrapper} href={STAGE_URL}>
-        <BringToStageIcon /> Go to Live Stage
-      </StageLink>
-      {/* During registration period */}
-      {/* <Register />
-      <Badges>
-        <FreeStickers />
-        <CFP />
-      </Badges> */}
+      {mode === 'registration' ? (
+        <>
+          <Register />
+          <Badges>
+            <FreeStickers />
+            <CFP />
+          </Badges>
+        </>
+      ) : (
+        <StageLink appearance="secondary" isLink ButtonWrapper={LinkWrapper} href={STAGE_URL}>
+          <BringToStageIcon /> Go to Live Stage
+        </StageLink>
+      )}
     </div>
     <ByChromaticMobile />
   </Container>

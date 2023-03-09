@@ -31,7 +31,7 @@ export default function MainStagePage({ stage }: Props) {
         `}
       />
       <Page meta={meta}>
-        <StageNav transparent activeRoute={STAGE_URL} />
+        <StageNav activeRoute={STAGE_URL} />
         <SkipNavContent />
         <main>
           <StagePage stage={stage} />

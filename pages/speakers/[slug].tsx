@@ -4,7 +4,7 @@ import Page from '@components/page';
 import { SpeakerSection } from '@components/Speaker';
 import { getAllSpeakers } from '@lib/cms-api';
 import { Speaker } from '@lib/types';
-import { META_DESCRIPTION } from '@lib/constants';
+import { META_DESCRIPTION, MODE } from '@lib/constants';
 import { Layout } from '@components/Layout';
 import { NavCTA } from '@components/NavCTA';
 
@@ -20,7 +20,7 @@ export default function SpeakerPage({ speaker }: Props) {
 
   return (
     <Page meta={meta}>
-      <Layout showFooter navCTA={<NavCTA />}>
+      <Layout showFooter navCTA={<NavCTA mode={MODE} />}>
         <SpeakerSection speaker={speaker} />
       </Layout>
     </Page>

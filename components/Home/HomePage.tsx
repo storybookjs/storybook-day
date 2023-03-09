@@ -4,6 +4,7 @@ import { BlocksScene } from '@components/BlocksScene';
 import { Hero } from './Hero';
 import { FeaturesSection } from './FeaturesSection';
 import { CFPSection } from './CFPSection';
+import { MODE } from '@lib/constants';
 
 const { pageMargins, color, breakpoints } = styles;
 
@@ -49,7 +50,7 @@ const Divider = () => (
 export const HomePage = ({ disable3D = false }: { disable3D?: boolean }) => (
   <>
     <SolidBackdrop>
-      <Hero />
+      <Hero mode={MODE} />
       {!disable3D ? <BlocksScene /> : <Placeholder>3D placeholder</Placeholder>}
     </SolidBackdrop>
     <GradientBackdrop>

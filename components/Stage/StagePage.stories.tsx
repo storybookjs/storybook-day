@@ -330,7 +330,7 @@ const mockStages = [
 ];
 
 const meta: Meta<typeof StagePage> = {
-  title: 'Pages/StagePage',
+  title: 'Pages/StagePage/StagePage',
   component: StagePage,
   args: {
     stage: mockStages[0] as any

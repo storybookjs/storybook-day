@@ -12,3 +12,4 @@ export default meta;
 type Story = StoryObj<typeof Hero>;
 
 export const Default: Story = { args: {} };
+export const LiveMode: Story = { args: { mode: 'live' } };

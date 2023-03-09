@@ -13,8 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { Mode } from './types';
+
 const isDeployPreview = process.env.CONTEXT === 'deploy-preview';
 
+export const MODE: Mode = 'live'; // 'registration'
 export const SITE_URL = isDeployPreview
   ? `${process.env.DEPLOY_PRIME_URL}/day`
   : 'https://storybook.js.org/day';
