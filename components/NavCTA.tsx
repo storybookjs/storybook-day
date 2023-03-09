@@ -44,6 +44,6 @@ export const NavCTA = ({ mode = 'registration' }: { mode: Mode }) =>
   ) : (
     // For event day
     <NavItem variant="primary" LinkWrapper={LinkWrapper} href={STAGE_URL}>
-      Go to stage
+      Watch now
     </NavItem>
   );

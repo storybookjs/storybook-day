@@ -17,9 +17,3 @@ export const Transparent: Story = {
     transparent: true
   }
 };
-
-export const LiveMode: Story = {
-  args: {
-    mode: 'live'
-  }
-};

@@ -1,6 +1,6 @@
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Cardinal, Button, Link } from '@storybook/design-system';
+import { Cardinal, Button, Link, Icon } from '@storybook/design-system';
 import { RegistrationForm } from '@components/RegistrationForm';
 import { FreeStickers } from '@components/FreeStickers';
 import { ByChromatic } from '@components/ByChromatic';
@@ -14,7 +14,6 @@ import {
   STAGE_URL
 } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
-import BringToStageIcon from '@components/icons/icon-bring-stage';
 import { Mode } from '@lib/types';
 
 const { marketing, breakpoints, pageMargins } = styles;
@@ -174,8 +173,6 @@ const WatchLive = styled(Info)`
 const StageLink = styled(Button)`
   && {
     svg {
-      width: 20px;
-      height: 20px;
       margin-right: 8px;
     }
 
@@ -218,7 +215,7 @@ export const Hero = ({ mode = 'registration' }: { mode: Mode }) => (
         </>
       ) : (
         <StageLink appearance="secondary" isLink ButtonWrapper={LinkWrapper} href={STAGE_URL}>
-          <BringToStageIcon /> Go to Live Stage
+          <Icon icon="play" /> Watch the livestream
         </StageLink>
       )}
     </div>

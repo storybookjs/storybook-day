@@ -41,7 +41,7 @@ export const Eyebrow = ({ inverse }: EyebrowProps) => (
       href="https://github.com/storybookjs/storybook/releases"
       withArrow
     >
-      Storybook 7 is now in RC. Full release coming soon!
+      Storybook 7 is now a release candidate. Try it today
     </EyebrowLink>
   </EyebrowContainer>
 );
