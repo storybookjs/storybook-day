@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { Stage } from '@lib/types';
 import { styled } from '@storybook/theming';
-import { AspectRatio, styles } from '@storybook/components-marketing';
+import { styles } from '@storybook/components-marketing';
 import { Schedule } from '@components/Schedule';
 
 export const DiscordEmbed = dynamic(() => import('@widgetbot/react-embed'), {
@@ -17,7 +17,7 @@ type StageContainerProps = {
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  height: calc(100vh - 112.5px);
+  height: calc(100vh - 112px);
 
   @media (min-width: ${breakpoints[2]}px) {
     grid-template-columns: 2fr 1fr;
