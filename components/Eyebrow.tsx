@@ -51,7 +51,7 @@ const EyebrowCallout = styled.a<{ inverse?: boolean }>`
 
   display: none;
 
-  @media (min-width: ${breakpoints[1]}px) {
+  @media (min-width: ${breakpoints[1] * 1.25}px) {
     display: block;
   }
 `;
@@ -72,7 +72,7 @@ export const Eyebrow = ({ inverse }: EyebrowProps) => (
       Storybook 7 is now a release candidate. Try it today
     </EyebrowLink>
     <EyebrowCallout inverse={inverse} href={CHROMATIC_URL}>
-      Claim $500 credit to Chromatic
+      Claim $500 credit to Chromatic with code <code style={{ color: 'inherit' }}>DAY</code>
     </EyebrowCallout>
   </EyebrowContainer>
 );
