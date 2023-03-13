@@ -73,7 +73,7 @@ const NavLinks = styled.div`
     }
 
     > button {
-      display: inline-block;
+      display: inline-flex;
     }
   }
 `;
