@@ -17,7 +17,7 @@ type StageContainerProps = {
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  height: calc(100vh - 72px);
+  height: calc(100vh - 112.5px);
 
   @media (min-width: ${breakpoints[2]}px) {
     grid-template-columns: 2fr 1fr;
