@@ -1,6 +1,6 @@
 import { styled } from '@storybook/theming';
 import { styles } from '@storybook/components-marketing';
-import { Cardinal, Badge, Button, Link } from '@storybook/design-system';
+import { Cardinal, Button, Link, Icon } from '@storybook/design-system';
 import { RegistrationForm } from '@components/RegistrationForm';
 import { FreeStickers } from '@components/FreeStickers';
 import { ByChromatic } from '@components/ByChromatic';
@@ -10,9 +10,11 @@ import {
   TIMEZONE,
   CFP_URL,
   TIMEZONE_EU,
-  SHORT_TIME_EU
+  SHORT_TIME_EU,
+  STAGE_URL
 } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
+import { Mode } from '@lib/types';
 
 const { marketing, breakpoints, pageMargins } = styles;
 
@@ -168,7 +170,20 @@ const WatchLive = styled(Info)`
   }
 `;
 
-export const Hero = () => (
+const StageLink = styled(Button)`
+  && {
+    svg {
+      margin-right: 8px;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
+`;
+
+export const Hero = ({ mode = 'registration' }: { mode: Mode }) => (
   <Container>
     <TitleWrapper>
       <Title>
@@ -190,11 +205,19 @@ export const Hero = () => (
         new in 7.0, meet world-class frontend devs, and check out the leading projects in the
         community.
       </Copy>
-      <Register />
-      <Badges>
-        <FreeStickers />
-        {/* <CFP /> */}
-      </Badges>
+      {mode === 'registration' ? (
+        <>
+          <Register />
+          <Badges>
+            <FreeStickers />
+            <CFP />
+          </Badges>
+        </>
+      ) : (
+        <StageLink appearance="secondary" isLink ButtonWrapper={LinkWrapper} href={STAGE_URL}>
+          <Icon icon="play" /> Watch the livestream
+        </StageLink>
+      )}
     </div>
     <ByChromaticMobile />
   </Container>

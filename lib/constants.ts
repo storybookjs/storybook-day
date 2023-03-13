@@ -13,8 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { Mode } from './types';
+
 const isDeployPreview = process.env.CONTEXT === 'deploy-preview';
 
+export const MODE: Mode = 'live'; // 'registration'
 export const SITE_URL = isDeployPreview
   ? `${process.env.DEPLOY_PRIME_URL}/day`
   : 'https://storybook.js.org/day';
@@ -90,6 +93,7 @@ export const YOUTUBE_URL = 'https://www.youtube.com/c/StorybookJS';
 export const GITHUB_URL = 'https://github.com/storybookjs';
 export const SNEAK_PEEK_URL = '/#sneak-peek';
 export const CFP_URL = '/#cfp';
+export const STAGE_URL = '/stage/main';
 
 // https://www.labnol.org/calendar/
 export const CALENDAR_URL =

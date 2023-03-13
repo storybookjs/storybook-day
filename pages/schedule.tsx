@@ -4,7 +4,7 @@ import { Schedule } from '@components/Schedule';
 import { Layout } from '@components/Layout';
 import { getAllStages } from '@lib/cms-api';
 import { Stage } from '@lib/types';
-import { META_DESCRIPTION } from '@lib/constants';
+import { META_DESCRIPTION, MODE } from '@lib/constants';
 import { NavCTA } from '@components/NavCTA';
 
 type Props = {
@@ -20,7 +20,7 @@ export default function SchedulePage({ allStages }: Props) {
   return (
     <>
       <Page meta={meta} theme="yellow">
-        <Layout transparentNav showFooter navCTA={<NavCTA />}>
+        <Layout transparentNav showFooter navCTA={<NavCTA mode={MODE} />}>
           <Schedule allStages={allStages} />
         </Layout>
       </Page>

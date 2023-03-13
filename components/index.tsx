@@ -22,6 +22,7 @@ import { Layout } from './Layout';
 import { HomePage } from './Home';
 import { LinkWrapper } from './LinkWrapper';
 import { NavCTA } from './NavCTA';
+import { MODE } from '@lib/constants';
 
 type Props = {
   defaultUserData: UserData;
@@ -58,7 +59,7 @@ function CTA({
   }
 
   if (!registered) {
-    return <NavCTA />;
+    return <NavCTA mode={MODE} />;
   }
 
   return null;

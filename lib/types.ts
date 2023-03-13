@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+export type Mode = 'live' | 'registration';
+
 export type Image = {
   url: string;
   blurDataURL?: string;

@@ -2,8 +2,9 @@ import { styled } from '@storybook/theming';
 import { Icon, Logos, Clipboard, Button } from '@storybook/design-system';
 import { styles, NavItem } from '@storybook/components-marketing';
 import { SkipNavLink as RSkipNavLink } from '@reach/skip-nav';
-import { DISCORD_URL, SITE_URL, TWITTER_URL } from '@lib/constants';
+import { DISCORD_URL, SITE_URL, STAGE_URL, TWITTER_URL } from '@lib/constants';
 import { LinkWrapper } from '@components/LinkWrapper';
+import { Eyebrow } from '@components/Eyebrow';
 
 const { spacing, color, breakpoints, typography } = styles;
 
@@ -37,11 +38,11 @@ const YearTag = styled.div`
   padding: 2px 6px;
 `;
 
-const Wrapper = styled.div<{ inverse?: boolean; transparent?: boolean }>`
-  box-shadow: ${props => (props.inverse ? 'rgba(255, 255, 255, 0.1)' : color.tr10)} 0 -1px 0px 0px inset;
+const Wrapper = styled.div`
+  box-shadow: rgba(255, 255, 255, 0.1) 0 -1px 0px 0px inset;
   padding-top: ${spacing.padding.medium}px;
   padding-bottom: ${spacing.padding.medium}px;
-  background-color: ${props => (props.transparent ? 'transparent' : 'var(--bg-blue)')};
+  background-color: transparent;
 `;
 
 const NavContainer = styled.nav`
@@ -80,19 +81,19 @@ const NavLinks = styled.div`
 // Workaround for TS 2590 error
 const SkipNavLink: any = RSkipNavLink;
 
-const copyUrl = `${SITE_URL}/stage/main/`;
+const copyUrl = `${SITE_URL}${STAGE_URL}/`;
 
 interface StageNavProps {
-  transparent?: boolean;
   CTA?: React.ReactNode;
   activeRoute: string;
 }
 
-export const StageNav = ({ transparent, activeRoute }: StageNavProps) => {
+export const StageNav = ({ activeRoute }: StageNavProps) => {
   return (
     <>
       <SkipNavLink />
-      <Wrapper transparent={transparent}>
+      <Eyebrow inverse />
+      <Wrapper>
         <NavContainer>
           <LogoNavItem aria-label="home" href="/" LinkWrapper={LinkWrapper}>
             <StorybookLogo role="presentation" />
