@@ -33,9 +33,9 @@ export const SITE_DESCRIPTION =
   'An interactive online experience by the community, free for everyone.';
 export const DATE = 'March 14, 2023';
 export const SHORT_DATE = 'Mar 14, 2023';
-export const LONG_DATE = 'Mar 14 10:00am - 02:00pm PST';
-export const SHORT_TIME = '10am - 2pm';
-export const SHORT_TIME_EU = '6pm - 10pm';
+export const LONG_DATE = 'Mar 14 10:00am - 01:00pm PST';
+export const SHORT_TIME = '10am - 1pm';
+export const SHORT_TIME_EU = '6pm - 9pm';
 export const TIMEZONE = 'Pacific Standard Time';
 export const TIMEZONE_EU = 'Central European Time';
 export const SHORT_TIMEZONE = 'Pacific Time';
@@ -48,7 +48,7 @@ Join me there, the tickets are free 👉`;
 export const COOKIE = 'user-id';
 
 export const CHROMATIC_URL =
-  'https://www.chromatic.com/?utm_source=storybook_website&utm_medium=link&utm_campaign=storybook_day';
+  'https://www.chromatic.com/storybook/?utm_source=storybook_website&utm_medium=link&utm_campaign=storybook_day';
 export const LEGAL_URL = 'https://www.chromatic.com/docs/privacy-policy';
 export const CODE_OF_CONDUCT =
   'https://github.com/storybookjs/storybook/blob/next/CODE_OF_CONDUCT.md';
