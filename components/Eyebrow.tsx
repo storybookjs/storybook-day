@@ -71,8 +71,8 @@ export const Eyebrow = ({ inverse }: EyebrowProps) => (
     >
       Storybook 7 is now a release candidate. Try it today
     </EyebrowLink>
-    <EyebrowCallout inverse={inverse} href={CHROMATIC_URL}>
+    {/* <EyebrowCallout inverse={inverse} href={CHROMATIC_URL}>
       Claim $500 credit to Chromatic
-    </EyebrowCallout>
+    </EyebrowCallout> */}
   </EyebrowContainer>
 );
