@@ -210,7 +210,7 @@ export const Hero = ({ mode = 'registration' }: { mode: Mode }) => (
           <Register />
           <Badges>
             <FreeStickers />
-            <CFP />
+            {/* <CFP /> */}
           </Badges>
         </>
       ) : (
