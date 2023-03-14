@@ -53,11 +53,9 @@ const NavContainer = styled.nav`
 `;
 
 const NavLinks = styled.div`
+  display: flex;
   align-items: center;
-
-  > * {
-    margin-right: 9px;
-  }
+  gap: 9px;
 
   > a:not(:first-of-type) {
     display: none;
@@ -67,7 +65,7 @@ const NavLinks = styled.div`
     display: none;
   }
 
-  @media (min-width: ${breakpoints[1]}px) {
+  @media (min-width: ${breakpoints[1] * 1.1}px) {
     > a:not(:first-of-type) {
       display: inline-flex;
     }
@@ -87,6 +85,10 @@ interface StageNavProps {
   CTA?: React.ReactNode;
   activeRoute: string;
 }
+
+const text = encodeURIComponent(`Join me at #StorybookDay 👉`);
+const permalink = encodeURIComponent(`${SITE_URL}/stage/main`);
+const tweetUrl = `https://twitter.com/intent/tweet?url=${permalink}&text=${text}`;
 
 export const StageNav = ({ activeRoute }: StageNavProps) => {
   return (
@@ -111,9 +113,9 @@ export const StageNav = ({ activeRoute }: StageNavProps) => {
             <NavItem variant="inverse" href={DISCORD_URL}>
               Discord
             </NavItem>
-            <NavItem variant="inverse" href={TWITTER_URL}>
-              Twitter
-            </NavItem>
+            <Button isLink href={tweetUrl} appearance="inverseOutline" size="small">
+              Tweet #StorybookDay
+            </Button>
             <Clipboard toCopy={copyUrl}>
               <Button appearance="inverseOutline" size="small" ButtonWrapper="div">
                 <Icon icon="link" /> Copy link

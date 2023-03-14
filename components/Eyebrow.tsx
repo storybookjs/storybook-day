@@ -66,7 +66,7 @@ export const Eyebrow = ({ inverse }: EyebrowProps) => (
     <EyebrowLink
       inverse={inverse}
       secondary={!inverse}
-      href="https://storybook.js.org/docs/7.0/"
+      href="https://github.com/storybookjs/storybook/releases/tag/v7.0.0-rc.0"
       withArrow
     >
       Storybook 7 is now a release candidate. Try it today
