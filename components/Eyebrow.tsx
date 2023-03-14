@@ -72,7 +72,7 @@ export const Eyebrow = ({ inverse }: EyebrowProps) => (
       Storybook 7 is now a release candidate. Try it today
     </EyebrowLink>
     <EyebrowCallout inverse={inverse} href={CHROMATIC_URL}>
-      Claim $500 credit to Chromatic with code <code style={{ color: 'inherit' }}>DAY</code>
+      🎁 Claim $500 credit to Chromatic with code <code style={{ color: 'inherit' }}>DAY</code>
     </EyebrowCallout>
   </EyebrowContainer>
 );
