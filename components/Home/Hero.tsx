@@ -215,7 +215,7 @@ export const Hero = ({ mode = 'registration' }: { mode: Mode }) => (
         </>
       ) : (
         <StageLink appearance="secondary" isLink ButtonWrapper={LinkWrapper} href={STAGE_URL}>
-          <Icon icon="play" /> Watch the livestream
+          <Icon icon="play" /> Watch the replay
         </StageLink>
       )}
     </div>
