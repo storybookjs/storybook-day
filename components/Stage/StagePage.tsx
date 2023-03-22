@@ -45,7 +45,7 @@ export function StagePage({ stage }: StageContainerProps) {
           allow="autoplay; picture-in-picture"
           allowFullScreen
           frameBorder="0"
-          src={`${stage.stream}?autoplay=1&mute=1`}
+          src={`${stage.stream}?&start=301&autoplay=1`}
           title={stage.name}
           width="100%"
           height="100%"
