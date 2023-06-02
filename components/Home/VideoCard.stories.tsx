@@ -10,7 +10,6 @@ export default meta;
 type Story = StoryObj<typeof VideoCard>;
 
 export const Default: Story = {
-  name: 'Default',
   args: {
     bgColor: '#191B24',
     src: '/day/features/videos/nextjs-framework-sm.mp4'

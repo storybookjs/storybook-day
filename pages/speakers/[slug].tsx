@@ -1,5 +1,4 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { Button } from '@storybook/design-system';
 import Page from '@components/page';
 import { SpeakerSection } from '@components/Speaker';
 import { getAllSpeakers } from '@lib/cms-api';

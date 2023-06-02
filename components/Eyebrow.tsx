@@ -27,7 +27,7 @@ const EyebrowContainer = styled.div<{
   align-items: center;
   justify-content: center;
   padding: ${spacing.padding.small}px ${spacing.padding.medium}px;
-  background-color: ${props => (props.inverse ? 'rgba(0, 0, 0, 0.3)' : color.blueLight)};
+  background-color: ${props => (props.inverse ? 'rgba(0, 0, 0, 0.3)' : color.bluelighter)};
   box-shadow: ${props => (props.inverse ? 'rgba(255, 255, 255, 0.1)' : color.tr10)} 0 -1px 0px 0px inset;
 
   ${Badge} {

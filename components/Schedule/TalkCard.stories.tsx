@@ -49,7 +49,7 @@ export const Default: Story = {
   }
 };
 
-export const inverse: Story = {
+export const Inverse: Story = {
   args: { ...Default.args, inverse: true },
   parameters: { backgrounds: { default: 'dark' } }
 };

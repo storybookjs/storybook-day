@@ -342,7 +342,7 @@ type Story = StoryObj<typeof Schedule>;
 
 export const Default: Story = {};
 
-export const inverse: Story = {
+export const Inverse: Story = {
   args: { inverse: true },
   parameters: { backgrounds: { default: 'dark' } }
 };
