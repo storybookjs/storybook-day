@@ -11,7 +11,8 @@
     "start": "next start",
     "build": "next build",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@100mslive/react-icons": "^0.0.6",
@@ -60,6 +61,7 @@
     "vanilla-tilt": "1.7.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.34.3",
     "@storybook/addon-essentials": "^7.0.18",
     "@storybook/addon-interactions": "^7.0.18",
     "@storybook/addon-links": "^7.0.18",
