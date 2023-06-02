@@ -19,7 +19,6 @@ import Error from 'next/error';
 import Head from 'next/head';
 import { SkipNavContent as RSkipNavContent } from '@reach/skip-nav';
 import { getUserByUsername } from '@lib/db-api';
-import { withPrefix } from '@lib/with-prefix';
 
 import Page from '@components/page';
 import { ConfContent } from '@components/index';
