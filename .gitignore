@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+/test-archives
 /test-results
 
 # next.js
@@ -15,6 +16,7 @@
 
 # production
 /build
+/storybook-static
 
 # misc
 .DS_Store

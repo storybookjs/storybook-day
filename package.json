@@ -12,7 +12,9 @@
     "build": "next build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "archive-storybook": "archive-storybook",
+    "build-archive-storybook": "build-archive-storybook"
   },
   "dependencies": {
     "@100mslive/react-icons": "^0.0.6",
@@ -61,6 +63,8 @@
     "vanilla-tilt": "1.7.0"
   },
   "devDependencies": {
+    "@chromaui/archive-storybook": "^0.0.6",
+    "@chromaui/test-archiver": "^0.0.11",
     "@playwright/test": "^1.34.3",
     "@storybook/addon-essentials": "^7.0.18",
     "@storybook/addon-interactions": "^7.0.18",
