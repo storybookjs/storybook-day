@@ -1,7 +1,12 @@
-const path = require('path');
 module.exports = {
-  stories: ['../components/**/*.stories.mdx', '../components/**/*.stories.@(js|jsx|ts|tsx)'],
-  staticDirs: ['../public', { from: '../public', to: '/day' }],
+  stories: ['../components/**/*.mdx', '../components/**/*.stories.@(js|jsx|ts|tsx)'],
+  staticDirs: [
+    '../public',
+    {
+      from: '../public',
+      to: '/day'
+    }
+  ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -12,6 +17,6 @@ module.exports = {
     options: {}
   },
   docs: {
-    docsPage: true
+    autodocs: 'tag'
   }
 };
