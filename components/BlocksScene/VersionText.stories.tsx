@@ -8,6 +8,10 @@ const meta: Meta<typeof VersionText> = {
   parameters: {
     layout: 'fullscreen'
   },
+  args: {
+    major: '7',
+    minor: '0'
+  },
   component: VersionText,
   decorators: [
     storyFn => {

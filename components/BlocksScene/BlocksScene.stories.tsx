@@ -3,6 +3,9 @@ import { BlocksScene } from './BlocksScene';
 
 const meta: Meta<typeof BlocksScene> = {
   title: 'BlocksScene/BlocksScene',
+  args: {
+    version: { major: '7', minor: '0' }
+  },
   parameters: {
     layout: 'fullscreen',
     backgrounds: { default: 'blue' }

@@ -66,7 +66,7 @@ function ErrorFallback() {
   return <img src={withPrefix('/block-scene-fallback.png')} style={{ width: '100%' }} />;
 }
 
-export const BlocksScene = () => {
+export const BlocksScene = ({ version = { major: '7', minor: '0' } }: { version: { major: string; minor: string; } }) => {
   const [frameLoop, setFrameLoop] = useState<'demand' | 'always'>('always');
 
   return (
@@ -75,7 +75,7 @@ export const BlocksScene = () => {
         <LoopControl setFrameLoop={setFrameLoop} />
         <Suspense fallback={null}>
           <group position={[0, 0.5, 0]}>
-            <VersionText />
+            <VersionText {...version} />
             {blocks.map((block: any) => (
               <Float
                 key={block.id}
