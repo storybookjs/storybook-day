@@ -39,8 +39,9 @@ const Container = styled.div`
   }
 `;
 
-export const Stage: FC<{ frameLoop: 'demand' | 'always' | 'never' }> = ({
+export const Stage: FC<{ frameLoop: 'demand' | 'always' | 'never'; bg?: string }> = ({
   frameLoop,
+  bg = '#e3f3ff',
   children
 }) => {
   return (
@@ -58,7 +59,7 @@ export const Stage: FC<{ frameLoop: 'demand' | 'always' | 'never' }> = ({
         }}
         camera={{ position: [0, 0, 30], near: 0.1, far: 60, fov: 45 }}
       >
-        <color attach="background" args={['#E3F3FF']} />
+        <color attach="background" args={[bg]} />
         {/* lights */}
         <ambientLight intensity={0.5} />
         <directionalLight castShadow position={[2.5, 12, 12]} intensity={1} />
