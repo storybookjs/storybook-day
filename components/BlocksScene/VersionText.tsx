@@ -27,13 +27,13 @@ const material = new THREE.MeshPhysicalMaterial({
   color: '#0aff4f'
 });
 
-export const VersionText = () => (
+export const VersionText = ({ major = 7, minor = 0 }: { major?: number; minor?: number }) => (
   <Center rotation={[-Math.PI * 0.03125, Math.PI * 0.0625, 0]}>
     <Text3D position={[-4, 0, 0]} {...textProps} material={material}>
-      7.
+      {major}.
     </Text3D>
     <Text3D position={[4, 0, 0]} {...textProps} material={material}>
-      0
+      {minor}
     </Text3D>
   </Center>
 );
