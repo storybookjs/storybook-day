@@ -21,8 +21,5 @@ export default meta;
 type Story = StoryObj<typeof HomePage>;
 
 export const Default: Story = {
-  name: 'HomePage',
-  args: {
-    disable3D: isChromatic()
-  }
+  name: 'HomePage'
 };

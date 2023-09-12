@@ -47,11 +47,11 @@ const Divider = () => (
   </Wrapper>
 );
 
-export const HomePage = ({ disable3D = false }: { disable3D?: boolean }) => (
+export const HomePage = () => (
   <>
     <SolidBackdrop>
       <Hero mode={MODE} />
-      {!disable3D ? <BlocksScene /> : <Placeholder>3D placeholder</Placeholder>}
+      <BlocksScene />
     </SolidBackdrop>
     <GradientBackdrop>
       <FeaturesSection />
